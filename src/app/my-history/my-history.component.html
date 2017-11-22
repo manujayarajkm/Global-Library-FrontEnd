@@ -1,0 +1,38 @@
+<div class="container" >
+  <h4 class="text-center"> Check your History</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+<button (click)="savepdf()" class="btn btn-success"><span class="glyphicon glyphicon-save">PDF</span></button>
+      </div>
+      <div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+
+</div>
+</div>
+<div class="container" >
+  <h2>History</h2>
+  <p>Check your history here</p>
+  <table  class="table" id="history">
+    <thead>
+      <tr>
+        <th>History No</th>
+        <th>Title</th>
+        <th>Took Date</th>
+        <th>Due date</th>
+        <th>Return date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hist of history" >
+        <td>{{hist.historyId}}</td>
+        <td>{{hist.title}}</td>
+        <td>{{hist.tookDate}}</td>
+        <td>{{hist.dueDate}}</td>
+        <td>{{hist.returnDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

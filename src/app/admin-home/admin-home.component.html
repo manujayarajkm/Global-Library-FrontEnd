@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="itemset" [ngsRevealSet]="{reset:true}" [ngsSelector]="'.item'">
+  <div class="row">
+    <div class="col-md-6 col-sm-6 ">
+      <div class="showcase-left" [ngsReveal]="{reset:true}">
+        <img src="assets/images/hires.jpg" style="height:250px;width:400px;">
+      </div>
+    </div>
+        <div class="col-md-6 col-sm-6" >
+          <div class="showcase-right">
+            <h4 class="text-center">Hires</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and 
+              typesetting industry. Lorem Ipsum has been the industry's standard 
+              dummy text ever since the 1500s, when an unknown printer took a 
+              galley of type and scrambled it to make a type specimen book. 
+              It has survived not only five centuries, but also the leap 
+              into electronic typesetting, remaining essentially unchanged. 
+              It was popularised in the 1960s with the release of Letraset sheets
+               containing Lorem Ipsum passages, and more recently with desktop 
+               publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <a routerLink='/hires'><button class="btn btn-success btn-default" >
+                Hires
+              </button></a>
+          </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 col-sm-6" >
+              <div class="showcase-left">
+                  <h4 class="text-center">Members</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and 
+                  typesetting industry. Lorem Ipsum has been the industry's standard 
+                  dummy text ever since the 1500s, when an unknown printer took a 
+                  galley of type and scrambled it to make a type specimen book. 
+                  It has survived not only five centuries, but also the leap 
+                  into electronic typesetting, remaining essentially unchanged. 
+                  It was popularised in the 1960s with the release of Letraset sheets
+                   containing Lorem Ipsum passages, and more recently with desktop 
+                   publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <a routerLink='/allMembers'><button class="btn btn-success btn-default" >
+                    Members
+                  </button></a>
+                </div>
+        <div class="col-md-6 col-sm-6 ">
+          <div class="showcase-right" [ngsReveal]="{reset:true}">
+            <img src="assets/images/members.jpg" style="height:250px;width:400px;">
+          </div>
+        </div>
+            
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-6 ">
+              <div class="showcase-left" [ngsReveal]="{reset:true}">
+                <img src="assets/images/viewbook.jpg" style="height:250px;width:400px;">
+              </div>
+            </div>
+                <div class="col-md-6 col-sm-6" >
+                  <div class="showcase-right">
+                      <h4 class="text-center">Book Shelf</h4>                      
+                    <p>Lorem Ipsum is simply dummy text of the printing and 
+                      typesetting industry. Lorem Ipsum has been the industry's standard 
+                      dummy text ever since the 1500s, when an unknown printer took a 
+                      galley of type and scrambled it to make a type specimen book. 
+                      It has survived not only five centuries, but also the leap 
+                      into electronic typesetting, remaining essentially unchanged. 
+                      It was popularised in the 1960s with the release of Letraset sheets
+                       containing Lorem Ipsum passages, and more recently with desktop 
+                       publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    </div>
+                    <a routerLink='/viewBooks'><button class="btn btn-success btn-default" >
+                        View
+                      </button></a>
+                    </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-6 col-sm-6" >
+                      <div class="showcase-left">
+                          <h4 class="text-center">Add New Book</h4>                                                
+                        <p>Lorem Ipsum is simply dummy text of the printing and 
+                          typesetting industry. Lorem Ipsum has been the industry's standard 
+                          dummy text ever since the 1500s, when an unknown printer took a 
+                          galley of type and scrambled it to make a type specimen book. 
+                          It has survived not only five centuries, but also the leap 
+                          into electronic typesetting, remaining essentially unchanged. 
+                          It was popularised in the 1960s with the release of Letraset sheets
+                           containing Lorem Ipsum passages, and more recently with desktop 
+                           publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        </div>
+                        <button class="btn btn-success btn-default" data-toggle="modal" data-target="#addBook">
+                            Add
+                          </button>
+                        </div>
+                <div class="col-md-6 col-sm-6 ">
+                  <div class="showcase-right" [ngsReveal]="{reset:true}">
+                    <img src="assets/images/addbook.jpg" style="height:250px;width:400px;">
+                  </div>
+                </div>
+                    
+                </div>
+              </div>
+</div>
+
+<div id="addBook" class="modal fade">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+    <h5 class="modal-title">Add New Book</h5>
+    </div>
+    <div class="modal-body">
+    <p>Please provide the details</p>
+    <label for="Title">Title:</label>
+    <input type="text" class="form-control" [(ngModel)]="title" name="title">
+    <label for="Author">Author:</label>
+    <input type="text" class="form-control" [(ngModel)]="author" name="author">
+            <label for="GenreSelect">Genre</label>
+            <select class="form-control" [(ngModel)]="genretest" name="genretest" placeholder="Please select">
+              <option>Fiction</option>
+              <option>Thriller</option>
+              <option>Horror</option>
+              <option>Fantasy</option>
+              <option>Biography</option>
+            </select>
+    <label for="Price">Price:</label>
+    <input type="text" class="form-control"class="form-control" [(ngModel)]="price" name="price">
+    <label for="Cover">Cover:</label>
+    <input type="text" class="form-control" [(ngModel)]="cover" cover="password">
+    </div>
+    
+    <div class="modal-footer">
+    <button (click)="addNewBook(title,author,genretest,price,cover)" class="btn btn-success">Add</button>
+    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+    </div>
+    </div>
+    </div>
+    </div>
+
+

@@ -1,0 +1,46 @@
+<div class="container">
+  <h4 class="text-center"> Check the Active Hires </h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+</div>
+<div class="col-md-4">
+  <div class="alert alert-danger" role="alert" *ngIf="edited && queue">
+    {{queue}}
+  </div>
+</div>
+</div>
+<div class="container">
+  <h2>Active Hires</h2>
+  <p>Check the active hires here</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Hire Id</th>
+        <th>Book Id</th>
+        <th>User Id</th>
+        <th>Member Name</th>
+        <th>Title</th>
+        <th>Took Date</th>
+        <th>Due date</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hire of hires" >
+        <td>{{hire.hireId}}</td>
+        <td>{{hire.bookId}}</td>
+        <td>{{hire.userId}}</td>
+        <td>{{hire.name}}</td>
+        <td>{{hire.title}}</td>
+        <td>{{hire.tookDate}}</td>
+        <td>{{hire.dueDate}}</td>
+        <td><button (click)="notifyUser(hire.name,hire.title,hire.dueDate,hire.userId,hire.bookId)" class="btn btn-primary btn-default" >
+              Notify User
+            </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

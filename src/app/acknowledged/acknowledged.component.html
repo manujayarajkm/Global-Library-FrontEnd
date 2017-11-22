@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Book Shelf</h2>
+    <p>Please select your desired book and explore the world of knowledge</p>
+
+  <table class="table">
+    <thead>
+      <tr >
+        <th>Notification Date</th>
+        <th>Content</th>
+        <th>Acknowledged On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of notifications" >
+        <td>{{notification.notificationDate}}</td>
+        <td>{{notification.matter}}</td>
+        <td>{{notification.ackDate}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+  </div>
+</div>

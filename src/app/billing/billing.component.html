@@ -1,0 +1,86 @@
+<div class="container" >
+  <button (click)="gotostore()" class="btn btn-success">Go back to Store</button>
+  <h4 class="text-center"> Your Cart</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+
+</div>
+</div>
+<div class="container" >
+  <h2>Cart</h2>
+  <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
+  <table  class="table" id="cart" >
+    <thead *ngIf='!cart.length==0'>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Count</th>
+        <th>Price</th>
+        <th>Sub Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cart" >
+        <td>{{car.title}}</td>
+        <td>{{car.author}}</td>
+        <td>{{car.count}}</td>
+        <td>{{car.price}}</td>
+        <td>{{car.subTotal}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+  <h4 class="text-center"> Total:{{total}}</h4>
+<br>
+<br>
+<div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+
+
+
+
+<div class="container">
+<h4 class="text-center">Billing Address</h4>
+
+        <label for="Name">Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" #Name="ngModel">
+        <div class="alert alert-danger" *ngIf="!name && Name.touched">Required</div>
+        <label for="Address1">Address Line 1:</label>
+        <input type="text" class="form-control" [(ngModel)]="address1" name="address1" #Address1="ngModel">
+        <div class="alert alert-danger" *ngIf="!address1 && Address1.touched">Required</div>
+        <label for="Address2">Address Line 2:</label>
+        <input type="text" class="form-control"class="form-control" [(ngModel)]="address2" name="address2" #Address2="ngModel">
+        <div class="alert alert-danger" *ngIf="!address2 && Address2.touched">Required</div>
+        <label for="Phone">Contact No:</label>
+        <input type="number" class="form-control" [(ngModel)]="phone" name="phone" #Phone="ngModel">
+        <div class="alert alert-danger" *ngIf="!phone && Phone.touched">Required</div>
+<br>
+        <div>
+        <button (click)="billing(name,address1,address2,phone)" class="btn btn-success" [disabled]="!name||!address1 ||!address2||!phone">Generate Bill</button>
+        <button (click)="abort()" class="btn btn-danger">Abort</button>
+      </div>
+
+
+</div>

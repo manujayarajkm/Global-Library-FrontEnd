@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>Book Shelf</h2>
+    <p>Please select your desired book and explore the world of knowledge</p>
+
+  <table class="table">
+    <thead>
+      <tr >
+        <th>Notification Date</th>
+        <th>Content</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let notification of notifications" >
+        <td>{{notification.notificationDate}}</td>
+        <td>{{notification.matter}}</td>
+        <td><button (click)="acknowledge(notification.notificationId)" class="btn btn-primary btn-default">Acknowledge</button> </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <a routerLink="/acknowledged"><h6 class="text-center">Click Here for Acknowledged notifications</h6></a>
+  </div>
+</div>

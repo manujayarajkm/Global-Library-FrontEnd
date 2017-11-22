@@ -1,0 +1,53 @@
+<div class="container" >
+  <button (click)="gotostore()" class="btn btn-success">Go back to Store</button>
+  <h4 class="text-center"> Your Cart</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+  <a routerLink="/purchasehistory"><button  class="btn btn-success">My Purchases</button></a>
+</div>
+</div>
+<div class="container" >
+  <h2>Cart</h2>
+  <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
+  <table  class="table" id="history" >
+    <thead *ngIf='!cart.length==0'>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Count</th>
+        <th>Price</th>
+        <th>Sub Total</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cart" >
+        <td>{{car.title}}</td>
+        <td>{{car.author}}</td>
+        <td><button type="button" (click)="removeone(car.cartId,car.bookId)"class="btn btn-default btn-sl" ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>&nbsp;{{car.count}}&nbsp;<button type="button" (click)="addone(car.cartId,car.bookId)"class="btn btn-default btn-sl" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button></td>
+        <td>{{car.price}}</td>
+        <td>{{car.subTotal}}</td>
+        <td><button (click)="removeitem(car.cartId,car.bookId,car.count)" class="btn btn-success">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+</div>
+<div class="col-md-2">
+<a routerLink="/payment"><button class="btn btn-warning" *ngIf=!empty>Proceed to Pay</button></a>
+</div>

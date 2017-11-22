@@ -1,0 +1,62 @@
+<div class="container">
+  <h4 class="text-center"> Explore the Store</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+
+
+</div>
+</div>
+<div class='row'>
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-sm-4">
+                    <label for="sort-field">Sort By</label>
+                    <select class="form-control" name="sortField2" 
+                    [(ngModel)]="sortField2">
+                    <option *ngFor="let field of sortField" [value]="field">{{utilService.capitalizeFirst(field)}}
+                    </option>
+                    </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="sort-direction">Sort Direction</label>
+                    <div>
+                    <button class="btn btn-primary" [ngClass]="{'btn-success':sortDirection=='asc'}"
+                    (click)="sortDirection='asc'">
+                    Asc
+                </button>
+                <button class="btn btn-primary" [ngClass]="{'btn-success':sortDirection=='desc'}"
+                (click)="sortDirection='desc'">
+                Desc
+            </button>
+            </div>
+            </div>
+                    </div>
+                    </div>
+    <div class="col-sm-4"  *ngFor='let book of books | sortBy:[sortField2,sortDirection]'>
+        <div class="thumbnail">
+      <img  src="assets/images/{{book.cover}}" alt="Card image cap" style="height:200px;">
+      <div class="caption">
+        <h4 class="card-title">{{book.title}}({{book.genre}})</h4>
+        <h5 class="card-title">{{book.author}}</h5>
+        <h5 class="card-title">{{book.price|currency:'INR':true}}</h5>
+        <h6 class="card-title">Availability:{{book.avilableNo}}</h6>
+        <p class="card-text"><rating [(ngModel)]=book.rating [max]="max" [readonly]=true ></rating></p>
+        <button (click)="buy(book.bookId,book.price,book.title,book.author)"  class="btn btn-primary">Add to Cart</button>
+      </div>
+      </div>
+    </div>
+    </div>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+  <div class="loader" *ngIf=loadervar></div>
+</div>
+<div class="col-md-4">
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="text-center"> Review</h2>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div  class="col-md-4">
+</div>
+<div class="col-md-4">
+</div>
+</div>
+<div class="container">
+
+  <p>Thank you for returning the book. Please spend some moments to write a review</p>
+  <bar-rating name="rating" [(ngModel)]="formRating" [max]="4" required disabled></bar-rating>
+
+</div>
+<div class="form-group">
+    <label for="Textarea1">Review</label>
+    <textarea class="form-control" [(ngModel)]="review" name="review" rows="3"></textarea>
+  </div>
+  <div>
+  <rating [(ngModel)]="rating" max="5" stateOn="glyphicon-ok-sign" stateOff="glyphicon-ok-circle"
+          style="color: #0275d8;"></rating>
+  <b>(<i>Your Rating:</i> {{x}})</b>
+</div>
+  <div>
+    <button (click)="addReview(review,rating)" class="button-success">Submit</button>
+    <button (click)="cancel()" class="button-info">Cancel</button>
+  </div>

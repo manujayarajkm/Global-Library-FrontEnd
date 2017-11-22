@@ -1,0 +1,155 @@
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a  class="navbar-brand" routerLink="/" *ngIf='loginId<100'>Global Library</a>
+      <a class="navbar-brand" *ngIf='loginId>100'>Global Library</a>
+      <a class="navbar-brand" *ngIf='dash>90'>Admin DashBoard</a>
+      <a routerLink="/userhome"><button type="button" class="btn btn-default btn-sl" *ngIf='userId>0'>
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        </button></a>
+        <a routerLink="/cart"><button type="button" class="btn btn-default btn-sl" *ngIf='userId>0 '>
+          <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span>
+        </button></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        <a routerLink="/updateprofile"><img src="assets/profilepictures/{{username}}.jpg" width="40" height="40" class="img-circle" alt="" *ngIf='userId>0'></a>
+        <li><a routerLink="about" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+          true}">About Us</a></li>
+
+        <a routerLink="/notifications"><button type="button" class="btn btn-default btn-sl" *ngIf="count">
+          <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> {{count}}
+        </button></a>
+
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{dropdown}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a *ngIf='loginId<100' data-toggle="modal" data-target="#login">Login</a></li>
+            <li><a *ngIf='loginId<100' data-toggle="modal" data-target="#signup">Sign Up</a></li>
+            <li><a *ngIf='adminId>100' data-toggle="modal" data-target="#adminlogin">Admin</a></li>
+            <li><a routerLink="/updateprofile" *ngIf='userId>0' >Update Profile</a></li>
+              <li><a routerLink="/newpassword" *ngIf='userId>0' >Change Password</a></li>
+            <li><a *ngIf='userId>0||adminId==90' (click)="logout(template)">logout</a>
+              <ng-template #template>
+                  <div class="modal-header">
+                      <h4 class="modal-title pull-left">Log-Out!</h4>
+                  </div>
+                <div class="modal-body text-center">
+                  <p>Are you sure to logout</p>
+                  <button type="button" class="btn btn-danger" (click)="confirm()" >Yes</button>
+                  <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+                </div>
+              </ng-template>
+            </li>
+           
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+<div id="adminlogin" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hi Admin</h5>
+        </div>
+      <div class="modal-body">
+        <p>Please enter your cred</p>
+        <label for="Username">Username:</label>
+        <input type="text" class="form-control" [(ngModel)]="username1" name="username1"  #userName1="ngModel"  >
+      <div class="alert alert-danger" *ngIf="!username1 && userName1.touched">Required</div>
+        <label for="Password">Password:</label>
+        <input type="password" class="form-control" [(ngModel)]="password1" name="password1" #passWord1="ngModel">
+        <div class="alert alert-danger" *ngIf="!password1 && passWord1.touched">Required</div>
+    </div>
+
+      <div class="modal-footer">
+        <button (click)="adminLogin(username1,password1)" class="btn btn-success" [disabled]=!username1||!password1>Login</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="login" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Please Login To Continue</h5>
+        </div>
+      <div class="modal-body">
+        <p>Please enter your cred</p>
+        <label for="Username">Username:</label>
+        <input type="text" class="form-control" [(ngModel)]="username2" name="username2" #userName2="ngModel">
+        <div class="alert alert-danger" *ngIf="!username2 && userName2.touched">Required</div>
+        <label for="Password">Password:</label>
+        <input type="password" class="form-control" [(ngModel)]="password2" name="password2" #passWord2="ngModel">
+        <div class="alert alert-danger" *ngIf="passWord2.touched && !password2">Required</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="edited && blocked">{{blocked}}</div>
+        <div class="alert alert-danger" *ngIf="edited && nAu">{{nAu}}</div>
+        <a href="/passwordReset"><h6 class="text-center">Forgot Password</h6></a>
+      <div class="modal-footer">
+        <button (click)="login(username2,password2)" class="btn btn-success" [disabled]=!username2||!password2>Login</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+      </div>
+      <div class="alert alert-danger">Cookies must be enabled to use this site</div>      
+    </div>
+  </div>
+</div>
+
+
+  <!-- Register Modal -->
+
+<div id="signup" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Register Here</h5>
+        </div>
+      <div class="modal-body">
+        <p>Please provide your details</p>
+        <label for="Name">Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" #Name="ngModel">
+        <div class="alert alert-danger" *ngIf="!name && Name.touched">Required</div>
+        <label for="Email">Email:</label>
+        <input type="text" class="form-control" [(ngModel)]="email" name="email" #Email="ngModel">
+        <div class="alert alert-danger" *ngIf="!email && Email.touched">Required</div>
+        <label for="Phone">Phone:</label>
+        <input type="number" class="form-control" [(ngModel)]="phone" name="phone" #Phone="ngModel">
+        <div class="alert alert-danger" *ngIf="!phone && Phone.touched">Required</div>
+        <label for="Username">Username:</label>
+        <input type="text" class="form-control"class="form-control" [(ngModel)]="username" name="username" #userName="ngModel">
+        <a (click)="checkUsername(username)" *ngIf=username><h6 >Check availability</h6></a>
+
+        <div class="alert alert-danger" *ngIf="!username && userName.touched">Required</div>
+        <label for="Password">Password:</label>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" #passWord="ngModel">
+        <div class="alert alert-danger" *ngIf="!password && passWord.touched">Required</div>
+        <label for="PasswordConfirm">Password Confirm:</label>
+        <input type="password" class="form-control" [(ngModel)]="passwordconfirm" name="passwordconfirm" #passwordConfirm="ngModel">
+        <div class="alert alert-danger" *ngIf="!passwordconfirm && passwordConfirm.touched">Required</div>
+        <div class="alert alert-danger" *ngIf="!(passwordconfirm==password) && passwordConfirm.touched">Passwords are not matching</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="message">{{message}}</div>
+      <div class="modal-footer">
+        <button (click)="registerUser(name,email,phone,username,password)" class="btn btn-success" [disabled]="!username||!password ||!name||!email||!phone||!passwordconfirm">Register</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

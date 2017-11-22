@@ -1,0 +1,50 @@
+<div class="container">
+  <h4 class="text-center"> Explore the Book Shelf</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search Books Here"[(ngModel)]="search" name="search">
+<button  (click)="searchBooks(search)" class="btn btn-info" [disabled]=!search>Search</button>
+  </div>
+<div class="loadersmall" *ngIf=searchvar></div>
+  <div class="alert alert-danger" role="alert" *ngIf="edited && mess">
+    {{mess}}
+  </div>
+  <a routerLink="deepsearch"><div class="alert alert-danger" role="alert" *ngIf="searchres && resultvar">
+    {{resultvar}} Deep Search
+  </div></a>
+
+
+</div>
+</div>
+
+<div class='row'>
+    <div class="col-sm-4"  *ngFor='let book of books'>
+        <div class="thumbnail">
+      <img  src="assets/images/{{book.cover}}" alt="Card image cap" style="height:200px;">
+      <div class="caption">
+        <h4 class="card-title">{{book.title}}({{book.genre}})</h4>
+        <h5 class="card-title">{{book.author}}</h5>
+        <h6 class="card-title">Availability:{{book.avilableNo}}</h6>
+        <p class="card-text"><rating [(ngModel)]=book.rating [max]="max" [readonly]=true ></rating></p>
+        <button (click)="borrowBook(book.bookId)"  class="btn btn-primary">Borrow</button>
+      </div>
+      </div>
+    </div>
+    </div>
+
+
+
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+  <div class="loader" *ngIf=loadervar></div>
+</div>
+<div class="col-md-4">
+</div>

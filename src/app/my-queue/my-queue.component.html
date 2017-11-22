@@ -1,0 +1,38 @@
+<div class="container">
+  <h4 class="text-center"> Check Your Queue</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div  class="col-md-4">
+</div>
+<div class="col-md-4">
+</div>
+</div>
+<div class="container">
+  <h2>Your Queue</h2>
+  <p>Check the details of books you are holding currently with you</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Hire No</th>
+        <th>Title</th>
+        <th>Took Date</th>
+        <th>Due date</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hire of hires" >
+        <td>{{hire.hireId}}</td>
+        <td>{{hire.title}}</td>
+        <td>{{hire.tookDate}}</td>
+        <td>{{hire.dueDate}}</td>
+        <td><button (click)="returnBook(hire.hireId,hire.bookId)" class="btn btn-primary btn-default" >
+              Return
+            </button></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

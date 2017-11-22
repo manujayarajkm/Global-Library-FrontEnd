@@ -1,0 +1,39 @@
+<div class="container">
+  <h4 class="text-center"> Browse the Book Shelf</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+</div>
+<div class="col-md-4">
+</div>
+</div>
+<div class="container">
+  <h2>Book Shelf</h2>
+  <p>Check out the books that are currently available for you</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Availability</th>
+        <th>Cover</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books" >
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.genre}}</td>
+        <td>{{book.avilableNo}}</td>
+        <td>{{book.cover}}</td>
+        <td><button (click)="removeBook(book.bookId)" class="btn btn-primary btn-default" >
+              Remove
+            </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

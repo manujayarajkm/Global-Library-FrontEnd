@@ -1,0 +1,70 @@
+<div class="container">
+  <h4 class="text-center"> Check the Members</h4>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+      <div class="col-md-4">
+        <div class="alert alert-danger" role="alert" *ngIf="edited && memQueue">
+          {{memQue}}
+        </div>
+          <div class="alert alert-danger" role="alert" *ngIf="edited && block">
+            {{block}}
+          </div>
+            <div class="alert alert-danger" role="alert" *ngIf="edited && unBlock">
+              {{unBlock}}
+            </div>
+              <div class="alert alert-danger" role="alert" *ngIf="edited && remove">
+                {{remove}}
+              </div>
+
+</div>
+<div class="col-md-4">
+</div>
+</div>
+<div class="container">
+  <h2>Member Directory</h2>
+  <p>Available members are here</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Member Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Remarks</th>
+        <th>Active </th>
+        <th>Operations </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mem of member" >
+        <td>{{mem.userId}}</td>
+        <td>{{mem.name}}</td>
+        <td>{{mem.email}}</td>
+        <td>{{mem.phone}}</td>
+        <td>{{mem.remarks}}</td>
+        <td>{{mem.active}}</td>
+        <td *ngIf="mem.active=='y'"><button (click)="blockMember(mem.userId)"  class="btn btn-primary btn-warning" >
+                  Block
+                </button></td>
+        <td *ngIf="mem.active=='n'"><button (click)="unBlockMember(mem.userId)"  class="btn btn-primary btn-success" >
+                          UnBlock
+                        </button></td>
+        <td><button (click)="removeMember(mem.userId,template)"  class="btn btn-primary btn-danger">
+                  Remove
+                  <ng-template #template>
+                      <div class="modal-header">
+                          <h4 class="modal-title pull-left">Warning!</h4>
+                      </div>
+                    <div class="modal-body text-center">
+                      <p>Do you want to Remove this member?</p>
+                      <button type="button" class="btn btn-danger" (click)="confirm()" >Yes</button>
+                      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+                    </div>
+                  </ng-template>
+                </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

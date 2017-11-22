@@ -1,0 +1,49 @@
+
+
+<div class="container">
+  <h4 class="text-center">Purchase History</h4>
+  <div class="row">
+    <div class="col-md-12" >
+			<div class="row">
+				<div class="col-md-2">
+
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" *ngIf='!purchase.length==0'>
+        Check
+      </a>
+</div>
+
+<div class="col-md-10">
+  <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
+
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <table  class="table" id="history" >
+        <thead *ngIf='!purchase.length==0'>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Count</th>
+            <th>Price</th>
+            <th>Sub Total</th>
+            <th>Purchase Date</th>
+            <th>Bill No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pur of purchase" >
+            <td>{{pur.title}}</td>
+            <td>{{pur.author}}</td>
+            <td>{{pur.count}}</td>
+            <td>{{pur.price}}</td>
+            <td>{{pur.subTotal}}</td>
+            <td>{{pur.purchaseDate}}</td>
+            <td>{{pur.billId}}</td>
+
+          </tr>
+        </tbody>
+      </table>  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
