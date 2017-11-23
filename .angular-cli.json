@@ -1,0 +1,76 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "library"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "assets/css/jquery.dataTables.min.css",
+        "assets/css/buttons.dataTables.min.css"
+            ],
+      "scripts": ["../node_modules/jspdf/dist/jspdf.min.js",
+        "../node_modules/scrollreveal/dist/scrollreveal.js",
+    "../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js",
+        "../node_modules/jquery/dist/jquery.js",
+        "assets/js/jquery-1.12.4.js",
+        "assets/js/jquery.dataTables.min.js",
+        "assets/js/buttons.flash.min.js",
+        "assets/js/buttons.html5.min.js",
+        "assets/js/buttons.print.min.js",
+        "assets/js/dataTables.buttons.min.js",
+        "assets/js/jszip.min.js",
+        "assets/js/pdfmake.min.js",
+        "assets/js/vfs_fonts.js"
+
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}
