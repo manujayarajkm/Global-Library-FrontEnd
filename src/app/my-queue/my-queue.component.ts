@@ -24,6 +24,7 @@ export class MyQueueComponent implements OnInit {
   matter:String;
   duedate:Date;
   userId:number;
+  empty:String;
 
   constructor(private http:Http,private cookiservice:CookieService,private datePipe:DatePipe,private router:Router) {
 }
@@ -40,18 +41,13 @@ export class MyQueueComponent implements OnInit {
 
         console.log()
         if(res.json().length==0){
-          alert('queue is empty');
+          this.empty="Your Queue is Empty";
         }
         else{
-        //alert(this.hires);
-        //this.checkdue();
+        
 
       }
-        //location.reload();
-          //const message=res.text();
-          //console.log(message);
-          //alert(message);
-          //location.reload();
+        
         }
       )
 

@@ -12,8 +12,9 @@
 <div class="container">
   <h2>Your Queue</h2>
   <p>Check the details of books you are holding currently with you</p>
+  <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>  
   <table class="table">
-    <thead>
+    <thead *ngIf='!empty'>
       <tr>
         <th>Hire No</th>
         <th>Title</th>

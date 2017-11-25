@@ -22,6 +22,8 @@ export class AllBooksComponent implements OnInit {
   searchres:boolean;
   resultvar:String;
   public x: number;
+  empty:String;
+
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) {
     this.userId=+this.cookiservice.get('userId');
@@ -37,7 +39,7 @@ export class AllBooksComponent implements OnInit {
       (res:Response)=>{
       this.books=res.json();
       if(this.books.length==0){
-        alert('sorry no books available');
+        this.empty="Sorry Book Shelf is Empty";
       }
       console.log(this.books);
         

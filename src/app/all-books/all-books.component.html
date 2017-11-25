@@ -23,7 +23,7 @@
 
 </div>
 </div>
-
+<div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
 <div class='row'>
     <div class="col-sm-4"  *ngFor='let book of books'>
         <div class="thumbnail">
