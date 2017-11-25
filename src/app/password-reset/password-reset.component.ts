@@ -30,8 +30,7 @@ export class PasswordResetComponent implements OnInit {
           console.log("username is incorrect");
           alert("incorrect username");
         }
-        //alert(message);
-        //location.reload();
+        
         else{
           this.cookiservice.put('userId',message);
         this.sendMail(email,message);
@@ -59,8 +58,7 @@ export class PasswordResetComponent implements OnInit {
         if(message=="Mail Sent Successfully"){
         this.router.navigate(['changepassword']);
       }
-        //alert(message);
-        //location.reload();
+        
       }
     )
 

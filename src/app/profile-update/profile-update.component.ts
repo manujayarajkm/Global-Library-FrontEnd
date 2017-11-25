@@ -31,10 +31,7 @@ export class ProfileUpdateComponent implements OnInit {
       this.router.navigate(['userhome']);
       location.reload();
     }
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
       }
     )
   }
@@ -47,7 +44,6 @@ export class ProfileUpdateComponent implements OnInit {
       console.log(elem.files[0]);
       console.log(elem.files[0].name);
       this.uname=this.cookiservice.get('username');
-      //this.uname="jaison";
       console.log(this.uname);
       let formData=new FormData();
       formData.append('name',this.uname);

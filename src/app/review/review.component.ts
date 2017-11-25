@@ -24,7 +24,6 @@ public rating: number = 0;
     console.log('rating value '+rating);
     this.bookId=+this.cookiservice.get('bookId');
     console.log(this.bookId);
-//console.log(this.bookId);
 this.userId=+this.cookiservice.get('userId');
   console.log(this.userId);
   let reviewObj={
@@ -40,12 +39,10 @@ this.userId=+this.cookiservice.get('userId');
     (res:Response)=>{
     const message=res.text();
     console.log(message);
-    //console.log(length);
     alert('Thank You '+message);
     this.router.navigate(['userhome']);
 
-    //alert(length);
-    //location.reload();
+    
 
     }
   )
@@ -56,11 +53,9 @@ this.userId=+this.cookiservice.get('userId');
   cancel(){
 
     this.router.navigate(['myQueue']);
-    //location.reload();
   }
 
   ngOnInit() {
-    //this.addReview(this.review);
   }
 
 }

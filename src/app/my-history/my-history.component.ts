@@ -29,13 +29,8 @@ export class MyHistoryComponent implements OnInit {
         alert('queue is empty');
       }
       else{
-      //alert(this.history);
     }
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
       }
     )
 

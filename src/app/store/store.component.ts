@@ -23,12 +23,7 @@ export class StoreComponent implements OnInit {
 
 
   browseAllBooks(){
-    //location.reload();
-    //this.items=this.cookiservice.get('items');
-    //console.log(this.items);
-    // this.check=+this.cookiservice.get('items');
-    // this.check=this.check*0;
-    // this.cookiservice.put('items',String(this.check));
+    
     this.http.get('http://localhost:8080/librarycontroller/viewAllBooks')
     .subscribe(
 
@@ -38,10 +33,7 @@ export class StoreComponent implements OnInit {
         alert('sorry no books available');
       }
       console.log(this.books);
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
 
       }
     )
@@ -51,14 +43,10 @@ export class StoreComponent implements OnInit {
   buy(bookId,price,title,author){
 
 console.log('bookid '+bookId);
-//this.cookiservice.put('items',String(1));
-    //console.log(this.items);
-    //this.items++;
-    //this.cookiservice.put('items',this.items);
+
 
     console.log(price,title,author);
     this.userId=+this.cookiservice.get('userId');
-  //  location.reload();
 
   this.http.get('http://localhost:8080/librarycontroller/addToCart'+'/'+bookId+'/'+this.userId+'/'+title+'/'+author+'/'+price)
   .subscribe(
@@ -72,10 +60,7 @@ console.log('bookid '+bookId);
     this.cookiservice.put('items',String(this.items));
     this.browseAllBooks();
     location.reload();
-      //const message=res.text();
-      //console.log(message);
-      //alert(message);
-      //location.reload();
+      
 
     }
   )
@@ -83,7 +68,6 @@ console.log('bookid '+bookId);
   }
 
   ngOnInit() {
-    //this.cookiservice.put('items',String(0));
     this.browseAllBooks();
   }
 

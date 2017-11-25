@@ -29,10 +29,7 @@ review:Review[];
       alert(message);
       this.router.navigate(['allBooks'])
       location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
       }
     )
 
@@ -50,10 +47,7 @@ review:Review[];
         alert('sorry no books available');
       }
       console.log(this.books);
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
         this.getReview(this.bookId);
 
 
@@ -70,13 +64,9 @@ review:Review[];
       (res:Response)=>{
       this.review=res.json();
       if(this.review.length==0){
-        //alert('sorry no books available');
       }
       console.log(this.review);
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+       
 
 
       }

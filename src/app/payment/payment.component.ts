@@ -33,13 +33,7 @@ export class PaymentComponent implements OnInit {
       }
       console.log('total '+this.total);
       this.cookiservice.put('total',String(this.total));
-      //alert(message);
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
-
+      
       }
     )
   }
@@ -54,12 +48,7 @@ export class PaymentComponent implements OnInit {
       console.log(message);
       this.router.navigate(['store']);
       location.reload();
-      //alert(message);
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
 
       }
     )

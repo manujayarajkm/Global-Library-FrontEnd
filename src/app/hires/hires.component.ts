@@ -26,7 +26,6 @@ matter:String;
       this.hires=res.json();
       console.log(this.hires);
       if(res.json().length==0){
-        //alert('queue is empty');
         this.queue="Currently there are no Hires";
         this.edited=true;
 
@@ -36,13 +35,8 @@ matter:String;
         }.bind(this), 3000);
       }
       else{
-      //alert(this.hires);
     }
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
       }
     )
 
@@ -56,12 +50,7 @@ matter:String;
 
       (res:Response)=>{
       const message=res.text();
-      //console.log(message);
-      //console.log(length);
-      //alert(message);
-
-      //alert(length);
-      //location.reload();
+      
 
       }
     )

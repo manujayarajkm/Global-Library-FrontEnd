@@ -26,7 +26,6 @@ export class NewPasswordComponent implements OnInit {
         const message=res.text();
         console.log(message);
         alert(message);
-        //location.reload();
 
       }
     )

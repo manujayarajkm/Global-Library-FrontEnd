@@ -75,7 +75,6 @@ this.dropdown=this.cookieService.get('dropdown');
             console.log('user not exixt');
             alert('user not exist');
           }
-        //location
       }
     )
 
@@ -92,16 +91,11 @@ this.dropdown=this.cookieService.get('dropdown');
 
       }
       console.log(this.books);
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
         for(let i of this.books){
           this.getReviews(i.bookId);
         }
-        //const bookId1=this.books[0].bookId;
-        //console.log('id before function call'+bookId1);
-        //this.getReviews(bookId1);
+        
 
       }
     )
@@ -115,7 +109,6 @@ this.dropdown=this.cookieService.get('dropdown');
       (res:Response)=>{
       this.review=res.json();
       if(this.review.length==0){
-        //alert('sorry no books available');
       }
       console.log(this.review);
       for(let rev of this.review){
@@ -125,11 +118,7 @@ this.dropdown=this.cookieService.get('dropdown');
       for(let di of this.display ){
         console.log('array element '+di);
       }
-      //this.display.push();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
       }
     )
 
@@ -144,7 +133,6 @@ this.dropdown=this.cookieService.get('dropdown');
         const message=res.text();
         console.log(message);
         alert(message);
-        //location.reload();
       }
     )
 

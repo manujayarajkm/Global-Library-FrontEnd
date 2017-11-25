@@ -38,37 +38,13 @@ export class BillingComponent implements OnInit {
       this.billId++;
       this.confirmPurchase(this.sysDate,this.billId,name,address1,address2,phone);
 
-      //alert(message);
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
 
       }
     )
 
     console.log('Bill id '+this.billId);
-    //Bill Generation PDF
-
-    // var doc = new jsPDF("landscape","mm","a4");
-    // doc.text(150,5,"Global Library");
-    // doc.text(150,10,"Items Details");
-    // doc.text(5,80,"Bill id: "+this.billId);
-    // doc.text(150,80,"Date: "+this.sysDate);
-    // doc.text(5,90,"Customer Name : "+this.user);
-    // doc.text(5,100,"Address: "+address1+","+address2);
-    // doc.text(5,110,"Contact No: "+phone);
-    // doc.text(200,140,"Total Amount: "+this.cookiservice.get('total'));
-    // doc.text(90,150,"Thank You For Shopping With Us");
-    // //doc.text(40,70,"Items Details");
-    // //doc.addPage();
-    // var elem = document.getElementById("cart");
-    // var res=doc.autoTableHtmlToJson(elem);
-    // doc.autoTable(res.columns,res.rows);
-    // doc.text(5,200,"Maintained by Manu");
-    //
-    // doc.save('Bill_'+this.user);
+    
 
   }
   confirmPurchase(billDate,billId,name,address1,address2,phone){
@@ -87,12 +63,7 @@ console.log(this.userId);
       alert('Thank you for choosing us. Meet Again!!!!');
       this.router.navigate(['userhome']);
       location.reload();
-      //alert(message);
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
 
       }
     )
@@ -107,8 +78,7 @@ console.log(this.userId);
     doc.text(5,110,"Contact No: "+phone);
     doc.text(200,140,"Total Amount: "+this.cookiservice.get('total'));
     doc.text(90,150,"Thank You For Shopping With Us");
-    //doc.text(40,70,"Items Details");
-    //doc.addPage();
+    
     var elem = document.getElementById("cart");
     var res=doc.autoTableHtmlToJson(elem);
     doc.autoTable(res.columns,res.rows);
@@ -133,12 +103,7 @@ console.log(this.userId);
       }
       console.log('total '+this.total);
       this.cookiservice.put('total',String(this.total));
-      //alert(message);
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
 
       }
     )
@@ -156,12 +121,7 @@ this.http.get('http://localhost:8080/librarycontroller/clearPurchase'+'/'+this.u
   this.router.navigate(['store']);
 
   location.reload();
-  //alert(message);
-  //location.reload();
-    //const message=res.text();
-    //console.log(message);
-    //alert(message);
-    //location.reload();
+  
 
   }
 )

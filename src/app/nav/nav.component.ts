@@ -39,9 +39,7 @@ export class NavComponent implements OnInit {
 
   constructor(private router:Router,private cookiservice:CookieService,private http:Http,private logins:LoginService,private adminService:AdminService,private modalService: BsModalService) {
 
-//this.count=+this.cookiservice.get('count');
 this.dropdown=this.cookiservice.get('dropdown');
-//this.dropdown=this.cookiservice.get('username');
 this.userId=+this.cookiservice.get('userId');
 this.adminId=+this.cookiservice.get('adminId');
 this.loginId=+this.cookiservice.get('loginId');
@@ -76,7 +74,6 @@ this.dash=+this.cookiservice.get('dash');
               this.cookiservice.put('dropdown',re.name);
               this.cookiservice.put('username',re.userName);
               console.log(this.cookiservice.get('userId'));
-              //alert(this.cookiservice.get('userId'));
               this.logins.setUserLoggedIn();
               console.log(this.logins.getUserLoggedIn());
               this.router.navigate(['userhome']);
@@ -91,7 +88,6 @@ this.dash=+this.cookiservice.get('dash');
                      this.edited = false;
                      console.log(this.edited);
                  }.bind(this), 3000);
-                //alert('account blocked');
 
               }
           }
@@ -104,10 +100,8 @@ this.dash=+this.cookiservice.get('dash');
                 this.edited = false;
                 console.log(this.edited);
             }.bind(this), 3000);
-            //alert('user not exist');
 
           }
-        //location
       }
     )
 
@@ -155,21 +149,12 @@ this.dash=+this.cookiservice.get('dash');
         const message=res.text();
         console.log(message);
         alert(message);
-        //location.reload();
       }
     )
 
   }
 
-  // saveTodos(): void {
-  //    //show box msg
-  //    this.edited = true;
-  //    //wait 3 Seconds and hide
-  //    setTimeout(function() {
-  //        this.edited = false;
-  //        console.log(this.edited);
-  //    }.bind(this), 3000);
-  //   }
+  
 
 
 
@@ -177,10 +162,7 @@ this.dash=+this.cookiservice.get('dash');
 
     this.openModal(template);
 
-    // this.cookiservice.removeAll();
-    // alert("You have successfully logged out");
-    // this.router.navigate(['']);
-    // location.reload();
+    
   }
 
   getNotifications(){
@@ -193,12 +175,10 @@ this.dash=+this.cookiservice.get('dash');
       (res:Response)=>{
         this.notifications=res.json();
         console.log(this.notifications);
-        //alert(this.notifications);
         this.count=this.notifications.length;
         console.log('notification count'+this.count);
         this.cookiservice.put('count',String(this.count));
         console.log('value after string'+String(this.count));
-        //location.reload();
       }
     )
 
@@ -213,7 +193,6 @@ this.dash=+this.cookiservice.get('dash');
     this.message = 'Confirmed!';
     this.modalRef.hide();
     this.cookiservice.removeAll();
-    //alert("You have successfully logged out");
     this.router.navigate(['']);
     location.reload();
   }
@@ -229,13 +208,7 @@ this.dash=+this.cookiservice.get('dash');
 
 this.getNotifications();
 this.username=this.cookiservice.get('username');
-    //this.cookiservice.put('count','0');
-    //this.cookiservice.put('dropdown',"Actions");
-    //this.dropdown="Actions";
-
-  //  this.cookiservice.put('adminId',"200");
-    //this.cookiservice.put('loginId',"80");
-    //alert(this.cookiservice.get('userId'));
+    
 
   }
 

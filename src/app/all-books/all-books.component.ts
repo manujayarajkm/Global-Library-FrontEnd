@@ -40,10 +40,7 @@ export class AllBooksComponent implements OnInit {
         alert('sorry no books available');
       }
       console.log(this.books);
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
 
 
       }
@@ -56,27 +53,7 @@ export class AllBooksComponent implements OnInit {
     this.cookiservice.put('bookId',bookId);
    console.log(this.cookiservice.get('userId'));
     this.router.navigate(['borrowal']);
-    // this.http.get('http://localhost:8080/librarycontroller/addNewHire'+'/'+bookId+'/'+this.cookiservice.get('userId'))
-    // .subscribe(
-    //
-    //   (res:Response)=>{
-    //   const message=res.text();
-    //   console.log(message);
-    //   //alert(message);
-    //   this.mess=message;
-    //   this.edited=true;
-    //
-    //   setTimeout(function() {
-    //       this.edited = false;
-    //       console.log(this.edited);
-    //   }.bind(this), 2000);
-    //   location.reload();
-    //     //const message=res.text();
-    //     //console.log(message);
-    //     //alert(message);
-    //     //location.reload();
-    //   }
-    // )
+    
 
   }
 
@@ -93,7 +70,6 @@ searchloader(){
 setTimeout(function() {
     this.searchvar = false;
     console.log(this.searchvar);
-    //this.browseAllBooks();
 }.bind(this), 200);
 }
 
@@ -108,49 +84,19 @@ this.http.get('http://localhost:8080/librarycontroller/searchBooks'+'/'+search)
     this.books=res.json();
     if(this.books.length>0){
     console.log(this.books);
-    //alert(this.books);
   }
   else{
-    //alert('no books available');
     this.resultvar="No books Available";
     this.searchres=true;
     setTimeout(function() {
       console.log(this.searchres);
         this.searchres = false;
-        console.log(this.searchres);        //this.browseAllBooks();
+        console.log(this.searchres);        
     }.bind(this), 5000);
   }
-    //location.reload();
   }
 )
-// getReviews(bookId){
-//   console.log('id after function call'+bookId);
-//   this.http.get('http://localhost:8080/librarycontroller/getReviews'+'/'+bookId)
-//   .subscribe(
-//
-//     (res:Response)=>{
-//     this.review=res.json();
-//     if(this.review.length==0){
-//       //alert('sorry no books available');
-//     }
-//     console.log(this.review);
-//     for(let rev of this.review){
-//       console.log(rev.body);
-//       this.display.push(rev.body);
-//     }
-//     for(let di of this.display ){
-//       console.log('array element '+di);
-//     }
-//     //this.display.push();
-//       //const message=res.text();
-//       //console.log(message);
-//       //alert(message);
-//       //location.reload();
-//     }
-//   )
-//
-// }
-//
+
 }
 
 
@@ -158,8 +104,7 @@ this.http.get('http://localhost:8080/librarycontroller/searchBooks'+'/'+search)
   ngOnInit() {
 
     this.loader();
-    //this.browseAllBooks();
-    //alert(this.cookiservice.get('loginId'));
+    
 
 
   }

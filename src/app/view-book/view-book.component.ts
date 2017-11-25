@@ -22,10 +22,7 @@ export class ViewBookComponent implements OnInit {
         alert('sorry no books available');
       }
       console.log(this.books);
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
       }
     )
 
@@ -40,7 +37,6 @@ export class ViewBookComponent implements OnInit {
         console.log(message);
         alert(message);
         this.viewAllBooks();
-        //location.reload();
       }
     )
 

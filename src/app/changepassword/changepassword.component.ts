@@ -32,8 +32,7 @@ export class ChangepasswordComponent implements OnInit {
         this.router.navigate(['']);
         location.reload();
       }
-        //alert(message);
-        //location.reload();
+        
       }
     )
 

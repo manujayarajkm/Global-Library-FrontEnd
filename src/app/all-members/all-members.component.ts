@@ -35,7 +35,6 @@ export class AllMembersComponent implements OnInit {
       this.member=res.json();
       console.log(this.member);
       if(res.json().length==0){
-        //alert('queue is empty');
         this.memQueue="No Members"
         this.edited=true;
 
@@ -46,7 +45,6 @@ export class AllMembersComponent implements OnInit {
 
       }
       else{
-      //alert(this.member);
     }
 
       }
@@ -62,7 +60,6 @@ export class AllMembersComponent implements OnInit {
       (res:Response)=>{
         const message=res.text();
         console.log(message);
-        //alert(message);
         this.block=message;
         this.unBlock="";
         this.remove="";
@@ -73,7 +70,6 @@ export class AllMembersComponent implements OnInit {
             console.log(this.edited);
         }.bind(this), 1000);
         this.allMembers();
-        //location.reload();
 
       }
     )
@@ -88,7 +84,6 @@ export class AllMembersComponent implements OnInit {
       (res:Response)=>{
         const message=res.text();
         console.log(message);
-        //alert(message);
         this.unBlock=message;
         this.block="";
         this.remove="";
@@ -99,7 +94,6 @@ export class AllMembersComponent implements OnInit {
             console.log(this.edited);
         }.bind(this), 1000);
         this.allMembers();
-        //location.reload();
       }
     )
 
@@ -109,26 +103,7 @@ export class AllMembersComponent implements OnInit {
     console.log('UserId inside first function '+userId);    
     this.cookiService.put('userId',userId);
     this.openModal(template);
-    // this.http.get('http://localhost:8080/adminController/removeMember'+'/'+userId)
-    // .subscribe(
-
-    //   (res:Response)=>{
-    //     const message=res.text();
-    //     console.log(message);
-    //     //alert(message);
-    //     this.remove=message;
-    //     this.unBlock="";
-    //     this.block="";
-    //     this.edited=true;
-
-    //     setTimeout(function() {
-    //         this.edited = false;
-    //         console.log(this.edited);
-    //     }.bind(this), 1000);
-    //     this.allMembers();
-    //     //location.reload();
-    //   }
-    // )
+    
 
   }
 
@@ -148,7 +123,6 @@ export class AllMembersComponent implements OnInit {
       (res:Response)=>{
         const message=res.text();
         console.log(message);
-        //alert(message);
         this.remove=message;
         this.unBlock="";
         this.block="";
@@ -159,7 +133,6 @@ export class AllMembersComponent implements OnInit {
             console.log(this.edited);
         }.bind(this), 1000);
         this.allMembers();
-        //location.reload();
       }
     )
   }

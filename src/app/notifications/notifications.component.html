@@ -1,9 +1,9 @@
 <div class="container">
     <h2>Book Shelf</h2>
     <p>Please select your desired book and explore the world of knowledge</p>
-
-  <table class="table">
-    <thead>
+    <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
+  <table class="table" >
+    <thead *ngIf='!empty'>
       <tr >
         <th>Notification Date</th>
         <th>Content</th>

@@ -29,12 +29,7 @@ export class CartComponent implements OnInit {
       if(this.cart.length==0){
         this.empty="No items in the cart";
       }
-      //alert(message);
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
 
       }
     )
@@ -53,10 +48,7 @@ export class CartComponent implements OnInit {
       this.cookiservice.put('items',String(this.items));
       this.cartReview();
       location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+        
 
       }
     )
@@ -77,10 +69,7 @@ addone(cartId,bookId){
     this.cookiservice.put('items',String(this.items));
     this.cartReview();
     location.reload();
-      //const message=res.text();
-      //console.log(message);
-      //alert(message);
-      //location.reload();
+      
 
     }
   )
@@ -101,10 +90,7 @@ removeone(cartId,bookId){
     this.cookiservice.put('items',String(this.items));
     this.cartReview();
     location.reload();
-      //const message=res.text();
-      //console.log(message);
-      //alert(message);
-      //location.reload();
+      
 
     }
   )
@@ -117,7 +103,6 @@ gotostore(){
 
   ngOnInit() {
     this.cartReview();
-    //location.reload();
   }
 
 }

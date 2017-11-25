@@ -25,7 +25,6 @@ export class AdminHomeComponent implements OnInit {
   constructor(private cookiservice:CookieService,private router:Router,private http:Http) {
 
     this.dropdown=this.cookiservice.get('dropdown');
-    //this.dash=+this.cookiservice.get('dash');
   }
 
 
@@ -56,7 +55,6 @@ export class AdminHomeComponent implements OnInit {
   ngOnInit() {
 
     this.cookiservice.put('dropdown',"Admin");
-    //this.cookiservice.put('dash',"110");
     console.log(this.cookiservice.get('dash'));
 
   }

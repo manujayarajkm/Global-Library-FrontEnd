@@ -31,11 +31,7 @@ empty:String;
         this.empty="You dont have any purchase history";
       }
 
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
 
       }
     )

@@ -27,7 +27,6 @@ export class UserHomeComponent implements OnInit {
   duedate:Date;
   hires:Hire[];
   constructor(private cookiservice:CookieService,private router:Router,private http:Http,private datePipe:DatePipe,private login:LoginService) {
-    //this.count=+this.cookiservice.get('count');
   }
 
   logout(){
@@ -46,21 +45,17 @@ export class UserHomeComponent implements OnInit {
       (res:Response)=>{
         this.notifications=res.json();
         console.log(this.notifications);
-        //alert(this.notifications);
         this.count=this.notifications.length;
         console.log('notification count'+this.count);
         this.cookiservice.put('count',String(this.count));
-        //location.reload();
       }
     )
 
   }
 
   checkdue(){
-  //console.log(Date.now());
   this.sysDate=this.datePipe.transform(Date.now(),'yyyy-MM-dd');
-  //this.newDate = new Date(this.sysDate);
-  //console.log("Date after conversion"+this.newDate)
+  
     console.log(this.sysDate);
     for (let entry of this.hires) {
       this.dueDate2=this.datePipe.transform(entry.dueDate,'yyyy-MM-dd');
@@ -69,15 +64,10 @@ export class UserHomeComponent implements OnInit {
        var d2 = Date.parse(this.dueDate2);
   if (d1 > d2) {
 
-    //alert("please return the book "+entry.title+" it is due on "+entry.dueDate);
     this.checkDuplicate(entry.title,entry.bookId,entry.dueDate);
 
   }
-      //if(entry.dueDate<this.dueDate2){
-        //console.log("inside if");
-      //console.log("Due"+entry.hireId);
-      //}
-    //console.log(entry.dueDate); // 1, "string", false
+      
   }
   }
   checkDuplicate(title,bookId,dueDate){
@@ -93,12 +83,7 @@ export class UserHomeComponent implements OnInit {
 
       (res:Response)=>{
       const message=res.text();
-      //console.log(message);
-      //console.log(length);
-      //alert(message);
-
-      //alert(length);
-      //location.reload();
+      
 
       }
     )
@@ -116,18 +101,12 @@ export class UserHomeComponent implements OnInit {
 
       console.log()
       if(res.json().length==0){
-        //alert('queue is empty');
       }
       else{
-      //alert(this.hires);
       this.checkdue();
 
     }
-      //location.reload();
-        //const message=res.text();
-        //console.log(message);
-        //alert(message);
-        //location.reload();
+      
       }
     )
 

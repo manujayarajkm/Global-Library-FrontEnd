@@ -65,23 +65,17 @@ export class MyQueueComponent implements OnInit {
 
         (res:Response)=>{
         const message=res.text();
-        //console.log(message);
-        //console.log(length);
-        //alert(message);
         this.router.navigate(['review']);
 
-        //alert(length);
-        //location.reload();
+        
 
         }
       )
 
     }
 checkdue(){
-//console.log(Date.now());
 this.sysDate=this.datePipe.transform(Date.now(),'yyyy-MM-dd');
-//this.newDate = new Date(this.sysDate);
-//console.log("Date after conversion"+this.newDate)
+
   console.log(this.sysDate);
   for (let entry of this.hires) {
     this.dueDate2=this.datePipe.transform(entry.dueDate,'yyyy-MM-dd');
@@ -90,15 +84,10 @@ this.sysDate=this.datePipe.transform(Date.now(),'yyyy-MM-dd');
      var d2 = Date.parse(this.dueDate2);
 if (d1 > d2) {
 
-  //alert("please return the book "+entry.title+" it is due on "+entry.dueDate);
   this.checkDuplicate(entry.title,entry.bookId,entry.dueDate);
 
 }
-    //if(entry.dueDate<this.dueDate2){
-      //console.log("inside if");
-    //console.log("Due"+entry.hireId);
-    //}
-  //console.log(entry.dueDate); // 1, "string", false
+    
 }
 }
 checkDuplicate(title,bookId,dueDate){
@@ -114,12 +103,7 @@ checkDuplicate(title,bookId,dueDate){
 
     (res:Response)=>{
     const message=res.text();
-    //console.log(message);
-    //console.log(length);
-    //alert(message);
-
-    //alert(length);
-    //location.reload();
+    
 
     }
   )

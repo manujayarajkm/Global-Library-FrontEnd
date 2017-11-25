@@ -14,6 +14,7 @@ userId:number;
 notifications:Notifications[];
 count:number;
 notificationId:number;
+empty:String;
   constructor(private http:Http,private cookieService:CookieService,private router:Router) { }
 
   getNotifications(){
@@ -25,13 +26,11 @@ notificationId:number;
       (res:Response)=>{
         this.notifications=res.json();
         console.log(this.notifications);
-        //alert(this.notifications);
         this.count=this.notifications.length;
         if(this.count==0){
-          this.router.navigate(['userhome']);
+          this.empty="You dont have any new notifications";
         }
         console.log('notification count'+this.count);
-        //location.reload();
       }
     )
 
