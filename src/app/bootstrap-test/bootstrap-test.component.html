@@ -15,12 +15,12 @@
         <tbody>
           <tr *ngFor="let hist of history" >
             <tr>
-              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S6</button></th>
-              <th> <button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S7</button>    
+              <th><button (click)="toggleimage('seat6')"><img  src="assets/images/{{seat6}}" class="img-rounded" style="width:100px;height:100px;" />S6</button></th>
+              <th> <button (click)="toggleimage('seat7')"><img  src="assets/images/{{seat7}}" class="img-rounded" style="width:100px;height:100px;" />S7</button>    
               </th>
-              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S8</button></th>
-              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S9</button></th>
-              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S10</button></th>
+              <th><button (click)="toggleimage('seat8')"><img  src="assets/images/{{seat8}}" class="img-rounded" style="width:100px;height:100px;" />S8</button></th>
+              <th><button (click)="toggleimage('seat9')"><img  src="assets/images/{{seat9}}" class="img-rounded" style="width:100px;height:100px;" />S9</button></th>
+              <th><button (click)="toggleimage('seat10')"><img  src="assets/images/{{seat10}}" class="img-rounded" style="width:100px;height:100px;" />S10</button></th>
             
           </tr>
         </tbody>

@@ -13,6 +13,11 @@ export class BootstrapTestComponent implements OnInit {
   seat3:String="vaccant.png";
   seat4:String="vaccant.png";
   seat5:String="vaccant.png";
+  seat6:String="vaccant.png";
+  seat7:String="vaccant.png";
+  seat8:String="vaccant.png";
+  seat9:String="vaccant.png";
+  seat10:String="vaccant.png";  
   expr1:boolean;
   seatvar:String;
   seat:string[]=[];
@@ -34,6 +39,21 @@ export class BootstrapTestComponent implements OnInit {
       }
       else if(this.seat[0]=='seat5'){
         this.seat5="vaccant.png";
+      }
+      else if(this.seat[0]=='seat6'){
+        this.seat6="vaccant.png";
+      }
+      else if(this.seat[0]=='seat7'){
+        this.seat7="vaccant.png";
+      }
+      else if(this.seat[0]=='seat8'){
+        this.seat8="vaccant.png";
+      }
+      else if(this.seat[0]=='seat9'){
+        this.seat9="vaccant.png";
+      }
+      else if(this.seat[0]=='seat10'){
+        this.seat10="vaccant.png";
       }
       console.log('seatvar '+this.seatvar);
       this.splicearray(this.seat[0]);
@@ -114,6 +134,76 @@ else if(this.seat5=='selected.jpeg'){
   this.seat2='vaccant.png';
   //this.seat.pop();
   this.splicearray('seat5');
+  console.log('after removal '+this.seat);
+}
+}
+else if(id=='seat6')
+{
+if(this.seat6=='vaccant.png'){
+this.seat6="selected.jpeg";
+var length=this.seat.push('seat6');
+console.log('after insertion '+this.seat);
+}
+else if(this.seat6=='selected.jpeg'){
+  this.seat6='vaccant.png';
+  //this.seat.pop();
+  this.splicearray('seat6');
+  console.log('after removal '+this.seat);
+}
+}
+else if(id=='seat7')
+{
+if(this.seat7=='vaccant.png'){
+this.seat7="selected.jpeg";
+var length=this.seat.push('seat7');
+console.log('after insertion '+this.seat);
+}
+else if(this.seat7=='selected.jpeg'){
+  this.seat7='vaccant.png';
+  //this.seat.pop();
+  this.splicearray('seat7');
+  console.log('after removal '+this.seat);
+}
+}
+else if(id=='seat8')
+{
+if(this.seat8=='vaccant.png'){
+this.seat8="selected.jpeg";
+var length=this.seat.push('seat8');
+console.log('after insertion '+this.seat);
+}
+else if(this.seat8=='selected.jpeg'){
+  this.seat8='vaccant.png';
+  //this.seat.pop();
+  this.splicearray('seat8');
+  console.log('after removal '+this.seat);
+}
+}
+else if(id=='seat9')
+{
+if(this.seat9=='vaccant.png'){
+this.seat9="selected.jpeg";
+var length=this.seat.push('seat9');
+console.log('after insertion '+this.seat);
+}
+else if(this.seat9=='selected.jpeg'){
+  this.seat9='vaccant.png';
+  //this.seat.pop();
+  this.splicearray('seat9');
+  console.log('after removal '+this.seat);
+}
+}
+else if(id=='seat10')
+{
+if(this.seat10=='vaccant.png'){
+this.seat10="selected.jpeg";
+var length=this.seat.push('seat10');
+console.log('after insertion '+this.seat);
+}
+else if(this.seat10=='selected.jpeg'){
+  this.seat10='vaccant.png';
+  //this.seat.pop();
+  this.splicearray('seat10');
   console.log('after removal '+this.seat);
 }
 }
