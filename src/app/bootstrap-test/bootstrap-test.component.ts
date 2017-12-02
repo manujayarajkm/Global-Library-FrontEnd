@@ -21,46 +21,12 @@ export class BootstrapTestComponent implements OnInit {
   expr1:boolean;
   seatvar:String;
   seat:string[]=[];
+  layout:string[]=['seat1','seat2','seat3','seat4','seat5'];
   constructor() { }
 
   toggleimage(id){
-    if(this.seat.length>=2){
-      console.log('first element of the array '+this.seat[0]);
-      if(this.seat[0]=='seat2'){
-        this.seat2="vaccant.png";
-      }else if(this.seat[0]=='seat1'){
-        this.seat1="vaccant.png";
-      }
-      else if(this.seat[0]=='seat3'){
-        this.seat3="vaccant.png";
-      }
-      else if(this.seat[0]=='seat4'){
-        this.seat4="vaccant.png";
-      }
-      else if(this.seat[0]=='seat5'){
-        this.seat5="vaccant.png";
-      }
-      else if(this.seat[0]=='seat6'){
-        this.seat6="vaccant.png";
-      }
-      else if(this.seat[0]=='seat7'){
-        this.seat7="vaccant.png";
-      }
-      else if(this.seat[0]=='seat8'){
-        this.seat8="vaccant.png";
-      }
-      else if(this.seat[0]=='seat9'){
-        this.seat9="vaccant.png";
-      }
-      else if(this.seat[0]=='seat10'){
-        this.seat10="vaccant.png";
-      }
-      console.log('seatvar '+this.seatvar);
-      this.splicearray(this.seat[0]);
-      console.log('no exceeded '+this.seat);
-    }
     
-    console.log(id);
+  console.log(id);
     
       if(id=='seat1')
       {
@@ -131,7 +97,7 @@ var length=this.seat.push('seat5');
 console.log('after insertion '+this.seat);
 }
 else if(this.seat5=='selected.jpeg'){
-  this.seat2='vaccant.png';
+  this.seat5='vaccant.png';
   //this.seat.pop();
   this.splicearray('seat5');
   console.log('after removal '+this.seat);
@@ -207,7 +173,42 @@ else if(this.seat10=='selected.jpeg'){
   console.log('after removal '+this.seat);
 }
 }
-    
+if(this.seat.length>2){
+  console.log('first element of the array '+this.seat[0]);
+  if(this.seat[0]=='seat2'){
+    this.seat2="vaccant.png";
+  }else if(this.seat[0]=='seat1'){
+    this.seat1="vaccant.png";
+  }
+  else if(this.seat[0]=='seat3'){
+    this.seat3="vaccant.png";
+  }
+  else if(this.seat[0]=='seat4'){
+    this.seat4="vaccant.png";
+  }
+  else if(this.seat[0]=='seat5'){
+    this.seat5="vaccant.png";
+  }
+  else if(this.seat[0]=='seat6'){
+    this.seat6="vaccant.png";
+  }
+  else if(this.seat[0]=='seat7'){
+    this.seat7="vaccant.png";
+  }
+  else if(this.seat[0]=='seat8'){
+    this.seat8="vaccant.png";
+  }
+  else if(this.seat[0]=='seat9'){
+    this.seat9="vaccant.png";
+  }
+  else if(this.seat[0]=='seat10'){
+    this.seat10="vaccant.png";
+  }
+  
+  this.splicearray(this.seat[0]);
+  console.log('no exceeded '+this.seat);
+
+}
     
   }
 submit(){
