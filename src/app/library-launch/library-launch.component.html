@@ -50,19 +50,12 @@
   <h4 class="text-center"> New Arrivals</h4>
 	<div class="row">
 		<div class="col-md-12" >
-			<div class="row">
-				<div class="col-md-4">
-          <h6 class="text-center">{{books[0].title}}</h6>
-					<img alt="Bootstrap Image Preview" data-toggle="modal" data-target="#login" src="assets/images/{{books[0].cover}}" class="img-rounded" style="width:100%;height:200px" />
+			<div class="row" >
+				<div class="col-md-4" *ngFor='let book of books' >
+          <h6 class="text-center">{{book.title}}</h6>
+					<img alt="Bootstrap Image Preview" data-toggle="modal" data-target="#login" src="assets/images/{{book.cover}}" class="img-rounded" style="width:100%;height:200px" />
 				</div>
-				<div class="col-md-4">
-          <h6 class="text-center">{{books[1].title}}</h6>
-					<a><img alt="Bootstrap Image Preview"  data-toggle="modal" data-target="#login" src="assets/images/{{books[1].cover}}" class="img-rounded" style="width:100%;height:200px"/></a>
-				</div>
-				<div class="col-md-4">
-          <h6 class="text-center">{{books[2].title}}</h6>
-					<img alt="Bootstrap Image Preview"  data-toggle="modal" data-target="#login" src="assets/images/{{books[2].cover}}" class="img-rounded" style="width:100%;height:200px"/>
-				</div>
+				
 			</div>
 		</div>
 	</div>

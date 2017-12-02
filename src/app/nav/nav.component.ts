@@ -44,6 +44,8 @@ this.userId=+this.cookiservice.get('userId');
 this.adminId=+this.cookiservice.get('adminId');
 this.loginId=+this.cookiservice.get('loginId');
 this.dash=+this.cookiservice.get('dash');
+this.count=+this.cookiservice.get('count');
+
   }
 
 
@@ -122,6 +124,9 @@ this.dash=+this.cookiservice.get('dash');
       this.router.navigate(['adminhome']);
       location.reload();
 
+    }
+    else{
+      alert('Check Username/Password');
     }
   }
 
@@ -206,7 +211,8 @@ this.dash=+this.cookiservice.get('dash');
 
   ngOnInit() {
 
-this.getNotifications();
+//this.getNotifications();
+this.count=+this.cookiservice.get('count');
 this.username=this.cookiservice.get('username');
     
 

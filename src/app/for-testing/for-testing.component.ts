@@ -33,7 +33,7 @@ forcheck:boolean=true;
  message: string;
  template: TemplateRef<any>;
  sessionVar:String;
- 
+ imageurl:String='test1.jpg';
 
   constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router) {
 
@@ -196,6 +196,21 @@ setTimeout(function() {
       console.log('sessionvar '+this.cookiservice.get('session'));                
     }
 
+
+    toggleimage(){
+
+      console.log('inside toggleimage');
+      if(this.imageurl=='test1.jpg'){
+        console.log('image is test1');        
+        this.imageurl='test2.jpg';
+      }
+      else if (this.imageurl=='test2.jpg'){
+        console.log('image is test2');                
+        this.imageurl='test1.jpg';
+
+      }
+    }
+
   ngOnInit(){
 
 //this.browseAllBooks();
@@ -204,7 +219,7 @@ this.uname=this.cookiservice.get('username');
 this.sessionVar="true";
 console.log('inside oninit '+this.sessionVar);
 this.cookiservice.put('session','true');
-this.session();
+//this.session();
 //this.setFalse();
 
 

@@ -1,15 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <div class="video">
-        <video  autoplay id="video-background" >
-        
-          <source src="assets/videos/samsung.mp4" type="video/mp4">
-            <source src="assets/videos/samsung.ogv" type="video/ogv">
-              <source src="assets/videos/samsung.webm" type="video/webm">
-        
-        </video>
-        </div>
+      <table  class="table" id="history">
+        <thead>
+          <tr>
+            <th><button id='s1' (click)="toggleimage('s1')" [disabled]=expr1><img  src="assets/images/{{seat1}}" class="img-rounded" style="width:100px;height:100px;" />S1</button></th>
+            <th> <button id='s2'(click)="toggleimage('s2')"><img  src="assets/images/{{seat2}}" class="img-rounded" style="width:100px;height:100px;" />S2</button>    
+            </th>
+            <th><button id='s3' (click)="toggleimage('s3')"><img  src="assets/images/{{seat3}}" class="img-rounded" style="width:100px;height:100px;" />S3</button></th>
+            <th><button id='s4' (click)="toggleimage('s4')"><img  src="assets/images/{{seat4}}" class="img-rounded" style="width:100px;height:100px;" />S4</button></th>
+            <th><button id='s5' (click)="toggleimage('s5')"><img  src="assets/images/{{seat5}}" class="img-rounded" style="width:100px;height:100px;" />S5</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hist of history" >
+            <tr>
+              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S6</button></th>
+              <th> <button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S7</button>    
+              </th>
+              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S8</button></th>
+              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S9</button></th>
+              <th><button (click)="toggleimage()"><img  src="assets/images/vaccant.png" class="img-rounded" style="width:100px;height:100px;" />S10</button></th>
+            
+          </tr>
+        </tbody>
+      </table>
+      <button (click)="submit()" class="btn btn-primary">submit</button>
     </div>
   </div>
 </div>

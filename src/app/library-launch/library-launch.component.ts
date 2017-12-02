@@ -92,9 +92,9 @@ this.dropdown=this.cookieService.get('dropdown');
       }
       console.log(this.books);
         
-        for(let i of this.books){
-          this.getReviews(i.bookId);
-        }
+        //for(let i of this.books){
+         // this.getReviews(i.bookId);
+        //}
         
 
       }
@@ -138,12 +138,14 @@ this.dropdown=this.cookieService.get('dropdown');
 
   }
 
+
 ngOnInit() {
   this.getNewBooks();
   this.cookieService.put('dropdown',"Actions");
   this.cookieService.put('adminId',"200");
   this.cookieService.put('loginId',"80");
   this.cookieService.put('items',String(0));
+  //location.reload();
 }
 }
 interface Book{

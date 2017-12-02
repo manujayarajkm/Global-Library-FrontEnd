@@ -27,6 +27,7 @@ export class UserHomeComponent implements OnInit {
   duedate:Date;
   hires:Hire[];
   constructor(private cookiservice:CookieService,private router:Router,private http:Http,private datePipe:DatePipe,private login:LoginService) {
+    this.count=+this.cookiservice.get('count');
   }
 
   logout(){

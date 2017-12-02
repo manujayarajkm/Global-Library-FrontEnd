@@ -15,7 +15,10 @@ notifications:Notifications[];
 count:number;
 notificationId:number;
 empty:String;
-  constructor(private http:Http,private cookieService:CookieService,private router:Router) { }
+  constructor(private http:Http,private cookieService:CookieService,private router:Router) {
+
+    this.count=+this.cookieService.get('count');
+   }
 
   getNotifications(){
     this.userId=+this.cookieService.get('userId');
@@ -31,6 +34,7 @@ empty:String;
           this.empty="You dont have any new notifications";
         }
         console.log('notification count'+this.count);
+        this.cookieService.put('count','this.count');
       }
     )
 
@@ -43,6 +47,9 @@ empty:String;
       (res:Response)=>{
         const message=res.text();
         console.log(message);
+        this.count=+this.cookieService.get('count');
+        this.count--;
+        this.cookieService.put('count','this.count');
         this.getNotifications();
         location.reload();
       }

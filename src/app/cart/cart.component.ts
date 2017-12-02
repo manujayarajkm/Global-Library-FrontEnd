@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
       this.items=this.items-count;
       this.cookiservice.put('items',String(this.items));
       this.cartReview();
-      location.reload();
+      //location.reload();
         
 
       }
@@ -68,7 +68,7 @@ addone(cartId,bookId){
     this.items++;
     this.cookiservice.put('items',String(this.items));
     this.cartReview();
-    location.reload();
+    //location.reload();
       
 
     }
@@ -89,7 +89,7 @@ removeone(cartId,bookId){
     this.items--;
     this.cookiservice.put('items',String(this.items));
     this.cartReview();
-    location.reload();
+    //location.reload();
       
 
     }
@@ -98,7 +98,7 @@ removeone(cartId,bookId){
 }
 gotostore(){
   this.router.navigate(['store']);
-  location.reload();
+  //location.reload();
 }
 
   ngOnInit() {

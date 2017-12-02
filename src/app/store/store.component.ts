@@ -59,7 +59,7 @@ console.log('bookid '+bookId);
     this.items++;
     this.cookiservice.put('items',String(this.items));
     this.browseAllBooks();
-    location.reload();
+    //location.reload();
       
 
     }
