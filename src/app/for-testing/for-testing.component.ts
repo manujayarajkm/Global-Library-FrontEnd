@@ -210,6 +210,10 @@ setTimeout(function() {
 
       }
     }
+    submit(val){
+console.log(val);
+console.log()
+    }
 
   ngOnInit(){
 
