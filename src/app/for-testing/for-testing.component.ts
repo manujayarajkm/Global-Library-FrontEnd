@@ -37,7 +37,7 @@ forcheck:boolean=true;
  sessionVar:String;
  imageurl:String='test1.jpg';
 
-  constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router,private custhttp:Http,
+  constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router,private custhttp:CustomhttpService,
     
   
   ) {

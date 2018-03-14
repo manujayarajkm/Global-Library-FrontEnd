@@ -182,7 +182,7 @@ const appRoutes: Routes=[
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
 ,    ErrorNotifierService,
 {
-  provide: Http,
+  provide: CustomhttpService,
   useFactory: (backend: XHRBackend, defaultOptions: RequestOptions, errorNotifier: ErrorNotifierService) => {
     return new CustomhttpService(backend, defaultOptions, errorNotifier);
   },
