@@ -1,4 +1,4 @@
-import { Component, OnInit ,TemplateRef} from '@angular/core';
+import { Component, OnInit ,TemplateRef,Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie';
 import {Http,Response} from '@angular/http';
@@ -6,6 +6,8 @@ import{LoginService} from '../login.service';
 import{AdminService} from '../admin.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import {LOCAL_STORAGE, WebStorageService} from 'angular-webstorage-service';
+
 
 
 @Component({
@@ -23,6 +25,8 @@ export class NavComponent implements OnInit {
   phone:number;
   username:String;
   password:String;
+  uname:String;
+  pword:String;
   dropdown:String;
   blocked:String;
   nAu:String;
@@ -36,8 +40,14 @@ export class NavComponent implements OnInit {
   modalRef:BsModalRef;
   message:String;
   dash:number;
+  data:String[];
+  username2:String;
+  password2:String;
 
-  constructor(private router:Router,private cookiservice:CookieService,private http:Http,private logins:LoginService,private adminService:AdminService,private modalService: BsModalService) {
+
+
+  constructor(@Inject(LOCAL_STORAGE) private storage: WebStorageService,private router:Router,private cookiservice:CookieService,private http:Http,private logins:LoginService,private adminService:AdminService,private modalService: BsModalService
+  ) {
 
 this.dropdown=this.cookiservice.get('dropdown');
 this.userId=+this.cookiservice.get('userId');
@@ -49,9 +59,15 @@ this.count=+this.cookiservice.get('count');
   }
 
 
-  login(username,password){
+  login(username,password,checkbox){
 
-    console.log(username,password);
+    console.log(username,password,checkbox);
+    if(checkbox){
+
+      this.cookiservice.put('uname',username);
+      this.cookiservice.put('pword',password);
+    }
+
   let loginOnj={
 
       "userName":username,
@@ -201,7 +217,14 @@ this.count=+this.cookiservice.get('count');
     console.log('You are confirmed');
     this.message = 'Confirmed!';
     this.modalRef.hide();
-    this.cookiservice.removeAll();
+    this.cookiservice.remove('count');
+    this.cookiservice.remove('username');
+    this.cookiservice.remove('dropdown');
+    this.cookiservice.remove('userId');
+    this.cookiservice.remove('adminId');
+    this.cookiservice.remove('loginId');
+    this.cookiservice.remove('dash');
+   // this.cookiservice.removeAll();
     this.router.navigate(['']);
     location.reload();
   }
@@ -213,11 +236,22 @@ this.count=+this.cookiservice.get('count');
     this.modalRef.hide();
   }
 
+
+  storedatalocal(username,password){
+
+    console.log('got the call '+username+password);
+    this.storage.set('usernames',username);
+    this.data['usernames']= this.storage.get('usernames');
+    console.log(this.data);
+  }
+
   ngOnInit() {
 
 //this.getNotifications();
 this.count=+this.cookiservice.get('count');
 this.username=this.cookiservice.get('username');
+this.password2=this.cookiservice.get('pword');
+this.username2=this.cookiservice.get('uname');
     
 
   }

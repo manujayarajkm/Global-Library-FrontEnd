@@ -99,12 +99,14 @@
         <label for="Password">Password:</label>
         <input type="password" class="form-control" [(ngModel)]="password2" name="password2" #passWord2="ngModel">
         <div class="alert alert-danger" *ngIf="passWord2.touched && !password2">Required</div>
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="checkbox" name="checkbox">
+          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         </div>
         <div class="alert alert-danger" *ngIf="edited && blocked">{{blocked}}</div>
         <div class="alert alert-danger" *ngIf="edited && nAu">{{nAu}}</div>
         <a href="/passwordReset"><h6 class="text-center">Forgot Password</h6></a>
       <div class="modal-footer">
-        <button (click)="login(username2,password2)" class="btn btn-success" [disabled]=!username2||!password2>Login</button>
+        <button (click)="login(username2,password2,checkbox)" class="btn btn-success" [disabled]=!username2||!password2>Login</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
       </div>
       <div class="alert alert-danger">Cookies must be enabled to use this site</div>      

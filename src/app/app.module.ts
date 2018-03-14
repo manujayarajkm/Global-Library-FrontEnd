@@ -11,6 +11,7 @@ import { RatingModule } from 'ngx-bootstrap/rating';
 import { RouterLinkActive } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
 import {NgsRevealModule} from 'ng-scrollreveal';
+import { StorageServiceModule} from 'angular-webstorage-service';
 import * as $ from 'jquery';
 
 
@@ -175,8 +176,8 @@ const appRoutes: Routes=[
     BarRatingModule,
     RatingModule.forRoot(),
     ModalModule.forRoot(),
-    NgsRevealModule.forRoot()
-
+    NgsRevealModule.forRoot(),
+    StorageServiceModule
 
   ],
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
