@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import {HttpModule, Http,XHRBackend, RequestOptions} from '@angular/http';
 import {CookieModule} from 'ngx-cookie';
 import { DatePipe } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
@@ -54,6 +54,8 @@ import { AdminService } from './admin.service';
 import { BootstrapTestComponent } from './bootstrap-test/bootstrap-test.component';
 import { LogoutService } from './logout.service';
 import { SessionService } from './session.service';
+import { CustomhttpService } from './customhttp.service';
+import{ErrorNotifierService} from './error.notifier.service'
 
 const appRoutes: Routes=[
   {path:'',component:LibraryLaunchComponent},
@@ -177,7 +179,17 @@ const appRoutes: Routes=[
 
 
   ],
-  providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService],
+  providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
+,    ErrorNotifierService,
+{
+  provide: Http,
+  useFactory: (backend: XHRBackend, defaultOptions: RequestOptions, errorNotifier: ErrorNotifierService) => {
+    return new CustomhttpService(backend, defaultOptions, errorNotifier);
+  },
+  deps: [ XHRBackend, RequestOptions, ErrorNotifierService ]
+},
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

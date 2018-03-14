@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild,TemplateRef,ElementRef,HostListener} from '@angular/core';
-import{Http,Response} from '@angular/http';
+import{Http,ConnectionBackend, Request, RequestOptions, RequestOptionsArgs, Response} from '@angular/http';
 import{CookieService} from 'ngx-cookie';
 import {Subject} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
@@ -8,9 +8,11 @@ import{SortByPipe} from '../sort-by.pipe';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import{Router} from '@angular/router';
+import {Observable} from 'rxjs/Rx';
 
 declare const $;
 import 'jspdf-autotable';
+import { CustomhttpService } from '../customhttp.service';
 declare var jsPDF: any;
 
 
@@ -35,9 +37,12 @@ forcheck:boolean=true;
  sessionVar:String;
  imageurl:String='test1.jpg';
 
-  constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router) {
+  constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router,private custhttp:Http,
+    
+  
+  ) {
 
-
+    
   }
 
 
@@ -56,8 +61,9 @@ forcheck:boolean=true;
 
 
   browseAllBooks(){
+
+    this.custhttp.get('http://localhost:8080/librarycontroller/viewAllBooks')
     
-    this.http.get('http://localhost:8080/librarycontroller/viewAllBooks')
     .subscribe(
 
       (res:Response)=>{
@@ -217,7 +223,7 @@ console.log()
 
   ngOnInit(){
 
-//this.browseAllBooks();
+this.browseAllBooks();
 this.uname=this.cookiservice.get('username');
 //this.browseAllBooks();
 this.sessionVar="true";

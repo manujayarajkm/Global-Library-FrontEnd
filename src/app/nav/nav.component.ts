@@ -105,6 +105,10 @@ this.count=+this.cookiservice.get('count');
 
           }
       }
+      ,
+      err => {
+        alert("Server Error..! Please try Again")
+      }
     )
 
   }
