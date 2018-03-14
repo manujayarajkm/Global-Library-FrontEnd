@@ -66,7 +66,7 @@ var ComponentLoader = (function () {
         this._innerComponent = null;
         if (!this._componentRef) {
             this.onBeforeShow.emit();
-            this._contentRef = this._getContentRef(opts.content, opts.context);
+            this._contentRef = this._getContentRef(opts.content, opts.context, opts.initialState);
             var injector = ReflectiveInjector.resolveAndCreate(this._providers, this._injector);
             this._componentRef = this._componentFactory.create(injector, this._contentRef.nodes);
             this._applicationRef.attachView(this._componentRef.hostView);
@@ -116,6 +116,9 @@ var ComponentLoader = (function () {
         this._componentRef.destroy();
         if (this._viewContainerRef && this._contentRef.viewRef) {
             this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._contentRef.viewRef));
+        }
+        if (this._contentRef.viewRef) {
+            this._contentRef.viewRef.destroy();
         }
         // this._viewContainerRef.remove(this._viewContainerRef.indexOf(this._componentRef.hostView));
         //
@@ -222,7 +225,7 @@ var ComponentLoader = (function () {
         this._zoneSubscription.unsubscribe();
         this._zoneSubscription = null;
     };
-    ComponentLoader.prototype._getContentRef = function (content, context) {
+    ComponentLoader.prototype._getContentRef = function (content, context, initialState) {
         if (!content) {
             return new ContentRef([]);
         }
@@ -241,6 +244,7 @@ var ComponentLoader = (function () {
             var contentCmptFactory = this._componentFactoryResolver.resolveComponentFactory(content);
             var modalContentInjector = ReflectiveInjector.resolveAndCreate(this._providers.slice(), this._injector);
             var componentRef = contentCmptFactory.create(modalContentInjector);
+            Object.assign(componentRef.instance, initialState);
             this._applicationRef.attachView(componentRef.hostView);
             return new ContentRef([[componentRef.location.nativeElement]], componentRef.hostView, componentRef);
         }

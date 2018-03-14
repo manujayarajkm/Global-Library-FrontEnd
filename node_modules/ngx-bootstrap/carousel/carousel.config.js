@@ -7,6 +7,8 @@ var CarouselConfig = (function () {
         this.noPause = false;
         /** Is slides can wrap from the last to the first slide */
         this.noWrap = false;
+        /** Show carousel-indicators */
+        this.showIndicators = true;
     }
     CarouselConfig.decorators = [
         { type: Injectable },

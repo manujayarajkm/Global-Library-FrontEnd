@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
-import { getFullYear, getMonth } from '../../bs-moment/utils/date-getters';
+import { getFullYear, getMonth } from '../../chronos/utils/date-getters';
 import { BsDatepickerActions } from './bs-datepicker.actions';
+import { BsLocaleService } from '../bs-locale.service';
 var BsDatepickerEffects = (function () {
-    function BsDatepickerEffects(_actions) {
+    function BsDatepickerEffects(_actions, _localeService) {
         this._actions = _actions;
+        this._localeService = _localeService;
         this._subs = [];
     }
     BsDatepickerEffects.prototype.init = function (_bsDatepickerStore) {
@@ -33,7 +35,8 @@ var BsDatepickerEffects = (function () {
     };
     /* Set rendering options */
     BsDatepickerEffects.prototype.setOptions = function (_config) {
-        this._store.dispatch(this._actions.setOptions(_config));
+        var _options = Object.assign({ locale: this._localeService.currentLocale }, _config);
+        this._store.dispatch(this._actions.setOptions(_options));
         return this;
     };
     /** view to mode bindings */
@@ -144,6 +147,9 @@ var BsDatepickerEffects = (function () {
             .select(function (state) { return state.hoveredDate; })
             .filter(function (hoveredDate) { return !!hoveredDate; })
             .subscribe(function (hoveredDate) { return _this._store.dispatch(_this._actions.flag()); }));
+        // on locale change
+        this._subs.push(this._localeService.localeChange
+            .subscribe(function (locale) { return _this._store.dispatch(_this._actions.setLocale(locale)); }));
         return this;
     };
     BsDatepickerEffects.prototype.destroy = function () {
@@ -158,6 +164,7 @@ var BsDatepickerEffects = (function () {
     /** @nocollapse */
     BsDatepickerEffects.ctorParameters = function () { return [
         { type: BsDatepickerActions, },
+        { type: BsLocaleService, },
     ]; };
     return BsDatepickerEffects;
 }());

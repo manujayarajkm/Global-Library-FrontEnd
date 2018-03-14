@@ -29,6 +29,7 @@ export declare class DatePickerInnerComponent implements OnInit, OnChanges {
         date: Date;
         mode: string;
     }[];
+    dayDisabled: number[];
     initDate: Date;
     selectionDone: EventEmitter<Date>;
     update: EventEmitter<Date>;
@@ -36,9 +37,9 @@ export declare class DatePickerInnerComponent implements OnInit, OnChanges {
     stepDay: any;
     stepMonth: any;
     stepYear: any;
+    uniqueId: string;
     protected modes: string[];
     protected dateFormatter: DateFormatter;
-    protected uniqueId: string;
     protected _activeDate: Date;
     protected selectedDate: Date;
     protected activeDateId: string;

@@ -1,4 +1,4 @@
-import { formatDate } from '../bs-moment/format';
+import { formatDate } from '../chronos/format';
 var DateFormatter = (function () {
     function DateFormatter() {
     }

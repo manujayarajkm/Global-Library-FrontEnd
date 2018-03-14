@@ -8,6 +8,7 @@ var BsDatepickerState = (function () {
 export { BsDatepickerState };
 var _initialView = { date: new Date(), mode: 'day' };
 export var initialDatepickerState = Object.assign(new BsDatepickerConfig(), {
+    locale: 'en',
     view: _initialView,
     selectedRange: [],
     monthViewOptions: defaultMonthOptions

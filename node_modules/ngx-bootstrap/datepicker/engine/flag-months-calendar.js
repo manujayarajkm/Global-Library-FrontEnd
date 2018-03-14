@@ -1,6 +1,6 @@
-import { isSameMonth } from '../../bs-moment/utils/date-getters';
+import { isSameMonth } from '../../chronos/utils/date-getters';
 import { isMonthDisabled, isYearDisabled } from '../utils/bs-calendar-utils';
-import { shiftDate } from '../../bs-moment/utils/date-setters';
+import { shiftDate } from '../../chronos/utils/date-setters';
 export function flagMonthsCalendar(monthCalendar, options) {
     monthCalendar.months.forEach(function (months, rowIndex) {
         months.forEach(function (month, monthIndex) {

@@ -1,4 +1,4 @@
-import { getFirstDayOfMonth } from '../../bs-moment/utils/date-getters';
+import { getFirstDayOfMonth } from '../../chronos/utils/date-getters';
 import { getStartingDayOfCalendar } from '../utils/bs-calendar-utils';
 import { createMatrix } from '../utils/matrix-utils';
 export function calcDaysCalendar(startingDate, options) {

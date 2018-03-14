@@ -1,10 +1,10 @@
-import { Component, ElementRef, EventEmitter, Input, Output, Renderer2, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, Input, Output, Renderer2, ViewContainerRef } from '@angular/core';
 import { ComponentLoaderFactory } from '../component-loader/component-loader.factory';
 import { BsDatepickerContainerComponent } from './themes/bs/bs-datepicker-container.component';
 import 'rxjs/add/operator/filter';
 import { BsDatepickerConfig } from './bs-datepicker.config';
-var BsDatepickerComponent = (function () {
-    function BsDatepickerComponent(_config, _elementRef, _renderer, _viewContainerRef, cis) {
+var BsDatepickerDirective = (function () {
+    function BsDatepickerDirective(_config, _elementRef, _renderer, _viewContainerRef, cis) {
         this._config = _config;
         /**
          * Placement of a datepicker. Accepts: "top", "bottom", "left", "right"
@@ -35,7 +35,7 @@ var BsDatepickerComponent = (function () {
         this.onShown = this._datepicker.onShown;
         this.onHidden = this._datepicker.onHidden;
     }
-    Object.defineProperty(BsDatepickerComponent.prototype, "isOpen", {
+    Object.defineProperty(BsDatepickerDirective.prototype, "isOpen", {
         /**
          * Returns whether or not the datepicker is currently being shown
          */
@@ -53,7 +53,7 @@ var BsDatepickerComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(BsDatepickerComponent.prototype, "bsValue", {
+    Object.defineProperty(BsDatepickerDirective.prototype, "bsValue", {
         /**
          * Initial value of datepicker
          */
@@ -67,15 +67,16 @@ var BsDatepickerComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    BsDatepickerComponent.prototype.ngOnInit = function () {
+    BsDatepickerDirective.prototype.ngOnInit = function () {
         var _this = this;
         this._datepicker.listen({
             outsideClick: this.outsideClick,
             triggers: this.triggers,
             show: function () { return _this.show(); }
         });
+        this.setConfig();
     };
-    BsDatepickerComponent.prototype.ngOnChanges = function (changes) {
+    BsDatepickerDirective.prototype.ngOnChanges = function (changes) {
         if (!this._datepickerRef || !this._datepickerRef.instance) {
             return;
         }
@@ -93,17 +94,12 @@ var BsDatepickerComponent = (function () {
      * Opens an element’s datepicker. This is considered a “manual” triggering of
      * the datepicker.
      */
-    BsDatepickerComponent.prototype.show = function () {
+    BsDatepickerDirective.prototype.show = function () {
         var _this = this;
         if (this._datepicker.isShown) {
             return;
         }
-        this._config = Object.assign({}, this._config, this.bsConfig, {
-            value: this._bsValue,
-            isDisabled: this.isDisabled,
-            minDate: this.minDate || this._config.minDate,
-            maxDate: this.maxDate || this._config.maxDate
-        });
+        this.setConfig();
         this._datepickerRef = this._datepicker
             .provide({ provide: BsDatepickerConfig, useValue: this._config })
             .attach(BsDatepickerContainerComponent)
@@ -124,7 +120,7 @@ var BsDatepickerComponent = (function () {
      * Closes an element’s datepicker. This is considered a “manual” triggering of
      * the datepicker.
      */
-    BsDatepickerComponent.prototype.hide = function () {
+    BsDatepickerDirective.prototype.hide = function () {
         if (this.isOpen) {
             this._datepicker.hide();
         }
@@ -137,31 +133,41 @@ var BsDatepickerComponent = (function () {
      * Toggles an element’s datepicker. This is considered a “manual” triggering
      * of the datepicker.
      */
-    BsDatepickerComponent.prototype.toggle = function () {
+    BsDatepickerDirective.prototype.toggle = function () {
         if (this.isOpen) {
             return this.hide();
         }
         this.show();
     };
-    BsDatepickerComponent.prototype.ngOnDestroy = function () {
+    /**
+     * Set config for datepicker
+     */
+    BsDatepickerDirective.prototype.setConfig = function () {
+        this._config = Object.assign({}, this._config, this.bsConfig, {
+            value: this._bsValue,
+            isDisabled: this.isDisabled,
+            minDate: this.minDate || this.bsConfig && this.bsConfig.minDate,
+            maxDate: this.maxDate || this.bsConfig && this.bsConfig.maxDate
+        });
+    };
+    BsDatepickerDirective.prototype.ngOnDestroy = function () {
         this._datepicker.dispose();
     };
-    BsDatepickerComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'bs-datepicker,[bsDatepicker]',
-                    exportAs: 'bsDatepicker',
-                    template: '<ng-content></ng-content>'
+    BsDatepickerDirective.decorators = [
+        { type: Directive, args: [{
+                    selector: '[bsDatepicker]',
+                    exportAs: 'bsDatepicker'
                 },] },
     ];
     /** @nocollapse */
-    BsDatepickerComponent.ctorParameters = function () { return [
+    BsDatepickerDirective.ctorParameters = function () { return [
         { type: BsDatepickerConfig, },
         { type: ElementRef, },
         { type: Renderer2, },
         { type: ViewContainerRef, },
         { type: ComponentLoaderFactory, },
     ]; };
-    BsDatepickerComponent.propDecorators = {
+    BsDatepickerDirective.propDecorators = {
         'placement': [{ type: Input },],
         'triggers': [{ type: Input },],
         'outsideClick': [{ type: Input },],
@@ -176,7 +182,7 @@ var BsDatepickerComponent = (function () {
         'maxDate': [{ type: Input },],
         'bsValueChange': [{ type: Output },],
     };
-    return BsDatepickerComponent;
+    return BsDatepickerDirective;
 }());
-export { BsDatepickerComponent };
+export { BsDatepickerDirective };
 //# sourceMappingURL=bs-datepicker.component.js.map

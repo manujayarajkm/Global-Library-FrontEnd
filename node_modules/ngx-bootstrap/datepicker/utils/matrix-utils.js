@@ -1,4 +1,4 @@
-import { shiftDate } from '../../bs-moment/utils/date-setters';
+import { shiftDate } from '../../chronos/utils/date-setters';
 export function createMatrix(options, fn) {
     var prevValue = options.initialDate;
     var matrix = new Array(options.height);

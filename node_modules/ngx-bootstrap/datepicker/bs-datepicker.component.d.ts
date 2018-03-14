@@ -3,7 +3,7 @@ import { ComponentLoaderFactory } from '../component-loader/component-loader.fac
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { BsDatepickerConfig } from './bs-datepicker.config';
-export declare class BsDatepickerComponent implements OnInit, OnDestroy, OnChanges {
+export declare class BsDatepickerDirective implements OnInit, OnDestroy, OnChanges {
     _config: BsDatepickerConfig;
     /**
      * Placement of a datepicker. Accepts: "top", "bottom", "left", "right"
@@ -81,5 +81,9 @@ export declare class BsDatepickerComponent implements OnInit, OnDestroy, OnChang
      * of the datepicker.
      */
     toggle(): void;
+    /**
+     * Set config for datepicker
+     */
+    setConfig(): void;
     ngOnDestroy(): any;
 }

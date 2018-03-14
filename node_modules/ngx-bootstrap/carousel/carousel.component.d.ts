@@ -15,7 +15,7 @@
  * 4) default interval should be equal 5000
  */
 import { EventEmitter, NgZone, OnDestroy } from '@angular/core';
-import { LinkedList } from '../utils';
+import { LinkedList } from '../utils/index';
 import { SlideComponent } from './slide.component';
 import { CarouselConfig } from './carousel.config';
 export declare enum Direction {
@@ -32,6 +32,8 @@ export declare class CarouselComponent implements OnDestroy {
     noWrap: boolean;
     /**  If `true` — will disable pausing on carousel mouse hover */
     noPause: boolean;
+    /**  If `true` — carousel-indicators are visible  */
+    showIndicators: boolean;
     /** Will be emitted when active slide has been changed. Part of two-way-bindable [(activeSlide)] property */
     activeSlideChange: EventEmitter<any>;
     /** Index of currently displayed slide(started for 0) */

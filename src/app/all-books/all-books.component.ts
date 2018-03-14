@@ -3,10 +3,20 @@ import {Http,Response}from '@angular/http';
 import {CookieService} from 'ngx-cookie';
 import{Router} from '@angular/router';
 
+
+
 @Component({
   selector: 'app-all-books',
   templateUrl: './all-books.component.html',
-  styleUrls: ['./all-books.component.css']
+  styleUrls: ['./all-books.component.css'],
+  styles: [`
+    .content-wrapper {
+      border: 1px solid #ddd; 
+      border-radius: 4px; 
+      padding-left: 10px; 
+      margin-bottom: 10px;
+    }
+  `]
 })
 export class AllBooksComponent implements OnInit {
 
@@ -23,6 +33,10 @@ export class AllBooksComponent implements OnInit {
   resultvar:String;
   public x: number;
   empty:String;
+  p: number = 1;
+  collection: any[] = this.books; 
+  contentArray = new Array(90).fill('');
+  returnedArray: string[];
 
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) {
@@ -107,9 +121,12 @@ this.http.get('http://localhost:8080/librarycontroller/searchBooks'+'/'+search)
 
     this.loader();
     
+    
 
 
   }
+
+  
 
 
 }

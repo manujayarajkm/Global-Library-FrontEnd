@@ -1,5 +1,9 @@
-import { DatepickerFormatOptions, DatepickerRenderOptions } from './models/index';
-export declare class BsDatepickerConfig implements DatepickerRenderOptions, DatepickerFormatOptions {
+import { DatepickerRenderOptions } from './models/index';
+/**
+ * For date range picker there are `BsDaterangepickerConfig` which inherits all properties,
+ * except `displayMonths`, for range picker it default to `2`
+ */
+export declare class BsDatepickerConfig implements DatepickerRenderOptions {
     value?: Date | Date[];
     isDisabled?: boolean;
     /**
@@ -22,11 +26,6 @@ export declare class BsDatepickerConfig implements DatepickerRenderOptions, Date
     dateInputFormat: string;
     rangeSeparator: string;
     rangeInputFormat: string;
-    /**
-     * Allows to globally set default locale of datepicker,
-     * see documentation on how to enable custom locales
-     */
-    locale: string;
     monthTitle: string;
     yearTitle: string;
     dayLabel: string;

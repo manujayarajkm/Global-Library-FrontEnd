@@ -6,8 +6,10 @@ import { BsDatepickerConfig } from '../bs-datepicker.config';
 import { BsDatepickerViewMode, DatepickerRenderOptions, DaysCalendarViewModel, MonthsCalendarViewModel, YearsCalendarViewModel } from '../models/index';
 import { BsDatepickerActions } from './bs-datepicker.actions';
 import { BsDatepickerStore } from './bs-datepicker.store';
+import { BsLocaleService } from '../bs-locale.service';
 export declare class BsDatepickerEffects {
     private _actions;
+    private _localeService;
     viewMode: Observable<BsDatepickerViewMode>;
     daysCalendar: Observable<DaysCalendarViewModel[]>;
     monthsCalendar: Observable<MonthsCalendarViewModel[]>;
@@ -15,7 +17,7 @@ export declare class BsDatepickerEffects {
     options: Observable<DatepickerRenderOptions>;
     private _store;
     private _subs;
-    constructor(_actions: BsDatepickerActions);
+    constructor(_actions: BsDatepickerActions, _localeService: BsLocaleService);
     init(_bsDatepickerStore: BsDatepickerStore): BsDatepickerEffects;
     /** setters */
     setValue(value: Date): void;

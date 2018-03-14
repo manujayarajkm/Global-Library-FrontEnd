@@ -1,5 +1,5 @@
-import { shiftDate } from '../../bs-moment/utils/date-setters';
-import { formatDate } from '../../bs-moment/format';
+import { shiftDate } from '../../chronos/utils/date-setters';
+import { formatDate } from '../../chronos/format';
 import { createMatrix } from '../utils/matrix-utils';
 var height = 4;
 var width = 4;

@@ -12,6 +12,8 @@ export declare class TimepickerConfig {
     meridians: string[];
     /** if true hours and minutes fields will be readonly */
     readonlyInput: boolean;
+    /** if true hours and minutes fields will be disabled */
+    disabled: boolean;
     /** if true scroll inside hours and minutes inputs will change time */
     mousewheel: boolean;
     /** if true up/down arrowkeys inside hours and minutes inputs will change time */
@@ -20,6 +22,8 @@ export declare class TimepickerConfig {
     showSpinners: boolean;
     /** show seconds in timepicker */
     showSeconds: boolean;
+    /** show minutes in timepicker */
+    showMinutes: boolean;
     /** minimum time user can select */
     min: Date;
     /** maximum time user can select */

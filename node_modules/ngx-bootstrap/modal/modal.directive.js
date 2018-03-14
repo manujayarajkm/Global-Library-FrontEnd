@@ -30,8 +30,6 @@ var ModalDirective = (function () {
          * hidden from the user (will wait for CSS transitions to complete).
          */
         this.onHidden = new EventEmitter();
-        // seems like an Options
-        this.isAnimated = true;
         this._isShown = false;
         this.isBodyOverflowing = false;
         this.originalBodyPadding = 0;
@@ -141,7 +139,7 @@ var ModalDirective = (function () {
             this._renderer.removeClass(this._element.nativeElement, CLASS_NAME.SHOW);
         }
         // this._addClassIn = false;
-        if (this.isAnimated) {
+        if (this._config.animated) {
             this.timerHideModal = setTimeout(function () { return _this.hideModal(); }, TRANSITION_DURATION);
         }
         else {
@@ -169,7 +167,7 @@ var ModalDirective = (function () {
         this._renderer.setAttribute(this._element.nativeElement, 'aria-hidden', 'false');
         this._renderer.setStyle(this._element.nativeElement, 'display', 'block');
         this._renderer.setProperty(this._element.nativeElement, 'scrollTop', 0);
-        if (this.isAnimated) {
+        if (this._config.animated) {
             Utils.reflow(this._element.nativeElement);
         }
         // this._addClassIn = true;
@@ -183,7 +181,7 @@ var ModalDirective = (function () {
             }
             _this.onShown.emit(_this);
         };
-        if (this.isAnimated) {
+        if (this._config.animated) {
             setTimeout(transitionComplete, TRANSITION_DURATION);
         }
         else {
@@ -219,12 +217,12 @@ var ModalDirective = (function () {
             this._backdrop
                 .attach(ModalBackdropComponent)
                 .to('body')
-                .show({ isAnimated: this.isAnimated });
+                .show({ isAnimated: this._config.animated });
             this.backdrop = this._backdrop._componentRef;
             if (!callback) {
                 return;
             }
-            if (!this.isAnimated) {
+            if (!this._config.animated) {
                 callback();
                 return;
             }
@@ -308,7 +306,7 @@ var ModalDirective = (function () {
         }
     };
     ModalDirective.prototype.resetScrollbar = function () {
-        document.body.style.paddingRight = this.originalBodyPadding;
+        document.body.style.paddingRight = this.originalBodyPadding + 'px';
     };
     // thx d.walsh
     ModalDirective.prototype.getScrollbarWidth = function () {

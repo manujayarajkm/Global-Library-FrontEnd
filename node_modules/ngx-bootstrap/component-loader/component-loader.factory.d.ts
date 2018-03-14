@@ -1,6 +1,6 @@
 import { ApplicationRef, ComponentFactoryResolver, ElementRef, Injector, NgZone, Renderer2, ViewContainerRef } from '@angular/core';
 import { ComponentLoader } from './component-loader.class';
-import { PositioningService } from '../positioning';
+import { PositioningService } from '../positioning/index';
 export declare class ComponentLoaderFactory {
     private _componentFactoryResolver;
     private _ngZone;

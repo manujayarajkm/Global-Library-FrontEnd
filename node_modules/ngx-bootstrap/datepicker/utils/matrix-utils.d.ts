@@ -1,4 +1,4 @@
-import { TimeUnit } from '../../bs-moment/types';
+import { TimeUnit } from '../../chronos/types';
 export declare type CreateMatrixCb<T> = (date: Date) => T;
 export interface MatrixOptions {
     height: number;

@@ -1,6 +1,6 @@
 import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector, NgZone } from '@angular/core';
 import { ComponentLoader } from './component-loader.class';
-import { PositioningService } from '../positioning';
+import { PositioningService } from '../positioning/index';
 var ComponentLoaderFactory = (function () {
     function ComponentLoaderFactory(_componentFactoryResolver, _ngZone, _injector, _posService, _applicationRef) {
         this._componentFactoryResolver = _componentFactoryResolver;

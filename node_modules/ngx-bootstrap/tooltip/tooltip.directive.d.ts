@@ -1,7 +1,10 @@
 import { ElementRef, EventEmitter, OnDestroy, OnInit, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 import { TooltipConfig } from './tooltip.config';
-import { ComponentLoaderFactory } from '../component-loader';
+import { ComponentLoaderFactory } from '../component-loader/index';
+import 'rxjs/add/observable/timer';
 export declare class TooltipDirective implements OnInit, OnDestroy {
+    private _renderer;
+    private _elementRef;
     /**
      * Content to be displayed as tooltip.
      */
@@ -35,6 +38,10 @@ export declare class TooltipDirective implements OnInit, OnDestroy {
      */
     containerClass: string;
     /**
+     * Delay before showing the tooltip
+     */
+    delay: number;
+    /**
      * Emits an event when the tooltip is shown
      */
     onShown: EventEmitter<any>;
@@ -59,7 +66,7 @@ export declare class TooltipDirective implements OnInit, OnDestroy {
     /** @deprecated - removed */
     _tooltipContext: any;
     /** @deprecated */
-    _delay: number;
+    _tooltipPopupDelay: number;
     /** @deprecated */
     _fadeDuration: number;
     /** @deprecated -  please use `triggers` instead */
@@ -67,6 +74,7 @@ export declare class TooltipDirective implements OnInit, OnDestroy {
     /** @deprecated */
     tooltipStateChanged: EventEmitter<boolean>;
     protected _delayTimeoutId: number | any;
+    protected _tooltipCancelShowFn: Function;
     private _tooltip;
     constructor(_viewContainerRef: ViewContainerRef, _renderer: Renderer2, _elementRef: ElementRef, cis: ComponentLoaderFactory, config: TooltipConfig);
     ngOnInit(): void;

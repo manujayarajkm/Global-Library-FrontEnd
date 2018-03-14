@@ -22,7 +22,6 @@ export declare class ModalDirective implements OnDestroy, OnInit {
      * hidden from the user (will wait for CSS transitions to complete).
      */
     onHidden: EventEmitter<ModalDirective>;
-    isAnimated: boolean;
     /** This field contains last dismiss reason.
      * Possible values: `backdrop-click`, `esc` and `null`
      * (if modal was closed by direct call of `.hide()`).

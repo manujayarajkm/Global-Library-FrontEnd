@@ -21,7 +21,7 @@ export declare class BsModalService {
     private _renderer;
     constructor(rendererFactory: RendererFactory2, clf: ComponentLoaderFactory);
     /** Shows a modal */
-    show(content: string | TemplateRef<any> | any, config?: any): BsModalRef;
+    show(content: string | TemplateRef<any> | any, config?: ModalOptions): BsModalRef;
     hide(level: number): void;
     _showBackdrop(): void;
     _hideBackdrop(): void;

@@ -1,7 +1,7 @@
-import { isSameDay, isSameMonth } from '../../bs-moment/utils/date-getters';
-import { isAfter, isBefore } from '../../bs-moment/utils/date-compare';
+import { isSameDay, isSameMonth } from '../../chronos/utils/date-getters';
+import { isAfter, isBefore } from '../../chronos/utils/date-compare';
 import { isMonthDisabled } from '../utils/bs-calendar-utils';
-import { shiftDate } from '../../bs-moment/utils/date-setters';
+import { shiftDate } from '../../chronos/utils/date-setters';
 export function flagDaysCalendar(formattedMonth, options) {
     formattedMonth.weeks.forEach(function (week, weekIndex) {
         week.days.forEach(function (day, dayIndex) {

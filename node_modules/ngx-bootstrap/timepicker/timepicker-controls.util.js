@@ -1,6 +1,6 @@
 import { changeTime } from './timepicker.utils';
 export function canChangeValue(state, event) {
-    if (state.readonlyInput) {
+    if (state.readonlyInput || state.disabled) {
         return false;
     }
     if (event) {
@@ -50,12 +50,13 @@ export function canChangeSeconds(event, controls) {
     return true;
 }
 export function getControlsValue(state) {
-    var hourStep = state.hourStep, minuteStep = state.minuteStep, secondsStep = state.secondsStep, readonlyInput = state.readonlyInput, mousewheel = state.mousewheel, arrowkeys = state.arrowkeys, showSpinners = state.showSpinners, showMeridian = state.showMeridian, showSeconds = state.showSeconds, meridians = state.meridians, min = state.min, max = state.max;
+    var hourStep = state.hourStep, minuteStep = state.minuteStep, secondsStep = state.secondsStep, readonlyInput = state.readonlyInput, disabled = state.disabled, mousewheel = state.mousewheel, arrowkeys = state.arrowkeys, showSpinners = state.showSpinners, showMeridian = state.showMeridian, showSeconds = state.showSeconds, meridians = state.meridians, min = state.min, max = state.max;
     return {
         hourStep: hourStep,
         minuteStep: minuteStep,
         secondsStep: secondsStep,
         readonlyInput: readonlyInput,
+        disabled: disabled,
         mousewheel: mousewheel,
         arrowkeys: arrowkeys,
         showSpinners: showSpinners,
@@ -67,6 +68,7 @@ export function getControlsValue(state) {
     };
 }
 export function timepickerControls(value, state) {
+    var hoursPerDayHalf = 12;
     var min = state.min, max = state.max, hourStep = state.hourStep, minuteStep = state.minuteStep, secondsStep = state.secondsStep, showSeconds = state.showSeconds;
     var res = {
         canIncrementHours: true,
@@ -74,7 +76,8 @@ export function timepickerControls(value, state) {
         canIncrementSeconds: true,
         canDecrementHours: true,
         canDecrementMinutes: true,
-        canDecrementSeconds: true
+        canDecrementSeconds: true,
+        canToggleMeridian: true
     };
     if (!value) {
         return res;
@@ -93,6 +96,9 @@ export function timepickerControls(value, state) {
             var _newSeconds = changeTime(value, { seconds: secondsStep });
             res.canIncrementSeconds = max >= _newSeconds;
         }
+        if (value.getHours() < hoursPerDayHalf) {
+            res.canToggleMeridian = changeTime(value, { hour: hoursPerDayHalf }) < max;
+        }
     }
     if (min) {
         var _newHour = changeTime(value, { hour: -hourStep });
@@ -106,6 +112,9 @@ export function timepickerControls(value, state) {
         if (!res.canDecrementMinutes) {
             var _newSeconds = changeTime(value, { seconds: -secondsStep });
             res.canDecrementSeconds = min <= _newSeconds;
+        }
+        if (value.getHours() >= hoursPerDayHalf) {
+            res.canToggleMeridian = changeTime(value, { hour: -hoursPerDayHalf }) > min;
         }
     }
     return res;

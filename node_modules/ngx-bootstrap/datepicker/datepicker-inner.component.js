@@ -130,6 +130,7 @@ var DatePickerInnerComponent = (function () {
     DatePickerInnerComponent.prototype.createDateObject = function (date, format) {
         var dateObject = {};
         dateObject.date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        dateObject.date = this.fixTimeZone(dateObject.date);
         dateObject.label = this.dateFilter(date, format);
         dateObject.selected = this.compare(date, this.selectedDate) === 0;
         dateObject.disabled = this.isDisabled(date);
@@ -161,12 +162,14 @@ var DatePickerInnerComponent = (function () {
                 this.activeDate = new Date(0, 0, 0, 0, 0, 0, 0);
             }
             this.activeDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            this.activeDate = this.fixTimeZone(this.activeDate);
             if (isManual) {
                 this.selectionDone.emit(this.activeDate);
             }
         }
         else {
             this.activeDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            this.activeDate = this.fixTimeZone(this.activeDate);
             if (isManual) {
                 this.datepickerMode = this.modes[this.modes.indexOf(this.datepickerMode) - 1];
             }
@@ -240,6 +243,11 @@ var DatePickerInnerComponent = (function () {
                 }
             });
         }
+        if (this.dayDisabled) {
+            isDateDisabled =
+                isDateDisabled ||
+                    this.dayDisabled.indexOf(date.getDay()) > -1;
+        }
         return (isDateDisabled ||
             (this.minDate && this.compare(date, this.minDate) < 0) ||
             (this.maxDate && this.compare(date, this.maxDate) > 0));
@@ -274,6 +282,7 @@ var DatePickerInnerComponent = (function () {
         'monthColLimit': [{ type: Input },],
         'yearColLimit': [{ type: Input },],
         'dateDisabled': [{ type: Input },],
+        'dayDisabled': [{ type: Input },],
         'initDate': [{ type: Input },],
         'selectionDone': [{ type: Output },],
         'update': [{ type: Output },],

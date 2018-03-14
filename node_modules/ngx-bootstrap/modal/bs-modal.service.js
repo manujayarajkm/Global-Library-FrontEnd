@@ -74,7 +74,7 @@ var BsModalService = (function () {
             .provide({ provide: BsModalRef, useValue: bsModalRef })
             .attach(ModalContainerComponent)
             .to('body')
-            .show({ content: content, isAnimated: this.config.animated });
+            .show({ content: content, isAnimated: this.config.animated, initialState: this.config.initialState, bsModalService: this });
         modalContainerRef.instance.level = this.getModalsCount();
         bsModalRef.hide = function () {
             modalContainerRef.instance.hide();

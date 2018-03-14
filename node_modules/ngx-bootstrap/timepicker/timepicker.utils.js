@@ -15,6 +15,15 @@ export function isValidDate(value) {
     }
     return true;
 }
+export function isValidLimit(controls, newDate) {
+    if (controls.min && newDate < controls.min) {
+        return false;
+    }
+    if (controls.max && newDate > controls.max) {
+        return false;
+    }
+    return true;
+}
 export function toNumber(value) {
     if (typeof value === 'number') {
         return value;
@@ -82,7 +91,6 @@ export function setTime(value, opts) {
     if (opts.isPM) {
         hour += hoursPerDayHalf;
     }
-    // fixme: unreachable code, value is mandatory
     if (!value) {
         if (!isNaN(hour) && !isNaN(minute)) {
             return createDate(new Date(), hour, minute, seconds);
@@ -95,9 +103,7 @@ export function setTime(value, opts) {
     return createDate(value, hour, minute, seconds);
 }
 export function createDate(value, hours, minutes, seconds) {
-    // fixme: unreachable code, value is mandatory
-    var _value = value || new Date();
-    return new Date(_value.getFullYear(), _value.getMonth(), _value.getDate(), hours, minutes, seconds, _value.getMilliseconds());
+    return new Date(value.getFullYear(), value.getMonth(), value.getDate(), hours, minutes, seconds, value.getMilliseconds());
 }
 export function padNumber(value) {
     var _value = value.toString();
@@ -106,10 +112,30 @@ export function padNumber(value) {
     }
     return "0" + _value;
 }
+export function isHourInputValid(hours, isPM) {
+    return !isNaN(parseHours(hours, isPM));
+}
+export function isMinuteInputValid(minutes) {
+    return !isNaN(parseMinutes(minutes));
+}
+export function isSecondInputValid(seconds) {
+    return !isNaN(parseSeconds(seconds));
+}
+export function isInputLimitValid(diff, max, min) {
+    var newDate = changeTime(new Date(), diff);
+    if (max && newDate > max) {
+        return false;
+    }
+    if (min && newDate < min) {
+        return false;
+    }
+    return true;
+}
 export function isInputValid(hours, minutes, seconds, isPM) {
+    if (minutes === void 0) { minutes = '0'; }
     if (seconds === void 0) { seconds = '0'; }
-    return !(isNaN(parseHours(hours, isPM))
-        || isNaN(parseMinutes(minutes))
-        || isNaN(parseSeconds(seconds)));
+    return isHourInputValid(hours, isPM)
+        && isMinuteInputValid(minutes)
+        && isSecondInputValid(seconds);
 }
 //# sourceMappingURL=timepicker.utils.js.map

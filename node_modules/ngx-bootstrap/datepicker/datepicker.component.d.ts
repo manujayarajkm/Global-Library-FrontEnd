@@ -53,6 +53,8 @@ export declare class DatePickerComponent implements ControlValueAccessor {
         date: Date;
         mode: string;
     }[];
+    /** disabled days of the week from 0-6 (0=Sunday, ..., 6=Saturday) */
+    dayDisabled: number[];
     /** currently active date */
     activeDate: Date;
     selectionDone: EventEmitter<Date>;

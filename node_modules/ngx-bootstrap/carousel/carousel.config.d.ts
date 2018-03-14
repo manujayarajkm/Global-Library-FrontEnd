@@ -5,4 +5,6 @@ export declare class CarouselConfig {
     noPause: boolean;
     /** Is slides can wrap from the last to the first slide */
     noWrap: boolean;
+    /** Show carousel-indicators */
+    showIndicators: boolean;
 }

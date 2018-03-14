@@ -178,17 +178,10 @@ const appRoutes: Routes=[
     ModalModule.forRoot(),
     NgsRevealModule.forRoot(),
     StorageServiceModule
-
   ],
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
 ,    ErrorNotifierService,
-{
-  provide: CustomhttpService,
-  useFactory: (backend: XHRBackend, defaultOptions: RequestOptions, errorNotifier: ErrorNotifierService) => {
-    return new CustomhttpService(backend, defaultOptions, errorNotifier);
-  },
-  deps: [ XHRBackend, RequestOptions, ErrorNotifierService ]
-},
+
   
   ],
   bootstrap: [AppComponent]

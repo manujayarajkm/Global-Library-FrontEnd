@@ -17,7 +17,8 @@ export var modalConfigDefaults = {
     show: false,
     ignoreBackdropClick: false,
     class: '',
-    animated: true
+    animated: true,
+    initialState: {}
 };
 export var CLASS_NAME = {
     SCROLLBAR_MEASURER: 'modal-scrollbar-measure',

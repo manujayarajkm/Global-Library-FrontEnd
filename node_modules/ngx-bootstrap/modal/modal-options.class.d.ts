@@ -25,6 +25,10 @@ export declare class ModalOptions {
      * Toggle animation
      */
     animated?: boolean;
+    /**
+     * Modal data
+     */
+    initialState?: Object;
 }
 export declare const modalConfigDefaults: ModalOptions;
 export declare const CLASS_NAME: any;

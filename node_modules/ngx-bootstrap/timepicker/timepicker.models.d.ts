@@ -11,6 +11,7 @@ export interface TimepickerControls {
     canDecrementHours: boolean;
     canDecrementMinutes: boolean;
     canDecrementSeconds: boolean;
+    canToggleMeridian: boolean;
 }
 export interface TimepickerComponentState {
     min: Date;
@@ -19,6 +20,7 @@ export interface TimepickerComponentState {
     minuteStep: number;
     secondsStep: number;
     readonlyInput: boolean;
+    disabled: boolean;
     mousewheel: boolean;
     arrowkeys: boolean;
     showSpinners: boolean;

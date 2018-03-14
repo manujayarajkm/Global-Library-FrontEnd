@@ -1,11 +1,9 @@
 import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { CLASS_NAME, DISMISS_REASONS, ModalOptions, TRANSITION_DURATIONS } from './modal-options.class';
-import { BsModalService } from './bs-modal.service';
 import { isBs3 } from '../utils/theme-provider';
 var ModalContainerComponent = (function () {
-    function ModalContainerComponent(options, _element, bsModalService, _renderer) {
+    function ModalContainerComponent(options, _element, _renderer) {
         this._element = _element;
-        this.bsModalService = bsModalService;
         this._renderer = _renderer;
         this.isShown = false;
         this.isModalHiding = false;
@@ -27,6 +25,9 @@ var ModalContainerComponent = (function () {
                 this.bsModalService.setScrollbar();
             }
             this._renderer.addClass(document.body, CLASS_NAME.OPEN);
+        }
+        if (this._element.nativeElement) {
+            this._element.nativeElement.focus();
         }
     };
     ModalContainerComponent.prototype.onClick = function (event) {
@@ -83,7 +84,6 @@ var ModalContainerComponent = (function () {
     ModalContainerComponent.ctorParameters = function () { return [
         { type: ModalOptions, },
         { type: ElementRef, },
-        { type: BsModalService, },
         { type: Renderer2, },
     ]; };
     ModalContainerComponent.propDecorators = {

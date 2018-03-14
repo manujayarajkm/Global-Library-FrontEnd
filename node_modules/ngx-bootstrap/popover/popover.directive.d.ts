@@ -1,6 +1,6 @@
 import { ElementRef, EventEmitter, OnDestroy, OnInit, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 import { PopoverConfig } from './popover.config';
-import { ComponentLoaderFactory } from '../component-loader';
+import { ComponentLoaderFactory } from '../component-loader/index';
 /**
  * A lightweight, extensible directive for fancy popover creation.
  */

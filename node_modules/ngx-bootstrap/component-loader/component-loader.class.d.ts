@@ -1,5 +1,5 @@
 import { ComponentRef, EmbeddedViewRef, EventEmitter, Provider, TemplateRef, Type, ViewContainerRef } from '@angular/core';
-import { PositioningOptions } from '../positioning';
+import { PositioningOptions } from '../positioning/index';
 import { ListenOptions } from './listen-options.model';
 export declare class ComponentLoader<T> {
     private _viewContainerRef;
@@ -48,6 +48,7 @@ export declare class ComponentLoader<T> {
     show(opts?: {
         content?: string | TemplateRef<any>;
         context?: any;
+        initialState?: any;
         [key: string]: any;
     }): ComponentRef<T>;
     hide(): ComponentLoader<T>;
@@ -60,5 +61,5 @@ export declare class ComponentLoader<T> {
     getInnerComponent(): ComponentRef<T>;
     private _subscribePositioning();
     private _unsubscribePositioning();
-    private _getContentRef(content, context?);
+    private _getContentRef(content, context?, initialState?);
 }

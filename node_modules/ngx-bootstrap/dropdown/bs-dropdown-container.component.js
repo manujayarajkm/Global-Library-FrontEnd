@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
 import { BsDropdownState } from './bs-dropdown.state';
+import { isBs3 } from '../utils/theme-provider';
 var BsDropdownContainerComponent = (function () {
     function BsDropdownContainerComponent(_state, cd, _renderer, _element) {
         var _this = this;
@@ -10,7 +11,7 @@ var BsDropdownContainerComponent = (function () {
         this._subscription = _state.isOpenChange.subscribe(function (value) {
             _this.isOpen = value;
             var dropdown = _element.nativeElement.querySelector('.dropdown-menu');
-            if (dropdown) {
+            if (dropdown && !isBs3()) {
                 _this._renderer.addClass(dropdown, 'show');
                 if (dropdown.classList.contains('dropdown-menu-right')) {
                     _this._renderer.setStyle(dropdown, 'left', 'auto');

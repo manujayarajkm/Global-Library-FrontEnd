@@ -136,7 +136,7 @@
         <div class="alert alert-danger" *ngIf="!phone && Phone.touched">Required</div>
         <label for="Username">Username:</label>
         <input type="text" class="form-control"class="form-control" [(ngModel)]="username" name="username" #userName="ngModel">
-        <a (click)="checkUsername(username)" *ngIf=username><h6 >Check availability</h6></a>
+        <a (click)="checkUsername(username)" class="text-sm-left" *ngIf=username><h6 >Check availability</h6></a>
 
         <div class="alert alert-danger" *ngIf="!username && userName.touched">Required</div>
         <label for="Password">Password:</label>
