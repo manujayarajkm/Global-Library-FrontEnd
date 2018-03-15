@@ -13,6 +13,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import {NgsRevealModule} from 'ng-scrollreveal';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 import * as $ from 'jquery';
 
 
@@ -182,7 +183,8 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     ModalModule.forRoot(),
     NgsRevealModule.forRoot(),
     StorageServiceModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    NgxPaginationModule
   ],
   
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
