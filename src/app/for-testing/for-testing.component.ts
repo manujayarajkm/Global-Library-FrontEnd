@@ -36,6 +36,8 @@ forcheck:boolean=true;
  template: TemplateRef<any>;
  sessionVar:String;
  imageurl:String='test1.jpg';
+ loadervar:boolean;
+
 
   constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router,private custhttp:CustomhttpService,
     
@@ -220,6 +222,11 @@ setTimeout(function() {
 console.log(val);
 console.log()
     }
+
+
+
+
+
 
   ngOnInit(){
 

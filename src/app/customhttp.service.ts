@@ -10,6 +10,9 @@ export class CustomhttpService extends Http{
     super(backend, defaultOptions);
   }
 
+  loadervar:boolean;
+
+
   // request(url: string | Request): Observable<any> {
   //   console.log('Before the request...');
   //   return super.request(url)
@@ -27,6 +30,7 @@ export class CustomhttpService extends Http{
   get(url: string,options?: RequestOptionsArgs): Observable<any> {
     console.log('Before the request...');
     alert('Before the request');
+    
     return super.get(url,(options))
         .catch((err: any): any => {
           if (err.status === 400 || err.status === 422) {
@@ -61,4 +65,8 @@ export class CustomhttpService extends Http{
   //       });
   // }
 
+
+  
 }
+
+

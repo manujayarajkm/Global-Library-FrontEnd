@@ -12,6 +12,7 @@ import { RouterLinkActive } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap';
 import {NgsRevealModule} from 'ng-scrollreveal';
 import { StorageServiceModule} from 'angular-webstorage-service';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import * as $ from 'jquery';
 
 
@@ -180,7 +181,8 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     RatingModule.forRoot(),
     ModalModule.forRoot(),
     NgsRevealModule.forRoot(),
-    StorageServiceModule
+    StorageServiceModule,
+    PaginationModule.forRoot()
   ],
   
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService

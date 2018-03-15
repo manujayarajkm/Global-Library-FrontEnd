@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Http,Response}from '@angular/http';
 import {CookieService} from 'ngx-cookie';
 import{Router} from '@angular/router';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+
 
 
 
@@ -9,14 +11,7 @@ import{Router} from '@angular/router';
   selector: 'app-all-books',
   templateUrl: './all-books.component.html',
   styleUrls: ['./all-books.component.css'],
-  styles: [`
-    .content-wrapper {
-      border: 1px solid #ddd; 
-      border-radius: 4px; 
-      padding-left: 10px; 
-      margin-bottom: 10px;
-    }
-  `]
+  
 })
 export class AllBooksComponent implements OnInit {
 
@@ -33,10 +28,7 @@ export class AllBooksComponent implements OnInit {
   resultvar:String;
   public x: number;
   empty:String;
-  p: number = 1;
-  collection: any[] = this.books; 
-  contentArray = new Array(90).fill('');
-  returnedArray: string[];
+
 
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) {
@@ -52,6 +44,9 @@ export class AllBooksComponent implements OnInit {
 
       (res:Response)=>{
       this.books=res.json();
+      
+
+    
       if(this.books.length==0){
         this.empty="Sorry Book Shelf is Empty";
       }
@@ -98,8 +93,10 @@ this.http.get('http://localhost:8080/librarycontroller/searchBooks'+'/'+search)
 
   (res:Response)=>{
     this.books=res.json();
+    
     if(this.books.length>0){
     console.log(this.books);
+    
   }
   else{
     this.resultvar="No books Available";
@@ -119,15 +116,18 @@ this.http.get('http://localhost:8080/librarycontroller/searchBooks'+'/'+search)
 
   ngOnInit() {
 
+    
+
     this.loader();
     
+    
+
     
 
 
   }
 
   
-
 
 }
 interface Book{
