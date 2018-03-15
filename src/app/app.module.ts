@@ -128,6 +128,9 @@ const appRoutes: Routes=[
 
 
 ];
+export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, errorNotifier: ErrorNotifierService){
+  return new CustomhttpService(backend, defaultOptions, errorNotifier);
+}
 
 
 @NgModule({
@@ -179,11 +182,17 @@ const appRoutes: Routes=[
     NgsRevealModule.forRoot(),
     StorageServiceModule
   ],
+  
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
 ,    ErrorNotifierService,
-
+{
+  provide: CustomhttpService,
+  useFactory: httpServiceFactory,
+  deps: [ XHRBackend, RequestOptions, ErrorNotifierService ]
+  }
   
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
