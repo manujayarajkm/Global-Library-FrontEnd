@@ -75,13 +75,20 @@ forcheck:boolean=true;
     .subscribe(
 
       (res:Response)=>{
-      this.books=res.json();
-      if(this.books.length==0){
-        alert('sorry no books available');
-      }
-      this.ngProgress.done();
+      
+      setTimeout(()=>{
+        this.ngProgress.done();
+        this.books=res.json();
+        console.log(this.books);
+        if(this.books.length==0){
+          alert('sorry no books available');
+        }
 
-      console.log(this.books);
+      },3000)
+      
+      
+      
+
         //const message=res.text();
         //console.log(message);
         //alert(message);
