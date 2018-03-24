@@ -9,6 +9,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import{Router} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
+import { NgProgress } from 'ngx-progressbar';
+
 
 
 declare const $;
@@ -43,7 +45,7 @@ forcheck:boolean=true;
 
 
   constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router,private custhttp:CustomhttpService,
-    
+    public ngProgress: NgProgress
   
   ) {
 
@@ -66,6 +68,7 @@ forcheck:boolean=true;
 
 
   browseAllBooks(){
+    this.ngProgress.start();
 
     this.custhttp.get('http://localhost:8080/librarycontroller/viewAllBooks')
     
@@ -76,6 +79,8 @@ forcheck:boolean=true;
       if(this.books.length==0){
         alert('sorry no books available');
       }
+      this.ngProgress.done();
+
       console.log(this.books);
         //const message=res.text();
         //console.log(message);
@@ -244,11 +249,14 @@ console.log(message.valueOf());
 
 }
 
+books2(){
 
+  this.browseAllBooks();
+}
 
   ngOnInit(){
 
-this.browseAllBooks();
+//this.browseAllBooks();
 this.uname=this.cookiservice.get('username');
 //this.browseAllBooks();
 this.sessionVar="true";

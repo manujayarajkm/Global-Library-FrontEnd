@@ -1,6 +1,13 @@
 
 
 <div >
+        <ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1"
+        [speed]="100" [showSpinner]="true" [direction]="'rightToLeftIncreased'"
+        [color]="'red'" [trickleSpeed]="250" [thick]="true" [ease]="'linear'"
+></ng-progress>
+<button type="button" class="btn btn-default" (click)="books2()" >Check</button>
+
+
   <h1 >For Testing Purpose</h1>
   <h2  id="test">For CSS Testing Purpose</h2>
   <button (click)="forchecking()">template</button>

@@ -29,7 +29,7 @@ export class CustomhttpService extends Http{
 
   get(url: string,options?: RequestOptionsArgs): Observable<any> {
     console.log('Before the request...');
-    alert('Before the request');
+    //alert('Before the request');
     
     return super.get(url,(options))
         .catch((err: any): any => {
@@ -45,7 +45,7 @@ export class CustomhttpService extends Http{
         .timeoutWith(2000, Observable.throw(new Error('delay exceeded')))
         .finally(() => {
           console.log('After the request...');
-          alert('after the request');
+          //alert('after the request');
         });
   }
 
