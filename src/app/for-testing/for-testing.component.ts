@@ -10,6 +10,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import{Router} from '@angular/router';
 import {Observable} from 'rxjs/Rx';
 
+
 declare const $;
 import 'jspdf-autotable';
 import { CustomhttpService } from '../customhttp.service';

@@ -14,6 +14,8 @@ import {NgsRevealModule} from 'ng-scrollreveal';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import {NgxPaginationModule} from 'ngx-pagination'; 
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { MomentModule } from 'angular2-moment';
 import * as $ from 'jquery';
 
 
@@ -59,6 +61,7 @@ import { LogoutService } from './logout.service';
 import { SessionService } from './session.service';
 import { CustomhttpService } from './customhttp.service';
 import{ErrorNotifierService} from './error.notifier.service'
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes=[
   {path:'',component:LibraryLaunchComponent},
@@ -184,7 +187,11 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     NgsRevealModule.forRoot(),
     StorageServiceModule,
     PaginationModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    MomentModule,
+    NgIdleKeepaliveModule.forRoot(),
+    HttpClientModule
+
   ],
   
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
