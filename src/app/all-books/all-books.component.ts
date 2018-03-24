@@ -3,6 +3,8 @@ import {Http,Response}from '@angular/http';
 import {CookieService} from 'ngx-cookie';
 import{Router} from '@angular/router';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
+import {Observable} from 'rxjs/Rx';
+
 
 
 
@@ -30,6 +32,9 @@ export class AllBooksComponent implements OnInit {
   empty:String;
   p: number = 1;
     collection: Book[]; 
+    bookshelf: string[] = ['Nalukettu',
+  'Harry Potter','percy','Davinci Code','Sherlok','IT','Alchemist'
+  ]
 
 
 

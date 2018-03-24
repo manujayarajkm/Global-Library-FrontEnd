@@ -12,8 +12,11 @@
 
 <div class="col-md-4">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search Books Here"[(ngModel)]="search" name="search">
+    <input type="text" class="form-control" placeholder="Search Books Here" [(ngModel)]="search" [typeahead]="bookshelf" name="search">
+    
+
 <button  (click)="searchBooks(search)" class="btn btn-info" [disabled]=!search>Search</button>
+
   </div>
 <div class="loadersmall" *ngIf=searchvar></div>
   <div class="alert alert-danger" role="alert" *ngIf="edited && mess">
