@@ -28,11 +28,6 @@
     "../node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js",
         "../node_modules/jquery/dist/jquery.js",
         "assets/js/jquery-1.12.4.js",
-        "assets/js/jquery.dataTables.min.js",
-        "assets/js/buttons.flash.min.js",
-        "assets/js/buttons.html5.min.js",
-        "assets/js/buttons.print.min.js",
-        "assets/js/dataTables.buttons.min.js",
         "assets/js/jszip.min.js",
         "assets/js/pdfmake.min.js",
         "assets/js/vfs_fonts.js"

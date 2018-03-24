@@ -37,6 +37,8 @@ forcheck:boolean=true;
  sessionVar:String;
  imageurl:String='test1.jpg';
  loadervar:boolean;
+ testing:String;
+ check:String[];
 
 
   constructor(private http:Http,private cookiservice:CookieService,private utilService:UtilService,sortBy:SortByPipe,private modalService: BsModalService,private element:ElementRef,private router:Router,private custhttp:CustomhttpService,
@@ -224,7 +226,22 @@ console.log()
     }
 
 
+encrypt(message){
 
+//this.check=message.split();
+//console.log(this.check);
+
+for (let entry of message.length) {
+
+  
+  this.check.fill(entry.split());
+}
+
+
+console.log(this.check);
+console.log(message.valueOf());
+
+}
 
 
 
@@ -238,6 +255,10 @@ console.log('inside oninit '+this.sessionVar);
 this.cookiservice.put('session','true');
 //this.session();
 //this.setFalse();
+
+
+this.encrypt('testing');
+
 
 
 

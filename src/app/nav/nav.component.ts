@@ -252,7 +252,7 @@ this.count=+this.cookiservice.get('count');
 this.username=this.cookiservice.get('username');
 this.password2=this.cookiservice.get('pword');
 this.username2=this.cookiservice.get('uname');
-    
+this.dropdown=this.cookiservice.get('dropdown');
 
   }
 

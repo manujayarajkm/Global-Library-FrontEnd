@@ -28,6 +28,8 @@ export class AllBooksComponent implements OnInit {
   resultvar:String;
   public x: number;
   empty:String;
+  p: number = 1;
+    collection: Book[]; 
 
 
 
