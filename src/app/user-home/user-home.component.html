@@ -4,7 +4,7 @@
         <alert type='danger' [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ warn }}</alert>
     
       </div>
-      
+
     <div class="itemset" [ngsRevealSet]="{reset:true}" [ngsSelector]="'.item'">
   <div class="row">
     <div class="col-md-6 col-sm-6 ">
@@ -25,7 +25,7 @@
                containing Lorem Ipsum passages, and more recently with desktop 
                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
             </div>
-            <a routerLink='/store'><button class="btn btn-success btn-default" >
+            <a routerLink='/store' (click)=destroy()><button class="btn btn-success btn-default" >
                 Store
               </button></a>
           </div>
@@ -48,7 +48,7 @@
                    containing Lorem Ipsum passages, and more recently with desktop 
                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
-                <a routerLink='/myQueue'><button class="btn btn-success btn-default" >
+                <a routerLink='/myQueue' (click)=destroy()><button class="btn btn-success btn-default" >
                     My Queue
                   </button></a>
                 </div>
@@ -82,7 +82,7 @@
                        containing Lorem Ipsum passages, and more recently with desktop 
                        publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
-                    <a routerLink='/allBooks'><button class="btn btn-success btn-default" >
+                    <a routerLink='/allBooks' (click)=destroy()><button class="btn btn-success btn-default" >
                         View
                       </button></a>
                     </div>
@@ -105,7 +105,7 @@
                            containing Lorem Ipsum passages, and more recently with desktop 
                            publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                         </div>
-                        <a routerLink="/myHistory"><button type="button" class="btn btn-success btn-default" >
+                        <a routerLink="/myHistory" (click)=destroy()><button type="button" class="btn btn-success btn-default" >
                             Check
                           </button></a>
                         </div>

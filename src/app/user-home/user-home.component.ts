@@ -1,4 +1,4 @@
-import { Component, OnInit,HostListener,TemplateRef,SecurityContext} from '@angular/core';
+import { Component, OnInit,HostListener,TemplateRef,SecurityContext,OnDestroy} from '@angular/core';
 import {CookieService} from 'ngx-cookie';
 import {Router} from '@angular/router';
 import {Http,Response} from '@angular/http';
@@ -18,7 +18,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './user-home.component.html',
   styleUrls: ['./user-home.component.css']
 })
-export class UserHomeComponent implements OnInit {
+export class UserHomeComponent implements OnInit,OnDestroy {
 
   userId:number;
   dropdown:String;
@@ -47,6 +47,8 @@ export class UserHomeComponent implements OnInit {
   constructor(private cookiservice:CookieService,private router:Router,private http:Http,private datePipe:DatePipe,private login:LoginService,private modalService: BsModalService
     ,sanitizer: DomSanitizer) {
     this.count=+this.cookiservice.get('count');
+    this.sessionVar="true";
+    this.session();
   }
 
   
@@ -163,7 +165,8 @@ session(){
         setFalse(){
           setTimeout(function() {
             console.log('setting to false');          
-                  this.cookiservice.put('session','false');
+                  //this.cookiservice.put('session','false');
+                  if(typeof this.sessionVar!="undefined")
                   this.sessionVar="false";
                   
                   console.log('sessionvar '+this.cookiservice.get('session'));  
@@ -190,26 +193,27 @@ session(){
   
     @HostListener('document:mouseenter', ['$event']) checkMouse(){
 
-      window.addEventListener('mouseenter', ($event) => {
-        console.log($event);
-      });
+      
     
       
-      this.cookiservice.put('session','true');
+      //this.cookiservice.put('session','true');
+      if(typeof this.sessionVar!="undefined")
       this.sessionVar="true";
       
       console.log('sessionvar '+this.cookiservice.get('session'));                
     }
       @HostListener('document:mouseleave', ['$event']) checkMouseLeave(){
       
-        this.cookiservice.put('session','true');
+        //this.cookiservice.put('session','true');
+        if(typeof this.sessionVar!="undefined")
         this.sessionVar="true";
         
         console.log('sessionvar '+this.cookiservice.get('session'));                
       }
       @HostListener('click',['$event']) clickEvent(elem){
       
-        this.cookiservice.put('session','true');
+        //this.cookiservice.put('session','true');
+        if(typeof this.sessionVar!="undefined")
         this.sessionVar="true";      
         console.log('sessionvar '+this.cookiservice.get('session'));                
       }
@@ -220,7 +224,8 @@ session(){
       
 
       keypress(e: KeyboardEvent) {
-        this.cookiservice.put('session','true');
+        //this.cookiservice.put('session','true');
+        if(typeof this.sessionVar!="undefined")
         this.sessionVar="true";
         console.log('sessionvar '+this.cookiservice.get('session'));                
       }
@@ -236,7 +241,19 @@ this.dropdown=this.cookiservice.get('username');
 this.getNotifications();
 console.log(this.dropdown);
 
-this.session();
+//this.session();
+  }
+
+  public ngOnDestroy() : void {
+
+    this.sessionVar=undefined;
+    console.log( "Child :: ngOnDestroy" );
+
+}
+  destroy(){
+    console.log('got call');
+    this.ngOnDestroy();
+
   }
 
 }

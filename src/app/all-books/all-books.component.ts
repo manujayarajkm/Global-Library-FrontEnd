@@ -32,9 +32,7 @@ export class AllBooksComponent implements OnInit {
   empty:String;
   p: number = 1;
     collection: Book[]; 
-    bookshelf: string[] = ['Nalukettu',
-  'Harry Potter','percy','Davinci Code','Sherlok','IT','Alchemist'
-  ]
+     bookshelf =[];
 
 
 
@@ -59,11 +57,18 @@ export class AllBooksComponent implements OnInit {
       }
       console.log(this.books);
         
-
+      this.addbookNames();
 
       }
     )
 
+  }
+
+  addbookNames(){
+    for(let book of this.books){
+      console.log(book.title);
+      this.bookshelf.push(book.title.toString());
+    }
   }
 
   borrowBook(bookId){
@@ -147,4 +152,8 @@ interface Book{
   bookId:number
   rating:number;
 
+}
+
+interface bb{
+  title:String;
 }
