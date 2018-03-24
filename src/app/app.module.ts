@@ -17,6 +17,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
 import { NgProgressModule } from 'ngx-progressbar';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import * as $ from 'jquery';
 
 
@@ -192,7 +193,8 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     MomentModule,
     NgIdleKeepaliveModule.forRoot(),
     HttpClientModule,
-    NgProgressModule
+    NgProgressModule,
+    TypeaheadModule.forRoot()
 
   ],
   
