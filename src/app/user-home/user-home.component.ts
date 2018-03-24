@@ -1,10 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostListener,TemplateRef,SecurityContext} from '@angular/core';
 import {CookieService} from 'ngx-cookie';
 import {Router} from '@angular/router';
 import {Http,Response} from '@angular/http';
 import { DatePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import{LoginService} from '../login.service'
+import{LoginService} from '../login.service';
+import {SessionService} from '../session.service';
+import { Observable } from 'rxjs/Observable';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 
 @Component({
@@ -26,17 +32,24 @@ export class UserHomeComponent implements OnInit {
   matter:String;
   duedate:Date;
   hires:Hire[];
-  constructor(private cookiservice:CookieService,private router:Router,private http:Http,private datePipe:DatePipe,private login:LoginService) {
+  idleState = 'Not started.';
+  timedOut = false;
+  lastPing?: Date = null;
+  sessionVar:String;
+  modalRef: BsModalRef;
+  warn:String;
+  dismissible = true;
+  
+  
+
+
+
+  constructor(private cookiservice:CookieService,private router:Router,private http:Http,private datePipe:DatePipe,private login:LoginService,private modalService: BsModalService
+    ,sanitizer: DomSanitizer) {
     this.count=+this.cookiservice.get('count');
   }
 
-  logout(){
-
-    this.cookiservice.removeAll();
-    alert("You have successfully logged out")
-    this.router.navigate(['']);
-    location.reload();
-  }
+  
   getNotifications(){
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
@@ -113,11 +126,117 @@ export class UserHomeComponent implements OnInit {
 
   }
 
+
+
+//session*********
+
+session(){
+  setTimeout(function() {
+    console.log('inside settimeout '+this.sessionVar);
+    //this.sessionVar=this.cookiservice.get('session');
+          if(this.sessionVar=='false'){
+            //alert('your session is going to expire in 10 seconds');
+        this.warn='Your session is going to expire in 5 seconds';
+            this.checkTimeout();
+          }
+          else{
+            console.log('calling setfalse');          
+            this.setFalse();
+          }
+      }.bind(this), 5000);
+     }
+  
+     checkTimeout(){
+      setTimeout(function() {
+        //this.sessionvar=this.cookiservice.get('session');
+        console.log('session var near logout '+this.sessionVar);
+              if(this.sessionVar=='false'){
+                
+                this.logout();
+              }
+              else{
+                this.warn='';
+                this.session();
+              }
+          }.bind(this), 5000);
+        }
+        setFalse(){
+          setTimeout(function() {
+            console.log('setting to false');          
+                  this.cookiservice.put('session','false');
+                  this.sessionVar="false";
+                  
+                  console.log('sessionvar '+this.cookiservice.get('session'));  
+                  this.warn='';
+                  this.session();              
+              }.bind(this), 6000);
+            }
+  
+        logout(){
+          
+          this.cookiservice.remove('count');
+          this.cookiservice.remove('username');
+          this.cookiservice.remove('dropdown');
+          this.cookiservice.remove('userId');
+          this.cookiservice.remove('adminId');
+          this.cookiservice.remove('loginId');
+          this.cookiservice.remove('dash');
+          
+             // this.cookiservice.removeAll();
+              alert("You have successfully logged out");
+              this.router.navigate(['']);
+              location.reload();
+            }
+  
+    @HostListener('document:mouseenter', ['$event']) checkMouse(){
+
+      window.addEventListener('mouseenter', ($event) => {
+        console.log($event);
+      });
+    
+      
+      this.cookiservice.put('session','true');
+      this.sessionVar="true";
+      
+      console.log('sessionvar '+this.cookiservice.get('session'));                
+    }
+      @HostListener('document:mouseleave', ['$event']) checkMouseLeave(){
+      
+        this.cookiservice.put('session','true');
+        this.sessionVar="true";
+        
+        console.log('sessionvar '+this.cookiservice.get('session'));                
+      }
+      @HostListener('click',['$event']) clickEvent(elem){
+      
+        this.cookiservice.put('session','true');
+        this.sessionVar="true";      
+        console.log('sessionvar '+this.cookiservice.get('session'));                
+      }
+  
+  
+      @HostListener('document:keydown', ['$event'])
+
+      
+
+      keypress(e: KeyboardEvent) {
+        this.cookiservice.put('session','true');
+        this.sessionVar="true";
+        console.log('sessionvar '+this.cookiservice.get('session'));                
+      }
+
+//***********
+
+onClosed(dismissedAlert: any): void {
+}
+
   ngOnInit() {
     this.myHires();
 this.dropdown=this.cookiservice.get('username');
 this.getNotifications();
 console.log(this.dropdown);
+
+this.session();
   }
 
 }

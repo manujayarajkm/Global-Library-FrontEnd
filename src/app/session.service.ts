@@ -1,12 +1,20 @@
 import { Injectable ,HostListener} from '@angular/core';
 import{CookieService} from 'ngx-cookie';
 import{Router} from '@angular/router';
+import { Subject } from 'rxjs/Subject';
+
 
 @Injectable()
 export class SessionService {
 
   sessionVar:String;
-  constructor(private cookiservice:CookieService,private router:Router) { }
+  constructor(private cookiservice:CookieService,private router:Router) {
+
+    window.addEventListener('keydown', (event) => {
+      console.dir(event);
+    });
+  
+   }
 
   session(){
     setTimeout(function() {
@@ -58,6 +66,11 @@ export class SessionService {
               }
     
       @HostListener('document:mouseenter', ['$event']) checkMouse(){
+
+        window.addEventListener('mouseenter', ($event) => {
+          console.log($event);
+        });
+      
         
         this.cookiservice.put('session','true');
         this.sessionVar="true";
@@ -80,10 +93,15 @@ export class SessionService {
     
     
         @HostListener('document:keydown', ['$event'])
+
+        
+
         keypress(e: KeyboardEvent) {
           this.cookiservice.put('session','true');
           this.sessionVar="true";
           console.log('sessionvar '+this.cookiservice.get('session'));                
         }
+
+      
 
 }

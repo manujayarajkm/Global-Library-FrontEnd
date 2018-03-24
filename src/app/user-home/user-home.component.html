@@ -1,4 +1,10 @@
 <div class="container">
+
+    <div *ngIf=warn>
+        <alert type='danger' [dismissible]="dismissible" (onClosed)="onClosed(alert)">{{ warn }}</alert>
+    
+      </div>
+      
     <div class="itemset" [ngsRevealSet]="{reset:true}" [ngsSelector]="'.item'">
   <div class="row">
     <div class="col-md-6 col-sm-6 ">
@@ -112,6 +118,8 @@
                 </div>
               </div>
 </div>
+
+
 
 
 
