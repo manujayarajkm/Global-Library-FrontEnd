@@ -145,7 +145,7 @@ session(){
             console.log('calling setfalse');          
             this.setFalse();
           }
-      }.bind(this), 5000);
+      }.bind(this), 10000);
      }
   
      checkTimeout(){
@@ -160,7 +160,7 @@ session(){
                 this.warn='';
                 this.session();
               }
-          }.bind(this), 5000);
+          }.bind(this), 10000);
         }
         setFalse(){
           setTimeout(function() {
@@ -172,7 +172,7 @@ session(){
                   console.log('sessionvar '+this.cookiservice.get('session'));  
                   this.warn='';
                   this.session();              
-              }.bind(this), 6000);
+              }.bind(this), 10000);
             }
   
         logout(){

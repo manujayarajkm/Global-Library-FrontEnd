@@ -33,6 +33,7 @@
     "angular-web-storage": "^2.0.0",
     "angular-webstorage-service": "^1.0.2",
     "angular2-moment": "^1.8.0",
+    "angular4-files-upload": "^1.0.2",
     "core-js": "^2.4.1",
     "datatables.net": "^1.10.16",
     "datatables.net-dt": "^1.10.16",

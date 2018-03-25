@@ -52,6 +52,22 @@
 
 </div>
 
+
+<div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control"  placeholder="New Name" [(ngModel)]="name" name="name" #Name="ngModel">
+    <div class="alert alert-danger" *ngIf="!name && Name.touched">Required</div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control"  placeholder="New Email" [(ngModel)]="email" name="email" #Email="ngModel">
+    <div class="alert alert-danger" *ngIf="!email && Email.touched">Required</div>
+  </div>
+  <div class="form-group">
+    <label for="pgone">Contact No</label>
+    <input type="number" class="form-control"  placeholder="New Contact No" [(ngModel)]="phone" name="phone" #Phone="ngModel">
+    <div class="alert alert-danger" *ngIf="!phone && Phone.touched">Required</div>
+</div>
 <div class="form-group">
   <label class="btn btn-success">
     upload<input type="file" hidden (change)="upload($event)">
@@ -59,6 +75,12 @@
   <img alt="Bootstrap Image Preview"   src="assets/profilepictures/{{uname}}.jpg" class="img-rounded" style="width:100px,height:100px;" />
 
   </div>
+
+<div>
+<button (click)="updateprofile(name,email,phone)" class="btn btn-primary" [disabled]="!name||!email ||!phone">Update</button>
+</div>
+
+
 <div class='row'>
     <div class="col-sm-12">
         <div class="panel panel-default">

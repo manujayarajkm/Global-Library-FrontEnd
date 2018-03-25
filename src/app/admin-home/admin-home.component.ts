@@ -31,7 +31,7 @@ export class AdminHomeComponent implements OnInit {
 
   addNewBook(title,author,genretest,price,cover){
     console.log(genretest);
-    this.http.get('http://localhost:8080/librarycontroller/addNewBook/'+this.title+'/'+author+'/'+genretest+'/'+price+'/'+cover)
+    this.http.get('http://localhost:8080/librarycontroller/addNewBook/'+this.title+'/'+author+'/'+genretest+'/'+price+'/'+this.cookiservice.get('filename'))
     .subscribe(
 
       (res:Response)=>{
@@ -50,6 +50,28 @@ export class AdminHomeComponent implements OnInit {
     alert("You have successfully logged out")
     this.router.navigate(['']);
     location.reload();
+  }
+
+  upload(event){
+    alert('inside upload');
+    let elem=event.target;
+    console.log(elem);
+    if(elem.files.length>0){
+      console.log(elem.files[0]);
+      console.log(elem.files[0].name);
+      this.cookiservice.put('filename',elem.files[0].name.slice(0,elem.files[0].name.indexOf('.')));
+      console.log(this.cookiservice.get('filename'));
+      let formData=new FormData();
+      formData.append('name',elem.files[0].name.slice(0,elem.files[0].name.indexOf('.')));
+      formData.append('file',elem.files[0]);
+      this.http.post('http://localhost:8080/adminController/upload',formData)
+      .subscribe((res:Response)=>{
+        const message=res.text();
+        console.log(message);
+        //location.reload();
+        this.cover=elem.files[0].name;
+      })
+    }
   }
 
   ngOnInit() {

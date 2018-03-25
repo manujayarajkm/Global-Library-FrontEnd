@@ -1,37 +1,51 @@
 <div class="container">
+  <h4 class="text-center"> Profile Update</h4>
   <div class="row">
-    <div class="col-md-12">
-      <table  class="table" id="history">
-        <thead>
-          <tr>
-            <th><button id='s1' (click)="toggleimage('seat1')" [disabled]=expr1><img  src="assets/images/{{seat1}}" class="img-rounded" style="width:50px;height:50px;" />S1</button></th>
-            <th> <button id='s2'(click)="toggleimage('seat2')"><img  src="assets/images/{{seat2}}" class="img-rounded" style="width:50px;height:50px;" />S2</button>    
-            </th>
-            <th><button id='s3' (click)="toggleimage('seat3')"><img  src="assets/images/{{seat3}}" class="img-rounded" style="width:50px;height:50px;" />S3</button></th>
-            <th><button id='s4' (click)="toggleimage('seat4')"><img  src="assets/images/{{seat4}}" class="img-rounded" style="width:50px;height:50px;" />S4</button></th>
-            <th><button id='s5' (click)="toggleimage('seat5')"><img  src="assets/images/{{seat5}}" class="img-rounded" style="width:50px;height:50px;" />S5</button></th>
-          </tr>
-        </thead>
-        <tbody>
-          
-            <tr>
-              <th><button (click)="toggleimage('seat6')"><img  src="assets/images/{{seat6}}" class="img-rounded" style="width:50px;height:50px;" />S6</button></th>
-              <th> <button (click)="toggleimage('seat7')"><img  src="assets/images/{{seat7}}" class="img-rounded" style="width:50px;height:50px;" />S7</button>    
-              </th>
-              <th><button (click)="toggleimage('seat8')"><img  src="assets/images/{{seat8}}" class="img-rounded" style="width:50px;height:50px;" />S8</button></th>
-              <th><button (click)="toggleimage('seat9')"><img  src="assets/images/{{seat9}}" class="img-rounded" style="width:50px;height:50px;" />S9</button></th>
-              <th><button (click)="toggleimage('seat10')"><img  src="assets/images/{{seat10}}" class="img-rounded" style="width:50px;height:50px;" />S10</button></th>
-            
-          </tr>
-        </tbody>
-      </table>
-      <button (click)="submit()" class="btn btn-primary">submit</button>
-    </div>
-    <p><strong>{{idleState}}</strong></p>
-<p *ngIf="lastPing"><small>Last keepalive ping <strong>{{lastPing | amTimeAgo}}</strong></small></p>
-<button (click)="reset()" *ngIf="timedOut">Restart</button>
+    <div class="col-md-12" >
+			<div class="row">
+				<div class="col-md-6">
+
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control"  placeholder="New Name" [(ngModel)]="name" name="name" #Name="ngModel">
+    <div class="alert alert-danger" *ngIf="!name && Name.touched">Required</div>
   </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control"  placeholder="New Email" [(ngModel)]="email" name="email" #Email="ngModel">
+    <div class="alert alert-danger" *ngIf="!email && Email.touched">Required</div>
+  </div>
+  <div class="form-group">
+    <label for="pgone">Contact No</label>
+    <input type="number" class="form-control"  placeholder="New Contact No" [(ngModel)]="phone" name="phone" #Phone="ngModel">
+    <div class="alert alert-danger" *ngIf="!phone && Phone.touched">Required</div>
+    <div class="form-group">
+      <label class="btn btn-success">
+        upload<input type="file" hidden (change)="upload($event)">
+      </label>
+    
+      </div>
+
+      <ng4-files-click (filesSelect)="filesSelect($event)">
+        <span>Click me to upload</span>
+      </ng4-files-click>
+
+      <ng4-files-drop (filesSelect)="filesSelect($event)">
+        <div style="display: inline-block; height: 100px; width: 100px; background-color: gray">
+          {{selectedFiles}}
+        </div>
+      </ng4-files-drop>
+
+  </div>
+  <button (click)="updateprofile(name,email,phone)" class="btn btn-primary" [disabled]="!name||!email ||!phone">Update</button>
 </div>
+
+
+</div>
+</div>
+</div>
+</div>
+
 
 
 

@@ -137,6 +137,8 @@
     <input type="text" class="form-control"class="form-control" [(ngModel)]="price" name="price">
     <label for="Cover">Cover:</label>
     <input type="text" class="form-control" [(ngModel)]="cover" cover="password">
+      <label class="btn btn-success"><input type="file" hidden (change)="upload($event)">
+      </label>
     </div>
     
     <div class="modal-footer">

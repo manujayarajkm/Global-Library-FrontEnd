@@ -14,11 +14,11 @@ import {NgsRevealModule} from 'ng-scrollreveal';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import {NgxPaginationModule} from 'ngx-pagination'; 
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { MomentModule } from 'angular2-moment';
 import { NgProgressModule } from 'ngx-progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { Ng4FilesModule } from 'angular4-files-upload';
 import * as $ from 'jquery';
 
 
@@ -192,11 +192,11 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     PaginationModule.forRoot(),
     NgxPaginationModule,
     MomentModule,
-    NgIdleKeepaliveModule.forRoot(),
     HttpClientModule,
     NgProgressModule,
     TypeaheadModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    Ng4FilesModule
 
   ],
   
