@@ -30,10 +30,32 @@
         <td>{{book.genre}}</td>
         <td>{{book.avilableNo}}</td>
         <td>{{book.cover}}</td>
-        <td><button (click)="removeBook(book.bookId)" class="btn btn-primary btn-default" >
+        <td><button (click)="removeBook(book.bookId,template)" class="btn btn-primary btn-default" >
               Remove
+
+              <ng-template #template>
+                  <div class="modal-header">
+                      <h4 class="modal-title pull-left">Warning!</h4>
+                  </div>
+                <div class="modal-body text-center">
+                  <p>Do you want to Remove this member?</p>
+                  <button type="button" class="btn btn-danger" (click)="confirm()" >Yes</button>
+                  <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+                </div>
+              </ng-template>
             </button></td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<div class="container">
+    <div class="col-md-12">
+      <br>
+      <br>
+  
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>

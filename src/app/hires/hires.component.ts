@@ -13,6 +13,7 @@ hires:Hire[];
 queue:String;
 edited:boolean;
 matter:String;
+hirelength:number;
   constructor(private http:Http,private cookiservice:CookieService) { }
 
 
@@ -28,11 +29,11 @@ matter:String;
       if(res.json().length==0){
         this.queue="Currently there are no Hires";
         this.edited=true;
-
+        this.hirelength=0;
         setTimeout(function() {
             this.edited = false;
             console.log(this.edited);
-        }.bind(this), 3000);
+        }.bind(this), 5000);
       }
       else{
     }

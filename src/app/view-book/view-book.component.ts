@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,TemplateRef} from '@angular/core';
 import {Http,Response} from '@angular/http';
+import{CookieService} from 'ngx-cookie';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-view-book',
@@ -9,8 +12,12 @@ import {Http,Response} from '@angular/http';
 export class ViewBookComponent implements OnInit {
 
   books:Book[];
+  modalRef: BsModalRef;
+  message: string;
+  template: TemplateRef<any>;
+  bookId:number;
 
-  constructor(private http:Http) { }
+  constructor(private http:Http,private cookieService:CookieService,private modalService: BsModalService) { }
 
   viewAllBooks(){
     this.http.get('http://localhost:8080/librarycontroller/viewAllBooks')
@@ -27,9 +34,27 @@ export class ViewBookComponent implements OnInit {
     )
 
   }
-  removeBook(bookId){
+  removeBook(bookId,template){
     console.log(bookId);
-    this.http.get('http://localhost:8080/librarycontroller/removeBook'+'/'+bookId)
+    this.cookieService.put('bookid',bookId);
+    this.openModal(template);
+    
+
+  }
+
+
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  
+  confirm(): void {
+    console.log('You are confirmed');
+    this.message = 'Confirmed!';
+    this.bookId=+this.cookieService.get('bookid')
+    console.log('UserId inside remove '+this.bookId);
+    this.modalRef.hide();
+    this.http.get('http://localhost:8080/librarycontroller/removeBook'+'/'+this.bookId)
     .subscribe(
 
       (res:Response)=>{
@@ -39,8 +64,15 @@ export class ViewBookComponent implements OnInit {
         this.viewAllBooks();
       }
     )
-
   }
+  
+  decline(): void {
+    this.message = 'Declined!';
+    console.log('You are declined');
+    
+    this.modalRef.hide();
+  }
+
 
   ngOnInit() {
 
