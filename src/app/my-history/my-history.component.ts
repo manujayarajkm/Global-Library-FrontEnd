@@ -43,14 +43,17 @@ export class MyHistoryComponent implements OnInit {
   }
   savepdf(){
     //alert('acknowledged');
-
+    this.ngProgress.start();
 var doc = new jsPDF("landscape","mm","a4");
 var elem = document.getElementById("history");
 var res=doc.autoTableHtmlToJson(elem);
 doc.autoTable(res.columns,res.rows);
 doc.text(5,200,"Maintained by Manu");
+setTimeout(()=>{
+  this.ngProgress.done();
+  doc.save(this.cookiservice.get('username')+'_History');
+},2000)
 
-doc.save('MyHistory');
 
   }
 

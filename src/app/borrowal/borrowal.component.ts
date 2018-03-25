@@ -13,8 +13,11 @@ export class BorrowalComponent implements OnInit {
 bookId:number;
 books:Book[];
 review:Review[];
+length:number;
+  constructor(private http:Http,private cookiservice:CookieService,private router:Router) { 
+    this.bookId=+this.cookiservice.get('bookId');
 
-  constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
+  }
 
   borrowBook(bookId){
     console.log(bookId);
@@ -64,6 +67,8 @@ review:Review[];
       (res:Response)=>{
       this.review=res.json();
       if(this.review.length==0){
+        this.length=0;
+
       }
       console.log(this.review);
        

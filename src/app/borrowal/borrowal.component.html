@@ -2,21 +2,21 @@
 
 
 
-<div class="container">
-  <h4 class="text-center"> {{books[0].title}}</h4>
+<div class="container" *ngFor="let book of books">
+  <h4 class="text-center"> {{book.title}}</h4>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-4">
         </div>
 				<div class="col-md-4">
-          <h6 class="text-center">{{books[0].author}}</h6>
+          <h6 class="text-center">{{book.author}}</h6>
           <div><rating [(ngModel)]=books[0].rating [max]="max" [readonly]=true ></rating>
-          <h6 >{{books[0].countRating}} Ratings and {{books[0].countReview}} Reviews</h6></div>
-					<img alt="Bootstrap Image Preview" src="assets/images/{{books[0].cover}}" class="img-rounded" style="width:100%;"/>
+          <h6 >{{book.countRating}} Ratings and {{book.countReview}} Reviews</h6></div>
+					<img alt="Bootstrap Image Preview" src="assets/images/{{book.cover}}" class="img-rounded" style="width:100%;"/>
           <br>
           <br>
-          <button type="button" (click)="borrowBook(books[0].bookId)" class="btn btn-primary btn-default" >
+          <button type="button" (click)="borrowBook(book.bookId)" class="btn btn-primary btn-default" >
                 Borrow
               </button>
         </div>
@@ -27,7 +27,7 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container" >
   <h4 class="text-center"> Reviews</h4>
 	<div class="row">
 		<div class="col-md-12">
@@ -40,9 +40,11 @@
           <br>
             <div>
               <ul *ngFor="let rev of review">
-                <li>"{{rev.body}}"-->{{rev.name}}</li>
+                <li><b>"{{rev.body}}"</b>---</li>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{rev.name}}
               </ul>
-            <a routerLink="/review"  ><div *ngIf=!review[0]><h5 class="text-center">No Reviews Yet, Be the first One</h5></div></a>
+            <div *ngIf="length==0"><h5 class="text-center">No Reviews Yet</h5></div>
             </div>
         </div>
 				<div class="col-md-4">

@@ -56,17 +56,21 @@ export class MyQueueComponent implements OnInit {
       console.log(hireId);
       console.log(bookId);
       this.cookiservice.put('bookId',bookId);
-      this.http.get('http://localhost:8080/librarycontroller/bookReturn'+'/'+hireId)
-      .subscribe(
+      this.cookiservice.put('hireid',hireId);
+      // this.http.get('http://localhost:8080/librarycontroller/bookReturn'+'/'+hireId)
+      // .subscribe(
 
-        (res:Response)=>{
-        const message=res.text();
-        this.router.navigate(['review']);
+      //   (res:Response)=>{
+      //   const message=res.text();
+      //   this.router.navigate(['review']);
 
         
 
-        }
-      )
+      //   }
+      // )
+
+             this.router.navigate(['review']);
+
 
     }
 checkdue(){

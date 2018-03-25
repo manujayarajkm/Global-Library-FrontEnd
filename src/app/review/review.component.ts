@@ -14,7 +14,8 @@ export class ReviewComponent implements OnInit {
 bookId:number;
 review:String;
 userId:number;
-public rating: number = 0;
+public rating: number = 1;
+
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
@@ -33,6 +34,17 @@ this.userId=+this.cookiservice.get('userId');
     "rating":rating
   }
   console.log(reviewObj);
+  this.http.get('http://localhost:8080/librarycontroller/bookReturn'+'/'+this.cookiservice.get('hireid'))
+      .subscribe(
+
+        (res:Response)=>{
+        const message=res.text();
+        this.router.navigate(['review']);
+
+        
+
+        }
+      )
   this.http.post('http://localhost:8080/librarycontroller/addReview',reviewObj)
   .subscribe(
 

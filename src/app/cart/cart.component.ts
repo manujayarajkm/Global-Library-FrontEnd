@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
   cart:Cart[];
   empty:String;
   items:number;
+  cartlength:number;
   constructor(private http:Http,private router:Router,private cookiservice:CookieService) { }
 
   cartReview(){
@@ -26,8 +27,10 @@ export class CartComponent implements OnInit {
       (res:Response)=>{
       this.cart=res.json();
       console.log(this.cart);
+      this.cartlength=this.cart.length;
       if(this.cart.length==0){
         this.empty="No items in the cart";
+        this.cartlength=0;
       }
       
 
