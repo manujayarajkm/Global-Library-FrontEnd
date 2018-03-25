@@ -4,8 +4,15 @@
     height: 60px;
     left: 0;
     right: 0;
+    bottom: 0;
     background-color:black;
     text-align: center;
     text-emphasis: true;
     color: white;
+
+    
   }
+
+  html, body {
+    height: 100%;
+}

@@ -22,8 +22,8 @@
         <li><a routerLink="about" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
           true}">About Us</a></li>
 
-        <a routerLink="/notifications"><button type="button" class="btn btn-success btn-sl" *ngIf='userId>0'>
-          <span class="glyphicon glyphicon-bell" aria-hidden="true" *ngIf="count>0 && count!=NaN"></span>{{count}}
+        <a routerLink="/notifications"><button type="button" class="btn btn-success btn-sl" *ngIf='userId>0 && count>0'>
+          <span class="glyphicon glyphicon-bell" aria-hidden="true" *ngIf="count>0 && count!='NaN'"></span>{{count}}
         </button></a>
 
 

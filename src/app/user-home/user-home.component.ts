@@ -241,13 +241,12 @@ this.dropdown=this.cookiservice.get('username');
 this.getNotifications();
 console.log(this.dropdown);
 
-//this.session();
+this.session();
   }
 
   public ngOnDestroy() : void {
 
     this.sessionVar=undefined;
-    console.log( "Child :: ngOnDestroy" );
 
 }
   destroy(){
