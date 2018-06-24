@@ -46,7 +46,6 @@ export class StoreComponent implements OnInit {
 
 console.log('bookid '+bookId);
 
-
     console.log(price,title,author);
     this.userId=+this.cookiservice.get('userId');
 

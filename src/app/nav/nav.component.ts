@@ -47,6 +47,7 @@ export class NavComponent implements OnInit {
   username1:String;
   checkbox:boolean;
   passwordconfirm:String;
+  cartlength:number;
 
 
 
@@ -59,6 +60,7 @@ this.adminId=+this.cookiservice.get('adminId');
 this.loginId=+this.cookiservice.get('loginId');
 this.dash=+this.cookiservice.get('dash');
 this.count=+this.cookiservice.get('count');
+this.cartlength=+this.cookiservice.get('cartlength');
 
   }
 
@@ -247,6 +249,10 @@ this.count=+this.cookiservice.get('count');
     this.storage.set('usernames',username);
     this.data['usernames']= this.storage.get('usernames');
     console.log(this.data);
+  }
+
+  timeexceed(){
+    console.log('inside time limit');
   }
 
   ngOnInit() {

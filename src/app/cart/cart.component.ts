@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   empty:String;
   items:number;
   cartlength:number;
+  cartitems=[];
   constructor(private http:Http,private router:Router,private cookiservice:CookieService) { }
 
   cartReview(){
@@ -28,9 +29,19 @@ export class CartComponent implements OnInit {
       this.cart=res.json();
       console.log(this.cart);
       this.cartlength=this.cart.length;
+      this.cookiservice.put('cartlength',String(this.cart.length));
+      console.log('cart length is'+this.cookiservice.get('cartlength'));
       if(this.cart.length==0){
         this.empty="No items in the cart";
         this.cartlength=0;
+      }
+      if(this.cartlength>0){
+        console.log('array'+this.cartitems.length);
+        for(let s of this.cart){
+          this.cartitems.push(s.cartId);
+          console.log(s.cartId);
+        }
+        console.log('cartitems'+this.cartitems);
       }
       
 
@@ -102,6 +113,28 @@ removeone(cartId,bookId){
 gotostore(){
   this.router.navigate(['store']);
   //location.reload();
+}
+
+timeexceed(){
+  console.log('inside time limit');
+  this.abort();
+}
+
+abort(){
+  console.log('abort');
+  console.log(this.userId);
+  this.http.get('http://localhost:8081/librarycontroller/clearPurchase'+'/'+this.userId)
+  .subscribe(
+
+    (res:Response)=>{
+    const message=res.text();
+    console.log(message);
+    this.router.navigate(['userhome']);
+    //location.reload();
+    
+
+    }
+  )
 }
 
   ngOnInit() {

@@ -19,6 +19,8 @@ import { NgProgressModule } from 'ngx-progressbar';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { Ng4FilesModule } from 'angular4-files-upload';
+import { CountDownModule } from 'ng2-analogical-countdown';    
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import * as $ from 'jquery';
 
 
@@ -63,6 +65,7 @@ import { SessionService } from './session.service';
 import { CustomhttpService } from './customhttp.service';
 import{ErrorNotifierService} from './error.notifier.service'
 import { HttpClientModule } from '@angular/common/http';
+import { TestingComponent } from './testing/testing.component';
 
 const appRoutes: Routes=[
   {path:'',component:LibraryLaunchComponent},
@@ -127,6 +130,7 @@ const appRoutes: Routes=[
   canActivate:[AuthGuard],
   component:PurchaseHistoryComponent},
   {path:'deepsearch',component:DeepSearchComponent},
+  {path:'testing',component:TestingComponent},
   {path:'**',component:ErrorComponent}
 
 
@@ -168,6 +172,7 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     ForcheckDirective,
     ErrorComponent,
     SortByPipe,
+    TestingComponent,
   ],
   imports: [
     BrowserModule,
@@ -189,8 +194,9 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     NgProgressModule,
     TypeaheadModule.forRoot(),
     AlertModule.forRoot(),
-    Ng4FilesModule
-
+    Ng4FilesModule,
+    CountDownModule,
+    BrowserAnimationsModule
   ],
   
   providers: [DatePipe, LoginService, AuthGuard, UtilService,SortByPipe, AdminGuard, AdminService, LogoutService, SessionService
