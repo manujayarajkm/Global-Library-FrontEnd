@@ -15,6 +15,7 @@ bookId:number;
 review:String;
 userId:number;
 public rating: number = 1;
+formRating:number;
 
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
@@ -34,7 +35,7 @@ this.userId=+this.cookiservice.get('userId');
     "rating":rating
   }
   console.log(reviewObj);
-  this.http.get('http://localhost:8080/librarycontroller/bookReturn'+'/'+this.cookiservice.get('hireid'))
+  this.http.get('http://localhost:8081/librarycontroller/bookReturn'+'/'+this.cookiservice.get('hireid'))
       .subscribe(
 
         (res:Response)=>{
@@ -45,7 +46,7 @@ this.userId=+this.cookiservice.get('userId');
 
         }
       )
-  this.http.post('http://localhost:8080/librarycontroller/addReview',reviewObj)
+  this.http.post('http://localhost:8081/librarycontroller/addReview',reviewObj)
   .subscribe(
 
     (res:Response)=>{

@@ -18,13 +18,15 @@ export class StoreComponent implements OnInit {
   check:number;
   sortField:Array<string>=["title","genre","price"];
   sortDirection:string='asc';
+  sortField2:String;
+  loadervar:boolean;
 
-  constructor(private http:Http,private cookiservice:CookieService,private router:Router,private utilService:UtilService,sortBy:SortByPipe) { }
+  constructor(private http:Http,private cookiservice:CookieService,private router:Router,public utilService:UtilService,sortBy:SortByPipe) { }
 
 
   browseAllBooks(){
     
-    this.http.get('http://localhost:8080/librarycontroller/viewAllBooks')
+    this.http.get('http://localhost:8081/librarycontroller/viewAllBooks')
     .subscribe(
 
       (res:Response)=>{
@@ -48,7 +50,7 @@ console.log('bookid '+bookId);
     console.log(price,title,author);
     this.userId=+this.cookiservice.get('userId');
 
-  this.http.get('http://localhost:8080/librarycontroller/addToCart'+'/'+bookId+'/'+this.userId+'/'+title+'/'+author+'/'+price)
+  this.http.get('http://localhost:8081/librarycontroller/addToCart'+'/'+bookId+'/'+this.userId+'/'+title+'/'+author+'/'+price)
   .subscribe(
 
     (res:Response)=>{

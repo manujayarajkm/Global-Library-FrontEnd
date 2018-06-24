@@ -31,6 +31,7 @@
         "assets/js/jszip.min.js",
         "assets/js/pdfmake.min.js",
         "assets/js/vfs_fonts.js"
+       
 
       ],
       "environmentSource": "environments/environment.ts",

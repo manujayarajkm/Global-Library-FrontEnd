@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class AcknowledgedComponent implements OnInit {
 
 userId:number;
-notifications:Notification[];
+notifications:Notifications[];
 count:number;
 empty:String;
   constructor(private http:Http,private cookieService:CookieService,private router:Router) { }
@@ -19,7 +19,7 @@ empty:String;
   getNotifications(){
     this.userId=+this.cookieService.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/getAckNotifications/'+''+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/getAckNotifications/'+''+this.userId)
     .subscribe(
 
       (res:Response)=>{

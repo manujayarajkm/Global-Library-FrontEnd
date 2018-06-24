@@ -35,7 +35,6 @@ import { MyHistoryComponent } from './my-history/my-history.component';
 import { HiresComponent } from './hires/hires.component';
 import { AllMembersComponent } from './all-members/all-members.component';
 import { ViewBookComponent } from './view-book/view-book.component';
-import { ForTestingComponent } from './for-testing/for-testing.component';
 import { AboutComponent } from './about/about.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { AcknowledgedComponent } from './acknowledged/acknowledged.component';
@@ -59,7 +58,6 @@ import { UtilService } from './util.service';
 import { SortByPipe } from './sort-by.pipe';
 import { AdminGuard } from './admin.guard';
 import { AdminService } from './admin.service';
-import { BootstrapTestComponent } from './bootstrap-test/bootstrap-test.component';
 import { LogoutService } from './logout.service';
 import { SessionService } from './session.service';
 import { CustomhttpService } from './customhttp.service';
@@ -92,9 +90,7 @@ const appRoutes: Routes=[
   {path:'viewBooks',
   canActivate:[AdminGuard],
   component:ViewBookComponent},
-  {path:'imagetest',component:ForTestingComponent},
   {path:'about',component:AboutComponent},
-  {path:'test',component:ForTestingComponent},
   {path:'notifications',
   canActivate:[AuthGuard],
   component:NotificationsComponent},
@@ -131,7 +127,6 @@ const appRoutes: Routes=[
   canActivate:[AuthGuard],
   component:PurchaseHistoryComponent},
   {path:'deepsearch',component:DeepSearchComponent},
-  {path:'bootstrap',component:BootstrapTestComponent},
   {path:'**',component:ErrorComponent}
 
 
@@ -155,7 +150,6 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     HiresComponent,
     AllMembersComponent,
     ViewBookComponent,
-    ForTestingComponent,
     AboutComponent,
     NotificationsComponent,
     AcknowledgedComponent,
@@ -174,7 +168,6 @@ export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestO
     ForcheckDirective,
     ErrorComponent,
     SortByPipe,
-    BootstrapTestComponent
   ],
   imports: [
     BrowserModule,

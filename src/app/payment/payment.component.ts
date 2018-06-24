@@ -13,6 +13,7 @@ export class PaymentComponent implements OnInit {
   userId:number;
   cart:Cart[];
   total:number=0;
+  empty:String;
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
@@ -22,7 +23,7 @@ export class PaymentComponent implements OnInit {
     this.cookiservice.remove('items');
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/cartReview'+'/'+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/cartReview'+'/'+this.userId)
     .subscribe(
 
       (res:Response)=>{
@@ -40,7 +41,7 @@ export class PaymentComponent implements OnInit {
   abort(){
     console.log('abort');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/clearPurchase'+'/'+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/clearPurchase'+'/'+this.userId)
     .subscribe(
 
       (res:Response)=>{

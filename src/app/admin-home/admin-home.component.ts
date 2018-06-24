@@ -21,6 +21,7 @@ export class AdminHomeComponent implements OnInit {
   userId:number;
   dropdown:String;
   dash:number=110;
+  genretest:String;
 
   constructor(private cookiservice:CookieService,private router:Router,private http:Http) {
 
@@ -31,7 +32,7 @@ export class AdminHomeComponent implements OnInit {
 
   addNewBook(title,author,genretest,price,cover){
     console.log(genretest);
-    this.http.get('http://localhost:8080/librarycontroller/addNewBook/'+this.title+'/'+author+'/'+genretest+'/'+price+'/'+this.cookiservice.get('filename'))
+    this.http.get('http://localhost:8081/librarycontroller/addNewBook/'+this.title+'/'+author+'/'+genretest+'/'+price+'/'+this.cookiservice.get('filename'))
     .subscribe(
 
       (res:Response)=>{
@@ -64,7 +65,7 @@ export class AdminHomeComponent implements OnInit {
       let formData=new FormData();
       formData.append('name',elem.files[0].name.slice(0,elem.files[0].name.indexOf('.')));
       formData.append('file',elem.files[0]);
-      this.http.post('http://localhost:8080/adminController/upload',formData)
+      this.http.post('http://localhost:8081/adminController/upload',formData)
       .subscribe((res:Response)=>{
         const message=res.text();
         console.log(message);

@@ -11,7 +11,7 @@
         </div>
 				<div class="col-md-4">
           <h6 class="text-center">{{book.author}}</h6>
-          <div><rating [(ngModel)]=books[0].rating [max]="max" [readonly]=true ></rating>
+          <div><rating [(ngModel)]=books[0].rating [max]=5 [readonly]=true ></rating>
           <h6 >{{book.countRating}} Ratings and {{book.countReview}} Reviews</h6></div>
 					<img alt="Bootstrap Image Preview" src="assets/images/{{book.cover}}" class="img-rounded" style="width:100%;"/>
           <br>

@@ -32,7 +32,7 @@ export class MyQueueComponent implements OnInit {
     myHires(){
 
       console.log(this.cookiservice.get('userId'));
-      this.http.get('http://localhost:8080/librarycontroller/myHires'+'/'+this.cookiservice.get('userId'))
+      this.http.get('http://localhost:8081/librarycontroller/myHires'+'/'+this.cookiservice.get('userId'))
       .subscribe(
 
         (res:Response)=>{
@@ -57,7 +57,7 @@ export class MyQueueComponent implements OnInit {
       console.log(bookId);
       this.cookiservice.put('bookId',bookId);
       this.cookiservice.put('hireid',hireId);
-      // this.http.get('http://localhost:8080/librarycontroller/bookReturn'+'/'+hireId)
+      // this.http.get('http://localhost:8081/librarycontroller/bookReturn'+'/'+hireId)
       // .subscribe(
 
       //   (res:Response)=>{
@@ -98,7 +98,7 @@ checkDuplicate(title,bookId,dueDate){
   this.matter=title+" is due on "+dueDate;
   console.log("Matter "+this.matter);
   this.userId=+this.cookiservice.get('userId');
-  this.http.get('http://localhost:8080/librarycontroller/checkDuplicate'+'/'+bookId+'/'+this.matter+'/'+this.userId)
+  this.http.get('http://localhost:8081/librarycontroller/checkDuplicate'+'/'+bookId+'/'+this.matter+'/'+this.userId)
   .subscribe(
 
     (res:Response)=>{

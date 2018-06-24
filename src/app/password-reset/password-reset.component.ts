@@ -20,7 +20,7 @@ export class PasswordResetComponent implements OnInit {
 
     console.log(uname);
     console.log(email);
-    this.http.get('http://localhost:8080/librarycontroller/getUid/'+uname)
+    this.http.get('http://localhost:8081/librarycontroller/getUid/'+uname)
     .subscribe(
 
       (res:Response)=>{
@@ -48,7 +48,7 @@ export class PasswordResetComponent implements OnInit {
       "email":email
     }
     console.log('email object'+emailObj);
-    this.http.post('http://localhost:8080/librarycontroller/sendMail',emailObj)
+    this.http.post('http://localhost:8081/librarycontroller/sendMail',emailObj)
     .subscribe(
 
       (res:Response)=>{

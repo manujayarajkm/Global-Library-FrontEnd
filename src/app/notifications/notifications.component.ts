@@ -23,7 +23,7 @@ empty:String;
   getNotifications(){
     this.userId=+this.cookieService.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/getMyNotifications/'+''+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/getMyNotifications/'+''+this.userId)
     .subscribe(
 
       (res:Response)=>{
@@ -41,7 +41,7 @@ empty:String;
   }
   acknowledge(notificationId){
     console.log(notificationId);
-    this.http.get('http://localhost:8080/librarycontroller/removeNotifications/'+''+notificationId)
+    this.http.get('http://localhost:8081/librarycontroller/removeNotifications/'+''+notificationId)
     .subscribe(
 
       (res:Response)=>{

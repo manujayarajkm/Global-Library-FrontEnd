@@ -43,6 +43,10 @@ export class NavComponent implements OnInit {
   data:String[];
   username2:String;
   password2:String;
+  password1:String;
+  username1:String;
+  checkbox:boolean;
+  passwordconfirm:String;
 
 
 
@@ -74,7 +78,7 @@ this.count=+this.cookiservice.get('count');
       "password":password
     }
     console.log(loginOnj);
-    this.http.post('http://localhost:8080/librarycontroller/memberLogin',loginOnj
+    this.http.post('http://localhost:8081/librarycontroller/memberLogin',loginOnj
 
   )
     .subscribe(
@@ -151,7 +155,7 @@ this.count=+this.cookiservice.get('count');
   }
 
   registerUser(name,email,phone,username,password){
-    this.http.get('http://localhost:8080/librarycontroller/addNewMember/'+this.name+'/'+email+'/'+username+'/'+password+'/'+phone)
+    this.http.get('http://localhost:8081/librarycontroller/addNewMember/'+this.name+'/'+email+'/'+username+'/'+password+'/'+phone)
     .subscribe(
 
       (res:Response)=>{
@@ -167,7 +171,7 @@ this.count=+this.cookiservice.get('count');
 
   checkUsername(username){
     console.log(username);
-    this.http.get('http://localhost:8080/librarycontroller/checkUsername'+'/'+username)
+    this.http.get('http://localhost:8081/librarycontroller/checkUsername'+'/'+username)
     .subscribe(
 
       (res:Response)=>{
@@ -194,7 +198,7 @@ this.count=+this.cookiservice.get('count');
     this.userId=+this.cookiservice.get('userId');
     this.items=+this.cookiservice.get('items');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/getMyNotifications/'+''+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/getMyNotifications/'+''+this.userId)
     .subscribe(
 
       (res:Response)=>{

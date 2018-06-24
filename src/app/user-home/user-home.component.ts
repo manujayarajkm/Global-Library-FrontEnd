@@ -39,6 +39,7 @@ export class UserHomeComponent implements OnInit,OnDestroy {
   modalRef: BsModalRef;
   warn:String;
   dismissible = true;
+  alert:String;
   
   
 
@@ -55,7 +56,7 @@ export class UserHomeComponent implements OnInit,OnDestroy {
   getNotifications(){
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/getMyNotifications/'+''+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/getMyNotifications/'+''+this.userId)
     .subscribe(
 
       (res:Response)=>{
@@ -94,7 +95,7 @@ export class UserHomeComponent implements OnInit,OnDestroy {
     this.matter=title+" is due on "+dueDate;
     console.log("Matter "+this.matter);
     this.userId=+this.cookiservice.get('userId');
-    this.http.get('http://localhost:8080/librarycontroller/checkDuplicate'+'/'+bookId+'/'+this.matter+'/'+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/checkDuplicate'+'/'+bookId+'/'+this.matter+'/'+this.userId)
     .subscribe(
 
       (res:Response)=>{
@@ -108,7 +109,7 @@ export class UserHomeComponent implements OnInit,OnDestroy {
   myHires(){
 
     console.log(this.cookiservice.get('userId'));
-    this.http.get('http://localhost:8080/librarycontroller/myHires'+'/'+this.cookiservice.get('userId'))
+    this.http.get('http://localhost:8081/librarycontroller/myHires'+'/'+this.cookiservice.get('userId'))
     .subscribe(
 
       (res:Response)=>{

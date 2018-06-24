@@ -21,7 +21,7 @@ export class CartComponent implements OnInit {
 
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/cartReview'+'/'+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/cartReview'+'/'+this.userId)
     .subscribe(
 
       (res:Response)=>{
@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
   }
   removeitem(cartId,bookId,count){
     console.log(cartId,bookId,count);
-    this.http.get('http://localhost:8080/librarycontroller/removeFromCart'+'/'+cartId+'/'+count+'/'+bookId)
+    this.http.get('http://localhost:8081/librarycontroller/removeFromCart'+'/'+cartId+'/'+count+'/'+bookId)
     .subscribe(
 
       (res:Response)=>{
@@ -60,7 +60,7 @@ export class CartComponent implements OnInit {
 addone(cartId,bookId){
 
   console.log(cartId,bookId);
-  this.http.get('http://localhost:8080/librarycontroller/incrementItem'+'/'+cartId+'/'+bookId)
+  this.http.get('http://localhost:8081/librarycontroller/incrementItem'+'/'+cartId+'/'+bookId)
   .subscribe(
 
     (res:Response)=>{
@@ -81,7 +81,7 @@ addone(cartId,bookId){
 }
 removeone(cartId,bookId){
   console.log(cartId,bookId);
-  this.http.get('http://localhost:8080/librarycontroller/decrementItem'+'/'+cartId+'/'+bookId)
+  this.http.get('http://localhost:8081/librarycontroller/decrementItem'+'/'+cartId+'/'+bookId)
   .subscribe(
 
     (res:Response)=>{
@@ -118,5 +118,6 @@ interface Cart{
   author:String,
   count: number,
   price:number,
-  bookId:number
+  bookId:number,
+  subTotal:number;
 }

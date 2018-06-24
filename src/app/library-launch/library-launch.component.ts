@@ -29,7 +29,7 @@ this.dropdown=this.cookieService.get('dropdown');
   }
 
   registerUser(name,email,phone,username,password){
-    this.http.get('http://localhost:8080/librarycontroller/addNewMember/'+this.name+'/'+email+'/'+username+'/'+password+'/'+phone)
+    this.http.get('http://localhost:8081/librarycontroller/addNewMember/'+this.name+'/'+email+'/'+username+'/'+password+'/'+phone)
     .subscribe(
 
       (res:Response)=>{
@@ -48,7 +48,7 @@ this.dropdown=this.cookieService.get('dropdown');
       "userName":this.username,
       "password":this.password
     }
-    this.http.post('http://localhost:8080/librarycontroller/memberLogin',loginOnj
+    this.http.post('http://localhost:8081/librarycontroller/memberLogin',loginOnj
 
   )
     .subscribe(
@@ -81,7 +81,7 @@ this.dropdown=this.cookieService.get('dropdown');
   }
 
   getNewBooks(){
-    this.http.get('http://localhost:8080/librarycontroller/viewNewBooks')
+    this.http.get('http://localhost:8081/librarycontroller/viewNewBooks')
     .subscribe(
 
       (res:Response)=>{
@@ -103,7 +103,7 @@ this.dropdown=this.cookieService.get('dropdown');
   }
   getReviews(bookId){
     console.log('id after function call'+bookId);
-    this.http.get('http://localhost:8080/librarycontroller/getReviews'+'/'+bookId)
+    this.http.get('http://localhost:8081/librarycontroller/getReviews'+'/'+bookId)
     .subscribe(
 
       (res:Response)=>{
@@ -126,7 +126,7 @@ this.dropdown=this.cookieService.get('dropdown');
 
   checkUsername(username){
     console.log(username);
-    this.http.get('http://localhost:8080/librarycontroller/checkUsername'+'/'+username)
+    this.http.get('http://localhost:8081/librarycontroller/checkUsername'+'/'+username)
     .subscribe(
 
       (res:Response)=>{

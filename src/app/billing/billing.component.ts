@@ -19,6 +19,12 @@ export class BillingComponent implements OnInit {
   sysDate:string;
   billId:number;
   items:number;
+  empty:String;
+  name:String;
+  address1:String;
+  address2:String;
+  phone:number;
+  cartlength:number;
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router,private datePipe:DatePipe) { }
 
@@ -29,7 +35,7 @@ export class BillingComponent implements OnInit {
     alert('acknowledged');
     this.sysDate=this.datePipe.transform(Date.now(),'yyyy-MM-dd');
 
-    this.http.get('http://localhost:8080/librarycontroller/getMaxBillId')
+    this.http.get('http://localhost:8081/librarycontroller/getMaxBillId')
     .subscribe(
 
       (res:Response)=>{
@@ -52,7 +58,7 @@ export class BillingComponent implements OnInit {
     console.log(billDate,billId);
     this.userId=+this.cookiservice.get('userId');
 console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/updatePurchase'+'/'+this.userId+'/'+billId)
+    this.http.get('http://localhost:8081/librarycontroller/updatePurchase'+'/'+this.userId+'/'+billId)
     .subscribe(
 
       (res:Response)=>{
@@ -92,11 +98,12 @@ console.log(this.userId);
 
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/cartReview'+'/'+this.userId)
+    this.http.get('http://localhost:8081/librarycontroller/cartReview'+'/'+this.userId)
     .subscribe(
 
       (res:Response)=>{
       this.cart=res.json();
+      this.cartlength=this.cart.length;
       console.log(this.cart);
       for(let car of this.cart){
         this.total=this.total+car.subTotal;
@@ -112,7 +119,7 @@ console.log(this.userId);
   abort(){
 console.log('abort');
 console.log(this.userId);
-this.http.get('http://localhost:8080/librarycontroller/clearPurchase'+'/'+this.userId)
+this.http.get('http://localhost:8081/librarycontroller/clearPurchase'+'/'+this.userId)
 .subscribe(
 
   (res:Response)=>{

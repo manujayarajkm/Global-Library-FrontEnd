@@ -33,6 +33,8 @@ export class AllBooksComponent implements OnInit {
   p: number = 1;
     collection: Book[]; 
      bookshelf =[];
+     search:String;
+     max:number=5;
 
 
 
@@ -44,7 +46,7 @@ export class AllBooksComponent implements OnInit {
   }
 
   browseAllBooks(){
-    this.http.get('http://localhost:8080/librarycontroller/viewAllBooks')
+    this.http.get('http://localhost:8081/librarycontroller/viewAllBooks')
     .subscribe(
 
       (res:Response)=>{
@@ -100,7 +102,7 @@ searchBooks(search){
 
 console.log(search);
 this.searchloader();
-this.http.get('http://localhost:8080/librarycontroller/searchBooks'+'/'+search)
+this.http.get('http://localhost:8081/librarycontroller/searchBooks'+'/'+search)
 .subscribe(
 
   (res:Response)=>{

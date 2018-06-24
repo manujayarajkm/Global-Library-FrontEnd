@@ -16,7 +16,7 @@
   <h2>Cart</h2>
   <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
   <table  class="table" id="cart" >
-    <thead *ngIf='!cart.length==0'>
+    <thead *ngIf='cartlength>0'>
       <tr>
         <th>Title</th>
         <th>Author</th>

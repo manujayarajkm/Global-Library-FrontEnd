@@ -38,7 +38,7 @@
         <h4 class="card-title">{{book.title}}({{book.genre}})</h4>
         <h5 class="card-title">{{book.author}}</h5>
         <h6 class="card-title">Availability:{{book.avilableNo}}</h6>
-        <p class="card-text"><rating [(ngModel)]=book.rating [max]="max" [readonly]=true ></rating></p>
+        <p class="card-text"><rating [(ngModel)]=book.rating [max]=5 [readonly]=true ></rating></p>
         <button (click)="borrowBook(book.bookId)"  class="btn btn-primary">Borrow</button>
       </div>
       </div>

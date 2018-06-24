@@ -20,7 +20,7 @@ hirelength:number;
   userHires(){
 
     console.log(this.cookiservice.get('userId'));
-    this.http.get('http://localhost:8080/adminController/viewAllHires')
+    this.http.get('http://localhost:8081/adminController/viewAllHires')
     .subscribe(
 
       (res:Response)=>{
@@ -46,7 +46,7 @@ hirelength:number;
 
     console.log(name,title,dueDate,userId,bookId);
     this.matter="Message from Admin:"+title+" is due on"+dueDate+" please return immediately";
-    this.http.get('http://localhost:8080/librarycontroller/checkDuplicate'+'/'+bookId+'/'+this.matter+'/'+userId)
+    this.http.get('http://localhost:8081/librarycontroller/checkDuplicate'+'/'+bookId+'/'+this.matter+'/'+userId)
     .subscribe(
 
       (res:Response)=>{

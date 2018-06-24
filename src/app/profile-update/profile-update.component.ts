@@ -13,6 +13,11 @@ export class ProfileUpdateComponent implements OnInit {
   userId:number;
   username:String;
   uname:USVString;
+  email:String;
+  name:String;
+  phone:number;
+
+
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
@@ -20,7 +25,7 @@ export class ProfileUpdateComponent implements OnInit {
     console.log(name,email,phone);
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/updateProfile'+'/'+this.userId+'/'+name+'/'+email+'/'+phone)
+    this.http.get('http://localhost:8081/librarycontroller/updateProfile'+'/'+this.userId+'/'+name+'/'+email+'/'+phone)
     .subscribe(
 
       (res:Response)=>{
@@ -48,7 +53,7 @@ export class ProfileUpdateComponent implements OnInit {
       let formData=new FormData();
       formData.append('name',this.uname);
       formData.append('file',elem.files[0]);
-      this.http.post('http://localhost:8080/librarycontroller/upload',formData)
+      this.http.post('http://localhost:8081/librarycontroller/upload',formData)
       .subscribe((res:Response)=>{
         const message=res.text();
         console.log(message);

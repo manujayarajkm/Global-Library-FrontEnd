@@ -20,7 +20,7 @@ export class ViewBookComponent implements OnInit {
   constructor(private http:Http,private cookieService:CookieService,private modalService: BsModalService) { }
 
   viewAllBooks(){
-    this.http.get('http://localhost:8080/librarycontroller/viewAllBooks')
+    this.http.get('http://localhost:8081/librarycontroller/viewAllBooks')
     .subscribe(
 
       (res:Response)=>{
@@ -54,7 +54,7 @@ export class ViewBookComponent implements OnInit {
     this.bookId=+this.cookieService.get('bookid')
     console.log('UserId inside remove '+this.bookId);
     this.modalRef.hide();
-    this.http.get('http://localhost:8080/librarycontroller/removeBook'+'/'+this.bookId)
+    this.http.get('http://localhost:8081/librarycontroller/removeBook'+'/'+this.bookId)
     .subscribe(
 
       (res:Response)=>{

@@ -21,7 +21,7 @@ export class MyHistoryComponent implements OnInit {
 
     this.ngProgress.start();
     console.log(this.cookiservice.get('userId'));
-    this.http.get('http://localhost:8080/librarycontroller/getMyHistory'+'/'+this.cookiservice.get('userId'))
+    this.http.get('http://localhost:8081/librarycontroller/getMyHistory'+'/'+this.cookiservice.get('userId'))
     .subscribe(
 
       (res:Response)=>{

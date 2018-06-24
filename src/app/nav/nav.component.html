@@ -5,7 +5,7 @@
     <div class="navbar-header">
       <a  class="navbar-brand" routerLink="/" *ngIf='loginId<100'>Global Library</a>
       <a class="navbar-brand" *ngIf='loginId>100'>Global Library</a>
-      <a class="navbar-brand" *ngIf='dash>90'>Admin DashBoard</a>
+      <a class="navbar-brand" routerLink="adminhome" *ngIf='dash>90'>Admin DashBoard</a>
       <a routerLink="/userhome"><button type="button" class="btn btn-default btn-sl" *ngIf='userId>0'>
         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
         </button></a>
@@ -23,7 +23,7 @@
           true}">About Us</a></li>
 
         <a routerLink="/notifications"><button type="button" class="btn btn-success btn-sl" *ngIf='userId>0 && count>0'>
-          <span class="glyphicon glyphicon-bell" aria-hidden="true" *ngIf="count>0 && count!='NaN'"></span>{{count}}
+          <span class="glyphicon glyphicon-bell" aria-hidden="true" *ngIf="count>0 "></span>{{count}}
         </button></a>
 
 

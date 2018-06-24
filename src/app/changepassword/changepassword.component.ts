@@ -11,6 +11,9 @@ import{Router} from '@angular/router';
 export class ChangepasswordComponent implements OnInit {
 
   userId:number;
+  code:number;
+  password:String;
+  passwordconfirm:String;
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
@@ -20,7 +23,7 @@ export class ChangepasswordComponent implements OnInit {
     console.log(this.userId);
     console.log(code);
     console.log(password);
-    this.http.get('http://localhost:8080/librarycontroller/resetPassword/'+this.userId+'/'+code+'/'+password)
+    this.http.get('http://localhost:8081/librarycontroller/resetPassword/'+this.userId+'/'+code+'/'+password)
     .subscribe(
 
       (res:Response)=>{

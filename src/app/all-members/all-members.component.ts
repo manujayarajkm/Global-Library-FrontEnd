@@ -12,7 +12,7 @@ import{CookieService} from 'ngx-cookie';
 export class AllMembersComponent implements OnInit {
 
 
-  memQueue:String;
+  memQue:String;
   member:Member[];
   edited:boolean;
   remove:String;
@@ -28,14 +28,14 @@ export class AllMembersComponent implements OnInit {
   allMembers(){
 
 
-    this.http.get('http://localhost:8080/adminController/viewAllMembers')
+    this.http.get('http://localhost:8081/adminController/viewAllMembers')
     .subscribe(
 
       (res:Response)=>{
       this.member=res.json();
       console.log(this.member);
       if(res.json().length==0){
-        this.memQueue="No Members"
+        this.memQue="No Members"
         this.edited=true;
 
         setTimeout(function() {
@@ -54,7 +54,7 @@ export class AllMembersComponent implements OnInit {
   blockMember(userId){
 
     console.log(userId);
-    this.http.get('http://localhost:8080/adminController/blockMember'+'/'+userId)
+    this.http.get('http://localhost:8081/adminController/blockMember'+'/'+userId)
     .subscribe(
 
       (res:Response)=>{
@@ -78,7 +78,7 @@ export class AllMembersComponent implements OnInit {
   unBlockMember(userId){
 
     console.log(userId);
-    this.http.get('http://localhost:8080/adminController/unblockMember'+'/'+userId)
+    this.http.get('http://localhost:8081/adminController/unblockMember'+'/'+userId)
     .subscribe(
 
       (res:Response)=>{
@@ -117,7 +117,7 @@ export class AllMembersComponent implements OnInit {
     this.userId=+this.cookiService.get('userId');
     console.log('UserId inside remove '+this.userId);
     this.modalRef.hide();
-    this.http.get('http://localhost:8080/adminController/removeMember'+'/'+this.userId)
+    this.http.get('http://localhost:8081/adminController/removeMember'+'/'+this.userId)
     .subscribe(
 
       (res:Response)=>{

@@ -11,7 +11,9 @@ import{Router} from '@angular/router';
 export class NewPasswordComponent implements OnInit {
 
   userId:number;
-
+  passwordold:String;
+  passwordnew:String;
+  passwordconfirm:String;
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
   updatepassword(passswordold,passwordnew){
@@ -19,7 +21,7 @@ export class NewPasswordComponent implements OnInit {
     console.log(passswordold,passwordnew);
     this.userId=+this.cookiservice.get('userId');
     console.log(this.userId);
-    this.http.get('http://localhost:8080/librarycontroller/updatePassword/'+this.userId+'/'+passswordold+'/'+passwordnew)
+    this.http.get('http://localhost:8081/librarycontroller/updatePassword/'+this.userId+'/'+passswordold+'/'+passwordnew)
     .subscribe(
 
       (res:Response)=>{

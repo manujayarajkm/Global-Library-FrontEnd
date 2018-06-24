@@ -14,6 +14,8 @@ bookId:number;
 books:Book[];
 review:Review[];
 length:number;
+countReview:number;
+countRating:number;
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { 
     this.bookId=+this.cookiservice.get('bookId');
 
@@ -23,7 +25,7 @@ length:number;
     console.log(bookId);
     this.cookiservice.put('bookId',bookId);
     console.log(this.cookiservice.get('userId'));
-    this.http.get('http://localhost:8080/librarycontroller/addNewHire'+'/'+bookId+'/'+this.cookiservice.get('userId'))
+    this.http.get('http://localhost:8081/librarycontroller/addNewHire'+'/'+bookId+'/'+this.cookiservice.get('userId'))
     .subscribe(
 
       (res:Response)=>{
@@ -41,7 +43,7 @@ length:number;
   getSingleBook(){
     this.bookId=+this.cookiservice.get('bookId');
     console.log('inside get book '+this.bookId);
-    this.http.get('http://localhost:8080/librarycontroller/getSingleBook'+'/'+this.bookId)
+    this.http.get('http://localhost:8081/librarycontroller/getSingleBook'+'/'+this.bookId)
     .subscribe(
 
       (res:Response)=>{
@@ -61,13 +63,14 @@ length:number;
   getReview(bookId){
 
     console.log('inside Review'+bookId);
-    this.http.get('http://localhost:8080/librarycontroller/getReviews'+'/'+bookId)
+    this.http.get('http://localhost:8081/librarycontroller/getReviews'+'/'+bookId)
     .subscribe(
 
       (res:Response)=>{
       this.review=res.json();
       if(this.review.length==0){
         this.length=0;
+        this.countReview=this.review.length;
 
       }
       console.log(this.review);
@@ -100,6 +103,8 @@ interface Book{
   avilableNo:number,
   bookId:number
   rating:number;
+  countRating:number;
+  countReview:number;
 
 }
 interface Review{
