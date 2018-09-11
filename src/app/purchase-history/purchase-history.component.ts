@@ -13,6 +13,7 @@ export class PurchaseHistoryComponent implements OnInit {
 userId:number;
 purchase:Purchase[];
 empty:String;
+length:number;
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
@@ -27,8 +28,10 @@ empty:String;
       (res:Response)=>{
       this.purchase=res.json();
       console.log(this.purchase);
+      this.length=this.purchase.length;
       if(this.purchase.length==0){
         this.empty="You dont have any purchase history";
+        this.length=0;
       }
 
       

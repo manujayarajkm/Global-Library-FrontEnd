@@ -7,18 +7,18 @@
 			<div class="row">
 				<div class="col-md-2">
 
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" *ngIf='purchase.length>0'>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
         Check
       </a>
 </div>
 
 <div class="col-md-10">
-  <div class="alert alert-danger" *ngIf=empty>{{empty}}</div>
+  <div class="alert alert-danger" *ngIf='length==0'>{{empty}}</div>
 
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
       <table  class="table" id="history" >
-        <thead *ngIf='purchase.length>0'>
+        <thead *ngIf='length>0'>
           <tr>
             <th>Title</th>
             <th>Author</th>

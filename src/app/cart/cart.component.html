@@ -6,12 +6,10 @@
       <div class="col-md-4">
       </div>
       <div class="col-md-4">
-          <div class="alert alert-danger" *ngIf='cartlength>0'>Please complete your transaction in 5 minutes</div>
 
 </div>
 <div class="col-md-4">
   <a routerLink="/purchasehistory"><button  class="btn btn-success">My Purchases</button></a>
-  <analogical-countdown [time]="18000" (beep)="timeexceed()" *ngIf='cartlength>0'></analogical-countdown>
 
 </div>
 </div>

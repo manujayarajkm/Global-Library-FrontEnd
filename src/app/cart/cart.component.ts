@@ -115,10 +115,7 @@ gotostore(){
   //location.reload();
 }
 
-timeexceed(){
-  console.log('inside time limit');
-  this.abort();
-}
+
 
 abort(){
   console.log('abort');

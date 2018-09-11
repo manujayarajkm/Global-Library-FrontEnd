@@ -14,6 +14,7 @@ export class PaymentComponent implements OnInit {
   cart:Cart[];
   total:number=0;
   empty:String;
+  length:number;
 
   constructor(private http:Http,private cookiservice:CookieService,private router:Router) { }
 
@@ -29,6 +30,7 @@ export class PaymentComponent implements OnInit {
       (res:Response)=>{
       this.cart=res.json();
       console.log(this.cart);
+      length=this.cart.length;
       for(let car of this.cart){
         this.total=this.total+car.subTotal;
       }
